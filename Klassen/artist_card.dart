@@ -1,10 +1,10 @@
-enum categorys { Musiker, Maler, Komediant, Taenzer, Zauberer }
+enum categories { Musiker, Maler, Komediant, Taenzer, Zauberer }
 
 class ArtistCard {
   // Attribute
   final String? profilePicUrl;
   final String artistName;
-  final categorys;
+  final categories;
   final bool isFavorit;
   final double rating;
   final int price;
@@ -13,7 +13,7 @@ class ArtistCard {
   ArtistCard({
     this.profilePicUrl,
     required this.isFavorit,
-    required this.categorys,
+    required this.categories,
     required this.artistName,
     required this.rating,
     required this.price,
@@ -21,18 +21,14 @@ class ArtistCard {
 
   // Methode
   void showArtistName() {
-    print(artistName);
+    print('The artist name: ${artistName}');
   }
 
   void showPrice() {
-    print(price);
-  }
-
-  void showCategorys() {
-    print(categorys);
+    print('The price: ${price}');
   }
 
   void showRating() {
-    print(rating);
+    print('The rating: ${rating}');
   }
 }

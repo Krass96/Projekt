@@ -10,7 +10,7 @@ void main() {
     isFavorit: true,
     artistName: 'Leonardo',
     rating: 4.2,
-    categorys: categorys.Maler,
+    categories: categories.Maler,
     price: 500,
   );
   ArtistCard b = ArtistCard(
@@ -18,7 +18,7 @@ void main() {
     isFavorit: false,
     artistName: 'Mozart',
     rating: 3.6,
-    categorys: categorys.Musiker,
+    categories: categories.Musiker,
     price: 1000,
   );
   ArtistCard c = ArtistCard(
@@ -26,13 +26,13 @@ void main() {
     isFavorit: false,
     artistName: 'Charlie',
     rating: 5.0,
-    categorys: categorys.Komediant,
+    categories: categories.Komediant,
     price: 200,
   );
 
-  a.showPrice();
-  b.showCategorys();
-  c.showArtistName();
+  a.showArtistName();
+  b.showPrice();
+  c.showRating();
 
   // Button Test
 
