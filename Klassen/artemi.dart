@@ -7,6 +7,7 @@ void main() {
 
   ArtistCard a = ArtistCard(
     profilePicUrl: null,
+    email: '',
     isFavorit: true,
     artistName: 'Leonardo',
     rating: 4.2,
@@ -15,6 +16,7 @@ void main() {
   );
   ArtistCard b = ArtistCard(
     profilePicUrl: null,
+    email: '',
     isFavorit: false,
     artistName: 'Mozart',
     rating: 3.6,
@@ -23,6 +25,7 @@ void main() {
   );
   ArtistCard c = ArtistCard(
     profilePicUrl: null,
+    email: '',
     isFavorit: false,
     artistName: 'Charlie',
     rating: 5.0,
@@ -33,6 +36,7 @@ void main() {
   a.showArtistName();
   b.showPrice();
   c.showRating();
+  a.checkFavorit();
 
   // Button Test
 
@@ -75,7 +79,7 @@ void main() {
     genre: 'komediant',
     date: DateTime(1889),
     priceScala: 300,
-  );
+  ); 
 
   d.showUserName();
   e.showEmail();
