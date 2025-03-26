@@ -3,105 +3,57 @@ import 'button.dart';
 import 'user_profile.dart';
 
 abstract class DatabaseRepository {
-  // Benutzerverwaltung
+  // Benutzer erstellen und löschen
   void createUser(UserProfile user);
-  UserProfile? readUser(String userName);
-  void updateUser(String userName, UserProfile updatedUser);
-  void deleteUser(String userName);
+  void deleteUser(String userId);
 
-  // Künstlerverwaltung
+  // Künstlerprofil erstellen und löschen
   void createArtist(ArtistCard artist);
-  ArtistCard? readArtist(String artistName);
-  void updateArtist(String artistName, ArtistCard updatedArtist);
-  void deleteArtist(String artistName);
+  void deleteArtist(String artistId);
 
-  // Favoriten abrufen
-  List<ArtistCard> getFavoriteArtists();
-
-  // Button-Interaktionen
-  void logButtonPress(Button button);
-  List<Button> getPressedButtons();
+  // Button-Aktionen speichern und löschen
+  void saveButtonAction(Button button);
+  void deleteButtonAction(String buttonId);
 }
 
 class MockDatabaseRepository implements DatabaseRepository {
   List<UserProfile> users = [];
   List<ArtistCard> artists = [];
-  List<Button> pressedButtons = [];
+  List<Button> buttons = [];
 
   @override
-  void createUser(UserProfile user) => users.add(user);
-
-  @override
-  UserProfile? readUser(String userName) {
-    for (var user in users) {
-      if (user.userName == userName) {
-        return user;
-      }
-    }
-    return null;
+  void createUser(UserProfile user) {
+    users.add(user);
+    print("User ${user.userName} wurde erstellt.");
   }
 
   @override
-  void updateUser(String userName, UserProfile updatedUser) {
-    for (int i = 0; i < users.length; i++) {
-      if (users[i].userName == userName) {
-        users[i] = updatedUser;
-        return;
-      }
-    }
+  void deleteUser(String userId) {
+    users.removeWhere((user) => user.eMail == userId);
+    print("User mit der ID $userId wurde gelöscht.");
   }
 
   @override
-  void deleteUser(String userName) =>
-      users.removeWhere((user) => user.userName == userName);
-
-  @override
-  void createArtist(ArtistCard artist) => artists.add(artist);
-
-  @override
-  ArtistCard? readArtist(String artistName) {
-    for (ArtistCard artist in artists) {
-      if (artist.artistName == artistName) {
-        return artist;
-      }
-    }
-    return null;
+  void createArtist(ArtistCard artist) {
+    artists.add(artist);
+    print("Artist ${artist.artistName} wurde erstellt.");
   }
 
   @override
-  void updateArtist(String artistName, ArtistCard updatedArtist) {
-    for (int i = 0; i < artists.length; i++) {
-      if (artists[i].artistName == artistName) {
-        artists[i] = updatedArtist;
-        return;
-      }
-    }
+  void deleteArtist(String artistId) {
+    artists.removeWhere((artist) => artist.artistName == artistId);
+    print("Artist mit der ID $artistId wurde gelöscht.");
   }
 
   @override
-  void deleteArtist(String artistName) {
-    for (int i = 0; i < artists.length; i++) {
-      if (artists[i].artistName == artistName) {
-        artists.removeAt(i);
-        return;
-      }
-    }
+  void saveButtonAction(Button button) {
+    buttons.add(button);
+    print("Button '${button.text}' wurde gespeichert.");
   }
 
   @override
-  List<ArtistCard> getFavoriteArtists() {
-    List<ArtistCard> favoriteArtists = [];
-    for (ArtistCard artist in artists) {
-      if (artist.isFavorit) {
-        favoriteArtists.add(artist);
-      }
-    }
-    return favoriteArtists;
+  void deleteButtonAction(String buttonId) {
+    buttons.removeWhere((button) => button.text == buttonId);
+    print("Button mit der ID $buttonId wurde gelöscht.");
   }
-
-  @override
-  void logButtonPress(Button button) => pressedButtons.add(button);
-
-  @override
-  List<Button> getPressedButtons() => pressedButtons;
 }

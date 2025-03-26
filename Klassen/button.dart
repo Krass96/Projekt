@@ -8,7 +8,6 @@ class Button {
   Button(this.text, this.color, this.onPressed);
 
   // Methode
-
   void Pressed() {
     if (onPressed) {
       print('$text button is pressed');
@@ -33,5 +32,3 @@ class Button {
     print('Button: $text, $color, $onPressed');
   }
 }
-
- 
