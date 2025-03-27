@@ -57,3 +57,19 @@ class MockDatabaseRepository implements DatabaseRepository {
     print("Button mit der ID $buttonId wurde gelöscht.");
   }
 }
+
+void main() {
+  MockDatabaseRepository mockDatabaseRepository = MockDatabaseRepository();
+
+  // User erstellen und löschen
+
+  UserProfile a = UserProfile(
+    userName: 'Krass',
+    password: '0000',
+    eMail: 'krass@web.com',
+    genre: 'musik',
+    priceScala: 2000,
+    date: DateTime.now(),
+  );
+  mockDatabaseRepository.createUser(a);
+}
