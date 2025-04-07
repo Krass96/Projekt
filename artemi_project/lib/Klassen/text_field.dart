@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TextField extends StatelessWidget {
+class MyTextField extends StatelessWidget {
   final String title;
   final String text;
 
-  const TextField({
+  const MyTextField({
     super.key,
     required this.title,
     required this.text,
@@ -12,7 +12,7 @@ class TextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 386.75,
       height: 90,
       child: Stack(

@@ -1,5 +1,5 @@
 import 'package:artemi_project/Klassen/nav_bar.dart';
-import 'package:artemi_project/Klassen/text_field.dart' as custom;
+import 'package:artemi_project/Klassen/text_field.dart';
 import 'package:artemi_project/config/my_color.dart';
 import 'package:artemi_project/config/my_font.dart';
 import 'package:flutter/material.dart';
@@ -98,9 +98,9 @@ class UserProfile extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                custom.TextField(title: 'Email', text: 'test@gmail.com'),
-                custom.TextField(title: 'Username', text: 'testuser'),
-                custom.TextField(title: 'Password', text: '********'),
+                MyTextField(title: 'Email', text: 'test@gmail.com'),
+                MyTextField(title: 'Username', text: 'testUser'),
+                MyTextField(title: 'Password', text: '********'),
               ],
             )
           ],
