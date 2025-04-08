@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Start1Cards extends StatelessWidget {
+class StartOneCards extends StatelessWidget {
   final String title;
   final NetworkImage image;
 
-  const Start1Cards({super.key, required this.title, required this.image});
+  const StartOneCards({super.key, required this.title, required this.image});
 
   @override
   Widget build(BuildContext context) {

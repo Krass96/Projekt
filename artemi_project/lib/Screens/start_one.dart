@@ -1,11 +1,11 @@
 import 'package:artemi_project/Klassen/button.dart';
-import 'package:artemi_project/Klassen/start1_cards.dart';
+import 'package:artemi_project/Klassen/start_one_cards.dart';
 import 'package:artemi_project/Klassen/start_one_scala.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-class Start1 extends StatelessWidget {
-  const Start1({super.key});
+class StartOne extends StatelessWidget {
+  const StartOne({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,16 +47,16 @@ class Start1 extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Start1Cards(
+              StartOneCards(
                   title: 'Musik & Bands',
                   image: NetworkImage("https://picsum.photos/183/127")),
               SizedBox(height: 20),
-              Start1Cards(
+              StartOneCards(
                 title: 'Paint & Dance',
                 image: NetworkImage("https://picsum.photos/183/127"),
               ),
               SizedBox(height: 20),
-              Start1Cards(
+              StartOneCards(
                 title: 'Magic & Stand-Up',
                 image: NetworkImage("https://picsum.photos/183/127"),
               ),

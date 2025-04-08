@@ -1,3 +1,4 @@
+import 'package:artemi_project/Klassen/date_label.dart';
 import 'package:artemi_project/Klassen/nav_bar.dart';
 import 'package:artemi_project/Klassen/text_field.dart';
 import 'package:artemi_project/config/my_color.dart';
@@ -13,27 +14,7 @@ class UserProfile extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        bottomNavigationBar: const NavBar(
-          items: [
-            NavBarItem(
-              icon: LucideIcons.home,
-              label: 'Home',
-            ),
-            NavBarItem(
-              icon: LucideIcons.calendar,
-              label: 'My Events',
-            ),
-            NavBarItem(
-              icon: LucideIcons.heart,
-              label: 'Favorites',
-            ),
-            NavBarItem(
-              icon: LucideIcons.user,
-              label: 'Profile',
-              isActive: true,
-            ),
-          ],
-        ),
+        bottomNavigationBar: NavBar(),
         backgroundColor: Colors.black,
         appBar: AppBar(
           title: const Text('Profile'),
@@ -58,7 +39,7 @@ class UserProfile extends StatelessWidget {
         body: Column(
           children: [
             Divider(height: 10, thickness: 2, color: Colors.white),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             Stack(
               clipBehavior: Clip.none,
               children: [
@@ -86,8 +67,7 @@ class UserProfile extends StatelessWidget {
                         width: 5.90,
                       ),
                       image: const DecorationImage(
-                        image: NetworkImage("https://picsum.photos/108"),
-                        fit: BoxFit.cover,
+                        image: AssetImage('assets/images/my_portre.png'),
                       ),
                     ),
                   ),
@@ -98,9 +78,20 @@ class UserProfile extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MyTextField(title: 'Email', text: 'test@gmail.com'),
                 MyTextField(title: 'Username', text: 'testUser'),
+                MyTextField(title: 'Email', text: 'test@gmail.com'),
                 MyTextField(title: 'Password', text: '********'),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DateLabel(text: 'Genre'),
+                      DateLabel(text: 'Time'),
+                    ],
+                  ),
+                )
               ],
             )
           ],
