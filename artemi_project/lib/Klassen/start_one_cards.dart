@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 class StartOneCards extends StatelessWidget {
   final String title;
-  final NetworkImage image;
+  final String image1;
+  final String image2;
 
-  const StartOneCards({super.key, required this.title, required this.image});
+  const StartOneCards(
+      {super.key,
+      required this.title,
+      required this.image1,
+      required this.image2});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ class StartOneCards extends StatelessWidget {
               height: 127.20,
               decoration: ShapeDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(image.url),
+                    image: AssetImage(image1),
                     fit: BoxFit.cover,
                     colorFilter:
                         ColorFilter.mode(Colors.grey, BlendMode.saturation)),
@@ -49,7 +54,7 @@ class StartOneCards extends StatelessWidget {
               height: 127.20,
               decoration: ShapeDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(image.url),
+                    image: AssetImage(image2),
                     fit: BoxFit.cover,
                     colorFilter:
                         ColorFilter.mode(Colors.grey, BlendMode.saturation)),

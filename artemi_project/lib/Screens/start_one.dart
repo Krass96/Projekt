@@ -49,17 +49,20 @@ class StartOne extends StatelessWidget {
               SizedBox(height: 20),
               StartOneCards(
                   title: 'Musik & Bands',
-                  image: NetworkImage("https://picsum.photos/183/127")),
-              SizedBox(height: 20),
+                  image1: "https://picsum.photos/183/127",
+                  image2: "https://picsum.photos/183/127"),
               StartOneCards(
-                title: 'Paint & Dance',
-                image: NetworkImage("https://picsum.photos/183/127"),
-              ),
-              SizedBox(height: 20),
+                  title: 'Paint & Dance',
+                  image1: "https://picsum.photos/183/127",
+                  image2: "https://picsum.photos/183/127"),
               StartOneCards(
-                title: 'Magic & Stand-Up',
-                image: NetworkImage("https://picsum.photos/183/127"),
-              ),
+                  title: 'Magic & Stand-Up',
+                  image1: "https://picsum.photos/183/127",
+                  image2: "https://picsum.photos/183/127"),
+              StartOneCards(
+                  title: 'Magic & Stand-Up',
+                  image1: "https://picsum.photos/183/127",
+                  image2: "https://picsum.photos/183/127"),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
