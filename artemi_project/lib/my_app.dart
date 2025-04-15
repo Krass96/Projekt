@@ -1,4 +1,5 @@
-import 'package:artemi_project/Screens/artist_galery.dart';
+import 'package:artemi_project/Screens/main_screen.dart';
+import 'package:artemi_project/config/my_color.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,8 +9,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: ArtistGalery(),
+      theme: ThemeData.dark().copyWith(
+        primaryColor: primColor,
+        scaffoldBackgroundColor: Colors.black,
+      ),
+      home: const MainScreen(),
     );
   }
 }
