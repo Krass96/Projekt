@@ -1,5 +1,5 @@
-import 'package:artemi_project/Klassen/artist_info.dart';
-import 'package:artemi_project/config/my_color.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/artist_info.dart';
+import 'package:artemi_project/src/theme/my_color.dart';
 import 'package:flutter/material.dart';
 
 class BuildImage extends StatelessWidget {

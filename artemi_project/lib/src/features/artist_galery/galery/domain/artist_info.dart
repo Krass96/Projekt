@@ -1,4 +1,4 @@
-import 'package:artemi_project/config/my_color.dart';
+import 'package:artemi_project/src/theme/my_color.dart';
 import 'package:flutter/material.dart';
 
 class ArtistInfo extends StatelessWidget {

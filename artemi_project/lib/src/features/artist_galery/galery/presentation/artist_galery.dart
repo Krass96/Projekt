@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:artemi_project/viewmodels/artist_gallery_viewmodel.dart';
-import 'package:artemi_project/Klassen/build_image.dart';
-import 'package:artemi_project/Klassen/build_indicator.dart';
-import 'package:artemi_project/Klassen/buttons_row.dart';
-import 'package:artemi_project/config/my_color.dart';
-import 'package:artemi_project/constants.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/artist_gallery_viewmodel.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/build_image.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/build_indicator.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/buttons_row.dart';
+import 'package:artemi_project/src/theme/my_color.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/constants.dart';
 
 class ArtistGalery extends StatefulWidget {
   const ArtistGalery({super.key});
