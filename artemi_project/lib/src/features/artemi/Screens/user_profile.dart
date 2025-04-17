@@ -1,6 +1,6 @@
 import 'package:artemi_project/src/features/artist_galery/galery/domain/date_label.dart';
-import 'package:artemi_project/Klassen/nav_bar.dart';
-import 'package:artemi_project/Klassen/text_field.dart';
+import 'package:artemi_project/src/widgets/nav_bar.dart';
+import 'package:artemi_project/src/widgets/text_field.dart';
 import 'package:artemi_project/src/theme/my_color.dart';
 import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:flutter/material.dart';

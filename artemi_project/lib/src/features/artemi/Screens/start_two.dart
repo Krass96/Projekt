@@ -1,4 +1,4 @@
-import 'package:artemi_project/Klassen/start_one_scala.dart';
+import 'package:artemi_project/src/widgets/start_one_scala.dart';
 import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';

@@ -1,15 +1,18 @@
+import 'package:artemi_project/src/theme/my_color.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   final String text;
   final IconData? icon;
   final Alignment alignment;
+  final VoidCallback? onPressed;
 
   const Button({
     required this.text,
     this.icon,
     this.alignment = Alignment.bottomCenter,
     super.key,
+    this.onPressed,
   });
 
   @override
@@ -19,9 +22,9 @@ class Button extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 28),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFFFEE32),
+            backgroundColor: primColor,
             foregroundColor: Colors.black,
             padding: const EdgeInsets.symmetric(
               horizontal: 30,
@@ -43,7 +46,7 @@ class Button extends StatelessWidget {
                     const SizedBox(width: 10),
                     Icon(
                       icon,
-                      size: 20,
+                      size: 25,
                       color: Colors.black,
                     ),
                   ],
