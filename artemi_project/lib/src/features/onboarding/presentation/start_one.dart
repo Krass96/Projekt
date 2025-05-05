@@ -1,9 +1,10 @@
+import 'package:artemi_project/src/common/back_chevron.dart';
 import 'package:artemi_project/src/common/my_bg_wrapper.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/start_two.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:artemi_project/src/widgets/start_one_cards.dart';
 import 'package:artemi_project/src/widgets/start_one_scala.dart';
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
 
 class StartOne extends StatelessWidget {
   const StartOne({super.key});
@@ -13,11 +14,7 @@ class StartOne extends StatelessWidget {
     return AppScaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: const Icon(
-          LucideIcons.chevronLeft,
-          color: Color(0xFFFFEE32),
-          size: 40,
-        ),
+        leading: BackChevron(),
         actions: [
           StartOneScala(
             widthYellow: 150,
@@ -62,8 +59,14 @@ class StartOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
-                    text: 'Continue',
-                  ),
+                      width: 150,
+                      text: 'Continue',
+                      onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const StartTwo(),
+                            ),
+                          )),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 24),
                     child: TextButton(

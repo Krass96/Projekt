@@ -16,10 +16,13 @@ class StartTwo extends StatelessWidget {
           backgroundColor: Colors.black,
           appBar: AppBar(
             backgroundColor: Colors.black,
-            leading: const Icon(
-              LucideIcons.chevronLeft,
-              color: Color(0xFFFFEE32),
-              size: 40,
+            leading: IconButton(
+              icon: const Icon(
+                LucideIcons.chevronLeft,
+                color: Color(0xFFFFEE32),
+                size: 40,
+              ),
+              onPressed: () => Navigator.of(context).pop(),
             ),
             actions: [
               StartOneScala(
