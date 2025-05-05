@@ -30,11 +30,9 @@ flutter_icons:
   ios: true
   image_path: assets/logo/logo.png
   adaptive_icon:
-    size: 500
     background: "#000000"
-    padding: 0
 
-flutter_native_splash:    
+flutter_native_splash:
   
   image: assets/logo/logo.png
   android: true
