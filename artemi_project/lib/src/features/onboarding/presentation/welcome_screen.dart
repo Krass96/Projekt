@@ -1,4 +1,6 @@
 import 'package:artemi_project/src/common/logo_widget.dart';
+import 'package:artemi_project/src/theme/my_bg_color.dart';
+import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -9,55 +11,48 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 50,
-                ),
-                const Text(
-                  'WELCOME TO ARTEMI',
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      decorationColor: Colors.amberAccent),
-                ),
-                const SizedBox(height: 50),
-                const LogoWidget(),
-                const SizedBox(height: 20),
-                const Text(
-                  '"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
+    return Stack(
+      children: [
+        MyBgColor(),
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                'WELCOME TO ARTEMI',
+                style: welcomeTitle,
+              ),
+              const SizedBox(height: 40),
+              const LogoWidget(),
+              const SizedBox(height: 30),
+              Text(
+                '"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
+                style: welcomeSubtitle,
+              ),
+              const SizedBox(height: 10),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Button(
-              text: 'Get Started',
-              icon: LucideIcons.chevronsRight,
-              alignment: Alignment.bottomCenter,
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const StartOne(),
-                ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Button(
+            width: 250,
+            height: 60,
+            text: 'Get Started',
+            icon: LucideIcons.chevronRight,
+            alignment: Alignment.bottomCenter,
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const StartOne(),
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

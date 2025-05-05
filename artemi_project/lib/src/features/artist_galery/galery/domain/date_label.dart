@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/theme/my_color.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -41,7 +41,7 @@ class DateLabel extends StatelessWidget {
           ),
           Icon(
             LucideIcons.chevronDown,
-            color: primColor,
+            color: Palette.artGold,
             size: 30,
           ),
         ],

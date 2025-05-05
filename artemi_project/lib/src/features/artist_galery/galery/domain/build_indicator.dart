@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/theme/my_color.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -17,7 +17,7 @@ class BuildIndicator extends StatelessWidget {
         activeIndex: activeIndex,
         count: artists.length,
         effect: SlideEffect(
-          activeDotColor: primColor,
+          activeDotColor: Palette.artGold,
           dotColor: Colors.grey,
           dotHeight: 18,
           dotWidth: 18,

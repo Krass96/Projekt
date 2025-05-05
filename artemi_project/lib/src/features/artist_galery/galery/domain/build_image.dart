@@ -1,5 +1,5 @@
 import 'package:artemi_project/src/features/artist_galery/galery/domain/artist_info.dart';
-import 'package:artemi_project/src/theme/my_color.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 class BuildImage extends StatelessWidget {
@@ -40,7 +40,7 @@ class BuildImage extends StatelessWidget {
           right: 16,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: primColor,
+              backgroundColor: Palette.artGold,
               foregroundColor: Colors.white,
             ),
             onPressed: () {
@@ -54,7 +54,7 @@ class BuildImage extends StatelessWidget {
                     height: 350,
                     width: 350,
                     decoration: BoxDecoration(
-                      border: Border.all(color: primColor, width: 3),
+                      border: Border.all(color: Palette.artGold, width: 3),
                       borderRadius: BorderRadius.circular(16),
                       color: Colors.black,
                     ),

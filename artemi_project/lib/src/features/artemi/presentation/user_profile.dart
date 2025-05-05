@@ -1,7 +1,7 @@
 import 'package:artemi_project/src/features/artist_galery/galery/domain/date_label.dart';
 import 'package:artemi_project/src/widgets/nav_bar.dart';
 import 'package:artemi_project/src/widgets/text_field.dart';
-import 'package:artemi_project/src/theme/my_color.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -26,12 +26,13 @@ class UserProfile extends StatelessWidget {
           ),
           backgroundColor: Colors.black,
           leading: IconButton(
-            icon: Icon(LucideIcons.chevronLeft, color: primColor, size: 36),
+            icon:
+                Icon(LucideIcons.chevronLeft, color: Palette.artGold, size: 36),
             onPressed: () {},
           ),
           actions: [
             IconButton(
-              icon: Icon(LucideIcons.save, color: primColor, size: 30),
+              icon: Icon(LucideIcons.save, color: Palette.artGold, size: 30),
               onPressed: () {},
             ),
           ],

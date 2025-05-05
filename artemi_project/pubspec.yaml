@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.3
   flutter_native_splash: ^2.4.6
+  flutter_svg: ^2.1.0
   google_fonts: ^6.2.1
   lucide_icons: ^0.257.0
   numberpicker: ^2.1.2
@@ -29,11 +30,12 @@ flutter_icons:
   ios: true
   image_path: assets/logo/logo.png
   adaptive_icon:
-    foreground_image: assets/logo/logo.png
-    background: "#FFFFFF"
+    size: 500
+    background: "#000000"
+    padding: 0
 
-flutter_native_splash:
-  color: "#FFFFFF"
+flutter_native_splash:    
+  
   image: assets/logo/logo.png
   android: true
   ios: true

@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/theme/my_color.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 class ArtistInfo extends StatelessWidget {
@@ -33,7 +33,7 @@ class ArtistInfo extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: primColor),
+                      color: Palette.artGold),
                 ),
               ),
               const SizedBox(height: 32),
@@ -48,7 +48,7 @@ class ArtistInfo extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                   child: const Text(
                     'Close',
-                    style: TextStyle(color: primColor),
+                    style: TextStyle(color: Palette.artGold),
                   ),
                 ),
               ),

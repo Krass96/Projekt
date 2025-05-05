@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/theme/my_color.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/my_font.dart';
 
@@ -54,7 +54,7 @@ class _NavBarState extends State<NavBar> {
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              color: isActive ? primColor : textColor,
+              color: isActive ? Palette.artGold : Palette.textColor,
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -67,7 +67,7 @@ class _NavBarState extends State<NavBar> {
           Text(
             label,
             style: TextStyle(
-              color: isActive ? primColor : textColor,
+              color: isActive ? Palette.artGold : Palette.textColor,
               fontSize: 12,
               fontFamily: myFont.fontFamily,
               fontWeight: FontWeight.w500,
