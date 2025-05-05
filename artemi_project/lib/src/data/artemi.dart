@@ -11,7 +11,7 @@ void main() {
     isFavorit: true,
     artistName: 'Leonardo',
     rating: 4.2,
-    categories: categories.Maler,
+    categories: Categories.Maler,
     price: 500,
   );
   ArtistCard b = ArtistCard(
@@ -20,7 +20,7 @@ void main() {
     isFavorit: false,
     artistName: 'Mozart',
     rating: 3.6,
-    categories: categories.Musiker,
+    categories: Categories.Musiker,
     price: 1000,
   );
   ArtistCard c = ArtistCard(
@@ -29,7 +29,7 @@ void main() {
     isFavorit: false,
     artistName: 'Charlie',
     rating: 5.0,
-    categories: categories.Komediant,
+    categories: Categories.Komediant,
     price: 200,
   );
 
@@ -79,7 +79,7 @@ void main() {
     genre: 'komediant',
     date: DateTime(1889),
     priceScala: 300,
-  ); 
+  );
 
   d.showUserName();
   e.showEmail();

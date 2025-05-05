@@ -5,7 +5,7 @@ class LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/images/logo_frame.png',
+      'assets//logo/logo.png',
       width: 200,
       fit: BoxFit.cover,
     );

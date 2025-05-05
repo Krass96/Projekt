@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.6
   google_fonts: ^6.2.1
   lucide_icons: ^0.257.0
   numberpicker: ^2.1.2
@@ -21,11 +22,24 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/logo/
 
 flutter_icons:
   android: true
   ios: true
-  image_path: assets/images/logo_frame.png
+  image_path: assets/logo/logo.png
+  adaptive_icon:
+    foreground_image: assets/logo/logo.png
+    background: "#FFFFFF"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/logo/logo.png
+  android: true
+  ios: true
+  fullscreen: true
+  android_gravity: center
+  web: false
 
 dev_dependencies:
   flutter_lints: ^5.0.0

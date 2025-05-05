@@ -1,4 +1,4 @@
-enum categories { Musiker, Maler, Komediant, Taenzer, Zauberer }
+enum Categories { Musiker, Maler, Komediant, Taenzer, Zauberer }
 
 class ArtistCard {
   // Attribute
