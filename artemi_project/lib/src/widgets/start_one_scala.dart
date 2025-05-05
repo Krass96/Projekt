@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 class StartOneScala extends StatelessWidget {
@@ -29,7 +30,7 @@ class StartOneScala extends StatelessWidget {
           width: widthYellow,
           height: 7,
           decoration: ShapeDecoration(
-              color: Color(0xFFFFEE32),
+              color: Palette.artGold,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(69),
               )),
