@@ -8,15 +8,19 @@ class MyBgColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.bottomCenter,
-          end: Alignment.center,
-          colors: [
-            Color(0xFF666666),
-            Colors.black,
-          ],
-        ),
+      decoration: myBoxDecoration(),
+    );
+  }
+
+  BoxDecoration myBoxDecoration() {
+    return const BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.bottomCenter,
+        end: Alignment.center,
+        colors: [
+          Color(0xFF666666),
+          Color(0xFF000000),
+        ],
       ),
     );
   }

@@ -17,6 +17,7 @@ dependencies:
   lucide_icons: ^0.257.0
   numberpicker: ^2.1.2
   shimmer: ^3.0.0
+  sign_in_with_apple: ^7.0.1
   smooth_page_indicator: ^1.2.1
 
 flutter:
@@ -33,12 +34,12 @@ flutter_icons:
     background: "#000000"
 
 flutter_native_splash:
-  
   image: assets/logo/logo.png
   android: true
   ios: true
   fullscreen: true
   android_gravity: center
+  color: "#000000"
   web: false
 
 dev_dependencies:

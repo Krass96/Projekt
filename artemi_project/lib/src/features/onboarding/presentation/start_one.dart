@@ -1,5 +1,6 @@
 import 'package:artemi_project/src/common/back_chevron.dart';
 import 'package:artemi_project/src/common/my_bg_wrapper.dart';
+import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/start_two.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:artemi_project/src/widgets/start_one_cards.dart';
@@ -70,7 +71,12 @@ class StartOne extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 24),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Login(),
+                        ),
+                      ),
                       child: Text(
                         'Skip',
                         style: TextStyle(color: Colors.white, fontSize: 24),

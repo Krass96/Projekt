@@ -8,7 +8,7 @@ class Button extends StatelessWidget {
   final VoidCallback? onPressed;
   final double? width;
   final double? height;
-  final TextStyle? fontSize;
+  final double? fontSize;
 
   const Button({
     required this.text,
@@ -62,7 +62,7 @@ class Button extends StatelessWidget {
                   )
                 : Text(
                     text,
-                    style: const TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: fontSize),
                     textAlign: TextAlign.center,
                   ),
           ),

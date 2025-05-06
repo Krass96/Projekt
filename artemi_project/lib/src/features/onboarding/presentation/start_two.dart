@@ -1,5 +1,6 @@
 import 'package:artemi_project/src/common/back_chevron.dart';
 import 'package:artemi_project/src/common/my_bg_wrapper.dart';
+import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_two_cards_row.dart';
 import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:artemi_project/src/theme/palette.dart';
@@ -31,7 +32,19 @@ class StartTwo extends StatelessWidget {
           StartTwoCardsRow(),
           SizedBox(height: 50),
           Image.asset('assets/images/you_are.png'),
-          SizedBox(height: 20),
+          SizedBox(height: 40),
+          TextButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Login(),
+              ),
+            ),
+            child: Text(
+              'Skip',
+              style: TextStyle(color: Colors.white, fontSize: 24),
+            ),
+          ),
         ],
       ),
     );
