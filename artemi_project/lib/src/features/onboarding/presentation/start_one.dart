@@ -2,9 +2,10 @@ import 'package:artemi_project/src/common/back_chevron.dart';
 import 'package:artemi_project/src/common/my_bg_wrapper.dart';
 import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/start_two.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_text.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_cards.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_scala.dart';
 import 'package:artemi_project/src/widgets/button.dart';
-import 'package:artemi_project/src/widgets/start_one_cards.dart';
-import 'package:artemi_project/src/widgets/start_one_scala.dart';
 import 'package:flutter/material.dart';
 
 class StartOne extends StatelessWidget {
@@ -26,18 +27,7 @@ class StartOne extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Text(
-              "Hey, are you looking for an artist for your event? Then you've come to the right place!",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: const Color(0xFFD6D6D6),
-                fontSize: 18,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-                height: 1.41,
-                letterSpacing: -0.44,
-              ),
-            ),
+            StartOneText(),
             SizedBox(height: 20),
             StartOneCards(
                 title: 'Music & Band',
@@ -62,6 +52,7 @@ class StartOne extends StatelessWidget {
                   Button(
                       width: 150,
                       text: 'Continue',
+                      fontSize: 24,
                       onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(

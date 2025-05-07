@@ -4,7 +4,7 @@ import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_two_cards_row.dart';
 import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:artemi_project/src/theme/palette.dart';
-import 'package:artemi_project/src/widgets/start_one_scala.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_scala.dart';
 import 'package:flutter/material.dart';
 
 class StartTwo extends StatelessWidget {

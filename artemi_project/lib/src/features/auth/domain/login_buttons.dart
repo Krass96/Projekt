@@ -1,6 +1,7 @@
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class LoginButtons extends StatelessWidget {
@@ -39,14 +40,34 @@ class LoginButtons extends StatelessWidget {
             width: 300,
             height: 50,
           ),
-          Text('or', style: Theme.of(context).textTheme.headlineSmall),
+          Padding(
+            padding: const EdgeInsets.only(left: 32, right: 32),
+            child: Row(
+              spacing: 16,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                    child: Divider(
+                  thickness: 2,
+                )),
+                Text('or', style: Theme.of(context).textTheme.headlineSmall),
+                Expanded(
+                    child: Divider(
+                  thickness: 2,
+                )),
+              ],
+            ),
+          ),
           SizedBox(
             height: 10,
           ),
-          SignInWithAppleButton(
-            onPressed: () {},
-            height: 50,
-            borderRadius: BorderRadius.circular(60),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SignInWithAppleButton(
+              onPressed: () {},
+              height: 50,
+              borderRadius: BorderRadius.circular(60),
+            ),
           ),
         ],
       ),

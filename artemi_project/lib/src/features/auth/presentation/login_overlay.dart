@@ -12,13 +12,15 @@ class LoginOverlay extends StatefulWidget {
 
 class _LoginOverlayState extends State<LoginOverlay> {
   final textController = TextEditingController();
+  bool? hidePassword = false;
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    bool hidePassword;
+    bool _hidePassword = true;
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 226, 216, 216),
+      backgroundColor: const Color.fromARGB(151, 156, 152, 152),
       body: Stack(
         children: [
           Positioned(
@@ -37,12 +39,15 @@ class _LoginOverlayState extends State<LoginOverlay> {
           ),
           Center(
             child: Column(
+              spacing: 8,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('WELCOME BACK',
-                    style: Theme.of(context).textTheme.displaySmall),
-                SizedBox(height: 100),
-                Opacity(opacity: 0.1, child: LogoWidget()),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text('WELCOME BACK',
+                      style: Theme.of(context).textTheme.displaySmall),
+                ),
+                Opacity(opacity: 0.2, child: LogoWidget()),
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.all(24.0),
@@ -63,22 +68,7 @@ class _LoginOverlayState extends State<LoginOverlay> {
                               icon: Icon(Icons.clear),
                             )),
                       ),
-                      TextField(
-                        obscureText: hidePassword,
-                        obscuringCharacter: '*',
-                        decoration: InputDecoration(
-                          suffix: IconButton(
-                            icon: Icon(hidePassword
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                            onPressed: () => setState(
-                              () {
-                                hidePassword = !hidePassword;
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
+                      TextField(),
                     ],
                   ),
                 ),
