@@ -9,6 +9,22 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.black,
       primaryColor: Palette.artGold,
 
+      // TextField
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(24),
+          borderSide: BorderSide(color: Palette.textColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(24),
+          borderSide: BorderSide(color: const Color(0xC3FFFFFF), width: 2),
+        ),
+        hintStyle: TextStyle(color: Palette.textColor),
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: Palette.artGold,
+      ),
+
       // Text
       fontFamily: GoogleFonts.poppins().fontFamily,
       textTheme: TextTheme(

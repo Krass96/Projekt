@@ -16,7 +16,10 @@ class App extends StatelessWidget {
         body: Stack(
           children: [
             MyBgColor(),
-            WelcomeScreen(),
+            Material(
+              type: MaterialType.transparency,
+              child: WelcomeScreen(),
+            ),
           ],
         ),
       ),

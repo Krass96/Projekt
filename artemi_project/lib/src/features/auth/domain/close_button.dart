@@ -21,7 +21,7 @@ class MyCloseButton extends StatelessWidget {
             ),
             color: const Color(0x8B323232),
           ),
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(4),
           child: const Icon(
             Icons.close_sharp,
             color: Color(0xFFFFFFFF),

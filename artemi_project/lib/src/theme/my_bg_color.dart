@@ -1,8 +1,12 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class MyBgColor extends StatelessWidget {
-  const MyBgColor({
+  BorderRadius? borderRadius;
+
+  MyBgColor({
     super.key,
+    this.borderRadius,
   });
 
   @override
@@ -14,6 +18,7 @@ class MyBgColor extends StatelessWidget {
 
   BoxDecoration myBoxDecoration() {
     return const BoxDecoration(
+      borderRadius: BorderRadius.all(Radius.circular(50)),
       gradient: LinearGradient(
         begin: Alignment.bottomCenter,
         end: Alignment.center,

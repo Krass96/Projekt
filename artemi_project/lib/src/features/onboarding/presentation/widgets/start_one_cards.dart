@@ -16,6 +16,7 @@ class StartOneCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 8,
       children: [
         StartOneCardsTitle(title: title),
         StartOneCardsRow(image1: image1, image2: image2)

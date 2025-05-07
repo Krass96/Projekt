@@ -1,6 +1,5 @@
 import 'package:artemi_project/src/common/logo_widget.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
-import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -21,17 +20,15 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Text(
-                'WELCOME TO ARTEMI',
-                style: welcomeTitle,
-              ),
+              Text('WELCOME TO ARTEMI',
+                  style: Theme.of(context).textTheme.displaySmall),
               const SizedBox(height: 40),
-              const LogoWidget(),
-              const SizedBox(height: 30),
-              Text(
-                '"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
-                style: welcomeSubtitle,
+              const LogoWidget(
+                widht: 200,
               ),
+              const SizedBox(height: 30),
+              Text('"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
+                  style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(height: 10),
             ],
           ),

@@ -1,7 +1,6 @@
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class LoginButtons extends StatelessWidget {
@@ -19,26 +18,16 @@ class LoginButtons extends StatelessWidget {
           Button(
             text: 'Log In',
             fontSize: 22,
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginOverlay(),
-              ),
-            ),
             width: 300,
             height: 50,
+            onPressed: () => showLoginBottomSheet(context),
           ),
           Button(
             text: 'Sign In',
             fontSize: 22,
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginOverlay(),
-              ),
-            ),
             width: 300,
             height: 50,
+            onPressed: () => showLoginBottomSheet(context),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 32, right: 32),

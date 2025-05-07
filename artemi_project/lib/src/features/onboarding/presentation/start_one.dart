@@ -45,29 +45,29 @@ class StartOne extends StatelessWidget {
                 image2: "assets/images/comedy.jpg"),
             SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(
                       width: 150,
                       text: 'Continue',
-                      fontSize: 24,
+                      fontSize: 22,
                       onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const StartTwo(),
                             ),
                           )),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 24),
-                    child: TextButton(
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Login(),
-                        ),
+                  TextButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Login(),
                       ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 30, right: 10),
                       child: Text(
                         'Skip',
                         style: TextStyle(color: Colors.white, fontSize: 24),
