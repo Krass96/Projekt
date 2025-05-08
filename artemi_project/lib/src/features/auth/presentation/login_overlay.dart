@@ -1,9 +1,9 @@
-import 'package:artemi_project/src/common/text_field.dart';
-import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/common/logo_widget.dart';
-import 'package:artemi_project/src/features/auth/domain/close_button.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/login_form.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_close.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_divider.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_title.dart';
 
 void showLoginBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -23,7 +23,6 @@ class LoginOverlay extends StatefulWidget {
 
 class _LoginOverlayState extends State<LoginOverlay> {
   final passwordController = TextEditingController();
-
   @override
   void dispose() {
     passwordController.dispose();
@@ -49,43 +48,12 @@ class _LoginOverlayState extends State<LoginOverlay> {
             spacing: 8,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5),
-                child: Text(
-                  'Welcome Back',
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-              ),
-              Opacity(
-                opacity: 0.4,
-                child: LogoWidget(widht: 90),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  spacing: 24,
-                  children: [
-                    TextField(
-                      decoration: MyInputDecoration.styled(
-                          hintText: 'Mail or Username'),
-                    ),
-                    PasswordField(controller: passwordController),
-                    SizedBox(height: 10),
-                    Button(
-                        width: 200,
-                        fontSize: 24,
-                        text: 'Login',
-                        onPressed: () => Navigator.pop(context))
-                  ],
-                ),
-              ),
+              OverlayTitle(),
+              LoginForm(passwordController: passwordController),
             ],
           ),
-          Positioned(
-            top: 5,
-            right: 20,
-            child: MyCloseButton(),
-          ),
+          OverlayDivider(),
+          OverlayClose(),
         ],
       ),
     );

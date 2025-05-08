@@ -1,5 +1,5 @@
-import 'package:artemi_project/src/features/auth/domain/login_buttons.dart';
-import 'package:artemi_project/src/features/auth/domain/login_text.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/login_buttons.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/login_text.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {

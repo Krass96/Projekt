@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 class MyInputDecoration {
   static InputDecoration styled({
     required String hintText,
+    required BuildContext context,
+    String? labelText,
     Widget? suffixIcon,
   }) {
     return InputDecoration(
       hintText: hintText,
       hintStyle:
           TextStyle(color: Palette.textColor, fontStyle: FontStyle.italic),
+      labelText: labelText,
+      labelStyle:
+          labelText != null ? Theme.of(context).textTheme.titleSmall : null,
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(24)),
         borderSide: BorderSide(color: Palette.textColor),
@@ -26,11 +31,13 @@ class MyInputDecoration {
 class PasswordField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
+  final String? labelText;
 
   const PasswordField({
     super.key,
     required this.controller,
-    this.hintText = 'Password',
+    required this.hintText,
+    this.labelText,
   });
 
   @override
@@ -54,6 +61,8 @@ class _PasswordFieldState extends State<PasswordField> {
       cursorColor: Palette.artGold,
       style: TextStyle(color: Palette.textColor),
       decoration: MyInputDecoration.styled(
+        context: context,
+        labelText: widget.labelText,
         hintText: widget.hintText,
         suffixIcon: IconButton(
           icon: Icon(

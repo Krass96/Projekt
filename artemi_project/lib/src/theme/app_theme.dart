@@ -28,20 +28,20 @@ class AppTheme {
       // Text
       fontFamily: GoogleFonts.poppins().fontFamily,
       textTheme: TextTheme(
-        headlineLarge: GoogleFonts.poppins(
-          fontSize: 32,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
-        ),
-        bodyMedium: GoogleFonts.poppins(
-          fontSize: 14,
-          fontStyle: FontStyle.italic,
-          color: Colors.white,
-        ),
-        labelMedium: GoogleFonts.poppins(
-          color: Palette.textColor,
-        ),
-      ),
+          headlineLarge: GoogleFonts.poppins(
+            fontSize: 32,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+          bodyMedium: GoogleFonts.poppins(
+            fontSize: 14,
+            fontStyle: FontStyle.italic,
+            color: Colors.white,
+          ),
+          labelMedium: GoogleFonts.poppins(
+            color: Palette.textColor,
+          ),
+          titleSmall: GoogleFonts.poppins(color: Palette.artGold)),
 
       // Button
       elevatedButtonTheme: ElevatedButtonThemeData(

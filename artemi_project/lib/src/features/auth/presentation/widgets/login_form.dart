@@ -1,0 +1,60 @@
+import 'package:artemi_project/src/common/logo_widget.dart';
+import 'package:artemi_project/src/common/text_field.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/forgot_password.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/remember_me_checkbox.dart';
+import 'package:artemi_project/src/widgets/button.dart';
+import 'package:flutter/material.dart';
+
+class LoginForm extends StatelessWidget {
+  const LoginForm({
+    super.key,
+    required this.passwordController,
+  });
+
+  final TextEditingController passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          TextField(
+            decoration: MyInputDecoration.styled(
+                context: context,
+                hintText: 'Enter your mail or username',
+                labelText: 'Email / Username'),
+          ),
+          SizedBox(height: 20),
+          PasswordField(
+            controller: passwordController,
+            hintText: 'Enter your password',
+            labelText: 'Password',
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const RememberMeCheckbox(),
+              ForgotPassword(),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Button(
+                width: 200,
+                fontSize: 24,
+                text: 'Login',
+                onPressed: () => Navigator.pop(context)),
+          ),
+          Center(
+            child: Opacity(
+              opacity: 0.4,
+              child: LogoWidget(widht: 130),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
