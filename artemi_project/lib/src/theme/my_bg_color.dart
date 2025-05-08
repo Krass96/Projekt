@@ -18,7 +18,6 @@ class MyBgColor extends StatelessWidget {
 
   BoxDecoration myBoxDecoration() {
     return const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(50)),
       gradient: LinearGradient(
         begin: Alignment.bottomCenter,
         end: Alignment.center,

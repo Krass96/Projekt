@@ -1,5 +1,5 @@
 import 'package:artemi_project/src/common/back_chevron.dart';
-import 'package:artemi_project/src/common/my_bg_wrapper.dart';
+import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_two_cards_row.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_scala.dart';
@@ -10,7 +10,7 @@ class StartTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    return MyScaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: BackChevron(),

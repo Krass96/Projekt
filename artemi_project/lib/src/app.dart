@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/common/my_bg_wrapper.dart';
+import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
 import 'package:artemi_project/src/theme/app_theme.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: AppScaffold(
+      home: MyScaffold(
         body: Stack(
           children: [
             MyBgColor(),

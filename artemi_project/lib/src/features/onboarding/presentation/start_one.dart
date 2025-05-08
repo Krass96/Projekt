@@ -1,5 +1,5 @@
 import 'package:artemi_project/src/common/back_chevron.dart';
-import 'package:artemi_project/src/common/my_bg_wrapper.dart';
+import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/start_two.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_text.dart';
@@ -13,7 +13,7 @@ class StartOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    return MyScaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
         leading: BackChevron(),

@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/features/artemi/presentation/my_events.dart';
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
 import 'package:artemi_project/src/features/auth/presentation/sing_up_overlay.dart';
 import 'package:artemi_project/src/widgets/button.dart';
@@ -54,7 +55,12 @@ class LoginButtons extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: SignInWithAppleButton(
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyEvents(),
+                ),
+              ),
               height: 50,
               borderRadius: BorderRadius.circular(60),
             ),

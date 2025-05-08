@@ -1,6 +1,5 @@
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/theme/my_font.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -69,8 +68,6 @@ class _NavBarState extends State<NavBar> {
             style: TextStyle(
               color: isActive ? Palette.artGold : Palette.textColor,
               fontSize: 12,
-              fontFamily: myFont.fontFamily,
-              fontWeight: FontWeight.w500,
             ),
           ),
         ],

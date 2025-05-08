@@ -1,12 +1,12 @@
 import 'package:artemi_project/src/theme/my_bg_color.dart';
 import 'package:flutter/material.dart';
 
-class AppScaffold extends StatelessWidget {
+class MyScaffold extends StatelessWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;
   final Widget? bottomNavigationBar;
 
-  const AppScaffold({
+  const MyScaffold({
     super.key,
     required this.body,
     this.appBar,
