@@ -1,4 +1,5 @@
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
+import 'package:artemi_project/src/features/auth/presentation/sing_up_overlay.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -23,11 +24,11 @@ class LoginButtons extends StatelessWidget {
             onPressed: () => showLoginBottomSheet(context),
           ),
           Button(
-            text: 'Sign In',
+            text: 'Sign Up',
             fontSize: 22,
             width: 300,
             height: 50,
-            onPressed: () => showLoginBottomSheet(context),
+            onPressed: () => showSignUpBottomSheet(context),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 32, right: 32),

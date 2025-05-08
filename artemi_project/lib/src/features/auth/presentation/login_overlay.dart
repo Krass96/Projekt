@@ -48,7 +48,7 @@ class _LoginOverlayState extends State<LoginOverlay> {
             spacing: 8,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              OverlayTitle(),
+              OverlayTitle(title: 'Welcome Back! 🖐️'),
               LoginForm(passwordController: passwordController),
             ],
           ),

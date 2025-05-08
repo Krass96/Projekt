@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class OverlayTitle extends StatelessWidget {
+  final String title;
+
   const OverlayTitle({
     super.key,
+    required this.title,
   });
 
   @override
@@ -10,7 +13,7 @@ class OverlayTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 120),
       child: Text(
-        'Welcome Back! 🖐️',
+        title,
         style: Theme.of(context).textTheme.headlineLarge,
       ),
     );

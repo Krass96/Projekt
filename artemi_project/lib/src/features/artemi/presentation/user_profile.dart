@@ -1,10 +1,10 @@
-import 'package:artemi_project/src/features/artist_galery/galery/domain/date_label.dart';
-import 'package:artemi_project/src/widgets/nav_bar.dart';
-import 'package:artemi_project/src/widgets/text_field.dart';
-import 'package:artemi_project/src/theme/palette.dart';
-import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:artemi_project/src/theme/my_font.dart';
+import 'package:artemi_project/src/theme/palette.dart';
+import 'package:artemi_project/src/widgets/nav_bar.dart';
+import 'package:artemi_project/src/widgets/text_field.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/date_label.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
