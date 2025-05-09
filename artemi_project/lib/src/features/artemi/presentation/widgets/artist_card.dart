@@ -1,4 +1,5 @@
 import 'package:artemi_project/src/features/artist_galery/main_screen.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_two_cards_row.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -19,34 +20,18 @@ class ArtistCard extends StatelessWidget {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ColorFiltered(
-                    colorFilter: const ColorFilter.matrix(<double>[
-                      0.2126,
-                      0.7152,
-                      0.0722,
-                      0,
-                      0,
-                      0.2126,
-                      0.7152,
-                      0.0722,
-                      0,
-                      0,
-                      0.2126,
-                      0.7152,
-                      0.0722,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      1,
-                      0,
-                    ]),
-                    child: Image.asset(
-                      'assets/images/music.png',
-                      height: 200,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
+                  child: Container(
+                    width: 300,
+                    height: 170,
+                    decoration: ShapeDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/music.png'),
+                        fit: BoxFit.fill,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 1, color: Colors.white),
+                        borderRadius: BorderRadius.circular(12.31),
+                      ),
                     ),
                   ),
                 ),
@@ -68,14 +53,27 @@ class ArtistCard extends StatelessWidget {
                         .textTheme
                         .headlineMedium
                         ?.copyWith(color: Palette.artGold)),
-                RatingBar.builder(
-                    itemSize: 20,
-                    initialRating: 3.5,
-                    itemBuilder: (context, _) => Icon(
-                          Icons.star,
-                          color: Palette.artGold,
-                        ),
-                    onRatingUpdate: (rating) {})
+                Row(
+                  spacing: 6,
+                  children: [
+                    Text(
+                      '4.0',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    RatingBar.builder(
+                        itemSize: 15,
+                        initialRating: 3.5,
+                        itemBuilder: (context, _) => Icon(
+                              Icons.star,
+                              color: Palette.artGold,
+                            ),
+                        onRatingUpdate: (rating) {}),
+                    Text(
+                      '(123)',
+                      style: Theme.of(context).textTheme.labelSmall,
+                    )
+                  ],
+                )
               ],
             ),
           ),
@@ -87,7 +85,7 @@ class ArtistCard extends StatelessWidget {
               children: [
                 Text('Genre: Dance 💃',
                     style: Theme.of(context).textTheme.titleMedium),
-                Text('Price: 200 € 💰',
+                Text('Price:  200 € 💰',
                     style: Theme.of(context).textTheme.titleMedium),
               ],
             ),
