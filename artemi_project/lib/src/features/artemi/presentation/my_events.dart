@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/text_field.dart';
 import 'package:artemi_project/src/features/artemi/presentation/widgets/artist_card.dart';
 import 'package:artemi_project/src/features/artemi/presentation/widgets/my_app_bar.dart';
-import 'package:artemi_project/src/theme/palette.dart';
+import 'package:artemi_project/src/widgets/button.dart';
 import 'package:artemi_project/src/widgets/nav_bar.dart';
-import 'package:flutter/material.dart';
+import 'package:artemi_project/src/widgets/preis_scala.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 
 class MyEvents extends StatefulWidget {
@@ -17,8 +18,6 @@ class _MyEventsState extends State<MyEvents> {
   RangeValues values = const RangeValues(0, 10000);
   @override
   Widget build(BuildContext context) {
-    RangeLabels labels =
-        RangeLabels(values.start.toString(), values.end.toString());
     return MyScaffold(
       bottomNavigationBar: NavBar(),
       appBar: MyAppBar(),
@@ -56,40 +55,72 @@ class _MyEventsState extends State<MyEvents> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 100),
-                    child: TextField(
-                      decoration: MyInputDecoration.styled(
-                        context: context,
-                        hintText: 'Event Start',
-                        labelText: 'Start',
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 100),
-                    child: TextField(
-                      decoration: MyInputDecoration.styled(
-                        context: context,
-                        hintText: 'Event Start',
-                        labelText: 'Start',
-                      ),
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            decoration: MyInputDecoration.styled(
+                              context: context,
+                              hintText: 'Event Start',
+                              labelText: 'Start',
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: TextField(
+                            decoration: MyInputDecoration.styled(
+                              context: context,
+                              hintText: 'Event End',
+                              labelText: 'End',
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Center(
-                    child: RangeSlider(
-                        activeColor: Palette.artGold,
-                        inactiveColor: Palette.textColor,
-                        min: 0,
-                        max: 10000,
-                        divisions: 100,
-                        labels: labels,
-                        values: values,
-                        onChanged: (newValues) {
-                          setState(() {
-                            values = newValues;
-                          });
-                        }),
-                  )
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: PreisScala(
+                          values: values,
+                          onChanged: (newValues) {
+                            setState(() {
+                              values = newValues;
+                            });
+                          }),
+                    ),
+                  ),
+                  Button(
+                    text: 'Book',
+                    icon: Icons.bookmark_add_outlined,
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16)),
+                            backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                            title: Text(
+                              'Success!',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            content:
+                                Image.asset('assets/images/book_popup.png'),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.of(context).pop(),
+                                child: Text('OK',
+                                    style: TextStyle(color: Colors.amber)),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

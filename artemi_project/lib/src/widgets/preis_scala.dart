@@ -1,59 +1,77 @@
-import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 
 class PreisScala extends StatefulWidget {
-  const PreisScala({super.key});
+  final RangeValues values;
+  final ValueChanged<RangeValues> onChanged;
+
+  const PreisScala({
+    super.key,
+    required this.values,
+    required this.onChanged,
+  });
 
   @override
   State<PreisScala> createState() => _PreisScalaState();
 }
 
 class _PreisScalaState extends State<PreisScala> {
-  RangeValues values = const RangeValues(0, 10000);
-
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text(
-          'Price',
-          style: TextStyle(
-            color: Palette.artGold,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        Text('Price',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold, color: Palette.artGold)),
+        const SizedBox(height: 12),
+        SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            overlayColor: Palette.artGold,
+            activeTrackColor: Palette.artGold,
+            inactiveTrackColor: Colors.white24,
+            thumbColor: Palette.artGold,
+            trackHeight: 4,
+            valueIndicatorColor: Palette.artGold,
+            showValueIndicator: ShowValueIndicator.always,
+            overlayShape: const RoundSliderOverlayShape(overlayRadius: 16),
+            rangeThumbShape: const RoundRangeSliderThumbShape(
+              enabledThumbRadius: 10,
+            ),
+          ),
+          child: RangeSlider(
+            values: widget.values,
+            min: 0,
+            max: 10000,
+            divisions: 100,
+            labels: RangeLabels(
+              _formatValue(widget.values.start),
+              _formatValue(widget.values.end),
+            ),
+            onChanged: widget.onChanged,
           ),
         ),
-        const SizedBox(height: 16),
-        RangeSlider(
-          values: values,
-          min: 0,
-          max: 10000,
-          divisions: 5,
-          activeColor: Palette.artGold,
-          inactiveColor: Colors.white24,
-          labels: RangeLabels(
-            values.start.round().toString(),
-            values.end.round().toString(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text("0", style: TextStyle(color: Colors.white70)),
+              Text("2000 €", style: TextStyle(color: Colors.white70)),
+              Text("4500 €", style: TextStyle(color: Colors.white70)),
+              Text("7000 €", style: TextStyle(color: Colors.white70)),
+              Text("10k €", style: TextStyle(color: Colors.white70)),
+            ],
           ),
-          onChanged: (newValues) {
-            setState(() {
-              values = newValues;
-            });
-          },
-        ),
-        const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text('0', style: TextStyle(color: Colors.white)),
-            Text('10', style: TextStyle(color: Colors.white)),
-            Text('100', style: TextStyle(color: Colors.white)),
-            Text('1000', style: TextStyle(color: Colors.white)),
-            Text('>10k', style: TextStyle(color: Colors.white)),
-          ],
-        ),
+        )
       ],
     );
+  }
+
+  String _formatValue(double value) {
+    if (value >= 10000) return "10.000";
+    if (value >= 1000) return "${value.round()}";
+    if (value >= 100) return "${value.round()}";
+    if (value >= 10) return "${value.round()}";
+    return value.round().toString();
   }
 }
