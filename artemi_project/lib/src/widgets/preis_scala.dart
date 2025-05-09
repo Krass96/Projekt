@@ -1,144 +1,59 @@
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
-class PreisScala extends StatelessWidget {
-  const PreisScala({
-    super.key,
-  });
+class PreisScala extends StatefulWidget {
+  const PreisScala({super.key});
+
+  @override
+  State<PreisScala> createState() => _PreisScalaState();
+}
+
+class _PreisScalaState extends State<PreisScala> {
+  RangeValues values = const RangeValues(0, 10000);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 556,
-      height: 160,
-      child: Stack(
-        children: [
-          Positioned(
-            left: 0,
-            top: 0,
-            child: Container(
-              width: 556,
-              height: 160,
-              decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(52),
-                ),
-              ),
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          'Price',
+          style: TextStyle(
+            color: Palette.artGold,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
-          Positioned(
-            left: 236,
-            top: 9,
-            child: Text(
-              'Price',
-              style: TextStyle(
-                color: const Color(0xFFFFEE32),
-                fontSize: 36,
-                fontFamily: 'SF Pro',
-                fontWeight: FontWeight.w700,
-              ),
-            ),
+        ),
+        const SizedBox(height: 16),
+        RangeSlider(
+          values: values,
+          min: 0,
+          max: 10000,
+          divisions: 5,
+          activeColor: Palette.artGold,
+          inactiveColor: Colors.white24,
+          labels: RangeLabels(
+            values.start.round().toString(),
+            values.end.round().toString(),
           ),
-          Positioned(
-            left: 41,
-            top: 72,
-            child: Container(
-              width: 30,
-              height: 30,
-              decoration: ShapeDecoration(
-                color: Colors.black,
-                shape: OvalBorder(
-                  side: BorderSide(
-                    width: 3,
-                    color: const Color(0xFFFFD100),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 495,
-            top: 72,
-            child: Container(
-              width: 30,
-              height: 30,
-              decoration: ShapeDecoration(
-                color: Colors.black,
-                shape: OvalBorder(
-                  side: BorderSide(
-                    width: 3,
-                    color: const Color(0xFFFFD100),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 46,
-            top: 118,
-            child: Container(
-              width: 470,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 80,
-                children: [
-                  Text(
-                    '0',
-                    style: TextStyle(
-                      color: const Color(0xFFFFEE32),
-                      fontSize: 16,
-                      fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                  Text(
-                    '10',
-                    style: TextStyle(
-                      color: const Color(0xFFFFEE32),
-                      fontSize: 16,
-                      fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                  Text(
-                    '100',
-                    style: TextStyle(
-                      color: const Color(0xFFFFEE32),
-                      fontSize: 16,
-                      fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                  Text(
-                    '1000',
-                    style: TextStyle(
-                      color: const Color(0xFFFFEE32),
-                      fontSize: 16,
-                      fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                  Text(
-                    '>10k',
-                    style: TextStyle(
-                      color: const Color(0xFFFFEE32),
-                      fontSize: 16,
-                      fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+          onChanged: (newValues) {
+            setState(() {
+              values = newValues;
+            });
+          },
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            Text('0', style: TextStyle(color: Colors.white)),
+            Text('10', style: TextStyle(color: Colors.white)),
+            Text('100', style: TextStyle(color: Colors.white)),
+            Text('1000', style: TextStyle(color: Colors.white)),
+            Text('>10k', style: TextStyle(color: Colors.white)),
+          ],
+        ),
+      ],
     );
   }
 }
