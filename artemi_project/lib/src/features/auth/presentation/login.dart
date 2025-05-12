@@ -10,7 +10,8 @@ class Login extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset('assets/images/login.png', fit: BoxFit.cover),
+          Positioned.fill(
+              child: Image.asset('assets/images/login.png', fit: BoxFit.cover)),
           LoginText(),
           LoginButtons(),
         ],

@@ -10,12 +10,9 @@ class OverlayTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 120),
-      child: Text(
-        title,
-        style: Theme.of(context).textTheme.headlineLarge,
-      ),
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.headlineLarge,
     );
   }
 }

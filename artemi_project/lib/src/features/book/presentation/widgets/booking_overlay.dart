@@ -1,8 +1,9 @@
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/widgets/preis_scala.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:artemi_project/src/common/text_field.dart';
-import 'package:artemi_project/src/features/artemi/presentation/widgets/booking_confirm.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/booking_confirm.dart';
 
 class BookingOverlay extends StatelessWidget {
   final RangeValues values;
@@ -18,27 +19,49 @@ class BookingOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
       initialChildSize: 0.5,
-      minChildSize: 0.1,
-      maxChildSize: 0.85,
+      minChildSize: 0.2,
+      maxChildSize: 1,
       builder: (context, scrollController) {
         return Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: const Color(0xD3000000),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: ListView(
             controller: scrollController,
             children: [
-              Center(
-                child: Container(
-                  width: 50,
-                  height: 5,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[600],
-                    borderRadius: BorderRadius.circular(10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 150, bottom: 50),
+                    child: Container(
+                      width: 50,
+                      height: 5,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[600],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: IconButton(
+                      icon: Icon(Icons.save_alt),
+                      onPressed: () =>
+                          ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Saved',
+                            style: TextStyle(color: Palette.artGold),
+                          ),
+                          backgroundColor: Color.fromARGB(132, 0, 0, 0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 16),
               Padding(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/features/artemi/presentation/widgets/artist_card_favorite_icon.dart';
-import 'package:artemi_project/src/features/artemi/presentation/widgets/artist_card_info.dart';
-import 'package:artemi_project/src/features/artemi/presentation/widgets/book_and_dm.dart';
-import 'package:artemi_project/src/features/artemi/presentation/widgets/artist_card_image.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/artist_card_favorite_icon.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/artist_card_info.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/book_and_dm.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/artist_card_image.dart';
 
 class ArtistCard extends StatelessWidget {
   const ArtistCard({super.key});

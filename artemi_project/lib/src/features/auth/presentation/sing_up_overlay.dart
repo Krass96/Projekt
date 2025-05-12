@@ -38,23 +38,21 @@ class _SignUpOverlayState extends State<SignUpOverlay> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Material(
-      type: MaterialType.transparency,
+    return SizedBox(
+      height: screenHeight * 0.86,
       child: Stack(
+        alignment: Alignment.topCenter,
         children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: screenHeight * 0.86,
+          Positioned.fill(
             child: MyBgColor(),
           ),
           Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: const OverlayTitle(title: 'Create Account  ✍️'),
+                padding: const EdgeInsets.only(top: 70),
+                child: const OverlayTitle(title: 'Create Account 👤'),
               ),
               Padding(
                 padding: const EdgeInsets.all(24.0),
@@ -66,11 +64,11 @@ class _SignUpOverlayState extends State<SignUpOverlay> {
             ],
           ),
           const Positioned(
-            top: 5,
-            right: 20,
+            top: 15,
+            right: 10,
             child: MyCloseButton(),
           ),
-          OverlayDivider(),
+          Positioned(top: 15, child: OverlayDivider()),
         ],
       ),
     );

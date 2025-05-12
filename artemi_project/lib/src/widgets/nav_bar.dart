@@ -1,5 +1,5 @@
-import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -9,23 +9,15 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: 100,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: Colors.black,
         border: Border.all(color: const Color(0x8CFFFFFF)),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
         ),
@@ -33,19 +25,48 @@ class _NavBarState extends State<NavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavBarItem(Icons.home_filled, 'Home', 0),
-          _buildNavBarItem(Icons.event, 'My Events', 1),
-          _buildNavBarItem(Icons.favorite, 'Favorites', 2),
-          _buildNavBarItem(Icons.person, 'Profile', 3),
+          _buildNavBarItem(
+            context,
+            icon: Icons.home_filled,
+            label: 'Home',
+            routeName: '/home',
+          ),
+          _buildNavBarItem(
+            context,
+            icon: Icons.event,
+            label: 'My Events',
+            routeName: '/events',
+          ),
+          _buildNavBarItem(
+            context,
+            icon: Icons.favorite,
+            label: 'Favorites',
+            routeName: '/favorites',
+          ),
+          _buildNavBarItem(
+            context,
+            icon: Icons.person,
+            label: 'Profile',
+            routeName: '/profile',
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildNavBarItem(IconData icon, String label, int index) {
-    final isActive = _selectedIndex == index;
+  Widget _buildNavBarItem(BuildContext context,
+      {required IconData icon,
+      required String label,
+      required String routeName}) {
+    final String? currentRoute = ModalRoute.of(context)?.settings.name;
+    final bool isActive = currentRoute == routeName;
+
     return GestureDetector(
-      onTap: () => _onItemTapped(index),
+      onTap: () {
+        if (!isActive) {
+          Navigator.pushReplacementNamed(context, routeName);
+        }
+      },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +81,7 @@ class _NavBarState extends State<NavBar> {
             child: Icon(
               icon,
               size: 30,
-              color: isActive ? Colors.black : Colors.black,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 5),

@@ -8,14 +8,13 @@ class OverlayDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 280,
-      child: Padding(
-        padding: const EdgeInsets.all(150.0),
-        child: Divider(
-          thickness: 5,
-          color: Colors.white70,
-        ),
+        child: Container(
+      height: 8,
+      width: 70,
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(12),
       ),
-    );
+    ));
   }
 }

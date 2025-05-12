@@ -13,15 +13,14 @@ class BookingConfirmationDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.check_circle_outline, size: 64, color: Colors.yellow),
             Text(
-              'Booking Confirmed',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              'Booking Confirmed 🥳',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     color: Colors.white,
                   ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             Image.asset('assets/images/confirmed_pop.png'),
             const SizedBox(height: 12),
             Text(

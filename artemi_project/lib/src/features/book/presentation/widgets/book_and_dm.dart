@@ -1,5 +1,5 @@
-import 'package:artemi_project/src/features/artemi/presentation/widgets/booking_confirm.dart';
-import 'package:artemi_project/src/features/artist_galery/main_screen.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/booking_confirm.dart';
+import 'package:artemi_project/src/features/dm/presentation/dm.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +44,14 @@ class BookAndDm extends StatelessWidget {
               foregroundColor: Palette.artGold,
               padding: EdgeInsets.symmetric(vertical: 12),
             ),
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (_) => const DmOverlay(),
+              );
+            },
             icon: Icon(
               Icons.chat,
               size: 30,

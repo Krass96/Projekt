@@ -1,7 +1,7 @@
+import 'package:artemi_project/src/features/auth/presentation/widgets/close_button.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/login_form.dart';
-import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_close.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_divider.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_title.dart';
 
@@ -33,27 +33,28 @@ class _LoginOverlayState extends State<LoginOverlay> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Material(
-      type: MaterialType.transparency,
+    return SizedBox(
+      height: screenHeight * 0.86,
       child: Stack(
+        alignment: Alignment.topCenter,
         children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: screenHeight * 0.86,
+          Positioned.fill(
             child: MyBgColor(),
           ),
           Column(
+            mainAxisSize: MainAxisSize.min,
             spacing: 8,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              OverlayTitle(title: 'Welcome Back! 🖐️'),
+              Padding(
+                padding: const EdgeInsets.only(top: 70),
+                child: OverlayTitle(title: 'Welcome Back! 🖐️'),
+              ),
               LoginForm(passwordController: passwordController),
             ],
           ),
-          OverlayDivider(),
-          OverlayClose(),
+          Positioned(top: 15, child: OverlayDivider()),
+          Positioned(right: 10, top: 15, child: MyCloseButton()),
         ],
       ),
     );
