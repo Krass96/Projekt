@@ -36,7 +36,7 @@ flutter_icons:
     background: "#000000"
 
 flutter_native_splash:
-  image: assets/logo/logo.png
+  image: assets/splash_screen/Splash.png
   android: true
   ios: true
   fullscreen: true

@@ -22,8 +22,9 @@ class _NavBarState extends State<NavBar> {
     return Container(
       width: double.infinity,
       height: 100,
-      decoration: const BoxDecoration(
-        color: Colors.black,
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 0, 0, 0),
+        border: Border.all(color: const Color(0x8CFFFFFF)),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),

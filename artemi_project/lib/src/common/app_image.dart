@@ -13,7 +13,7 @@ class AppImage extends StatelessWidget {
     this.fit = BoxFit.cover,
     this.width,
     this.height,
-    this.grayscale = true, // standardmäßig schwarz-weiß
+    this.grayscale = true,
   });
 
   @override

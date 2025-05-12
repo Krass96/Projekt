@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/features/artemi/presentation/widgets/booking_confirm.dart';
 import 'package:artemi_project/src/features/artist_galery/main_screen.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,14 @@ class BookAndDm extends StatelessWidget {
               foregroundColor: Palette.artGold,
               padding: EdgeInsets.symmetric(vertical: 12),
             ),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const MainScreen(),
-              ),
-            ),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const BookingConfirmationDialog();
+                },
+              );
+            },
             icon: Icon(
               Icons.event,
               size: 30,
