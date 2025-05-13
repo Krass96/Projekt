@@ -51,9 +51,9 @@ class ArtistCardInfo extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Genre: Dance 💃',
+              Text('Genre: Music',
                   style: Theme.of(context).textTheme.titleMedium),
-              Text('Price:  200 € 💰',
+              Text('Price:  200€/h',
                   style: Theme.of(context).textTheme.titleMedium),
             ],
           ),

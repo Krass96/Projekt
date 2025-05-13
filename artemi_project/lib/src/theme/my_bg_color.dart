@@ -11,13 +11,14 @@ class MyBgColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: myBoxDecoration(),
+      decoration: myGradientBg(),
     );
   }
 
-  BoxDecoration myBoxDecoration() {
-    return const BoxDecoration(
-      gradient: LinearGradient(
+  BoxDecoration myGradientBg({BorderRadius? borderRadius}) {
+    return BoxDecoration(
+      borderRadius: borderRadius,
+      gradient: const LinearGradient(
         begin: Alignment.bottomCenter,
         end: Alignment.center,
         colors: [

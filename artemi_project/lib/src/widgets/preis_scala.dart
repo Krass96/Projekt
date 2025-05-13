@@ -28,7 +28,7 @@ class _PreisScalaState extends State<PreisScala> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Price',
+        Text('Set the Fee 💰',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold, color: Palette.artGold)),
         const SizedBox(height: 12),
