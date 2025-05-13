@@ -17,13 +17,24 @@ class _MyEventsState extends State<MyEvents> {
   Widget build(BuildContext context) {
     return MyScaffold(
       bottomNavigationBar: NavBar(),
-      appBar: MyAppBar(
-        title: 'My Events',
-      ),
+      appBar: MyAppBar(title: 'My Events'),
       body: Column(
         children: [
           Divider(thickness: 2, color: Colors.white),
-          ArtistCard(),
+          Expanded(
+            child: ListWheelScrollView.useDelegate(
+              itemExtent: 375,
+              perspective: 0.003,
+              diameterRatio: 2.5,
+              physics: FixedExtentScrollPhysics(),
+              childDelegate: ListWheelChildBuilderDelegate(
+                builder: (context, index) {
+                  return ArtistCard();
+                },
+                childCount: 10,
+              ),
+            ),
+          ),
         ],
       ),
     );
