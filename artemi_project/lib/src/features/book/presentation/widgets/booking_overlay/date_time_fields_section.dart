@@ -1,6 +1,5 @@
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/date_time_field.dart';
 import 'package:flutter/material.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/date_time_field.dart';
 
 class DateTimeFieldsSection extends StatelessWidget {
   final TextEditingController startController;

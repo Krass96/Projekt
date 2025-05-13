@@ -1,8 +1,8 @@
+import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/artist_cards_list.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/widgets/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/artist_card.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/my_app_bar.dart';
+import 'package:artemi_project/src/widgets/my_app_bar.dart';
 
 class MyEvents extends StatefulWidget {
   const MyEvents({super.key});
@@ -21,20 +21,7 @@ class _MyEventsState extends State<MyEvents> {
       body: Column(
         children: [
           Divider(thickness: 2, color: Colors.white),
-          Expanded(
-            child: ListWheelScrollView.useDelegate(
-              itemExtent: 375,
-              perspective: 0.003,
-              diameterRatio: 2.5,
-              physics: FixedExtentScrollPhysics(),
-              childDelegate: ListWheelChildBuilderDelegate(
-                builder: (context, index) {
-                  return ArtistCard();
-                },
-                childCount: 10,
-              ),
-            ),
-          ),
+          ArtistCardsList(),
         ],
       ),
     );

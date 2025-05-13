@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/my_app_bar.dart';
+import 'package:artemi_project/src/widgets/my_app_bar.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/cover_photo.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
 import 'package:artemi_project/src/widgets/text_field.dart';
