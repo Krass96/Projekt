@@ -23,7 +23,6 @@ class DmOverlay extends StatelessWidget {
           child: Column(
             children: [
               Row(
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 100, left: 110),
@@ -68,7 +67,6 @@ class DmOverlay extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              // Inputbereich
               Row(
                 children: [
                   const Icon(Icons.add_circle_outline, color: Colors.yellow),

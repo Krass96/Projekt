@@ -1,12 +1,29 @@
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_confirm.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay.dart';
 import 'package:artemi_project/src/features/dm/presentation/dm.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
-class BookAndDm extends StatelessWidget {
-  const BookAndDm({
-    super.key,
-  });
+class BookAndDm extends StatefulWidget {
+  const BookAndDm({super.key});
+
+  @override
+  State<BookAndDm> createState() => _BookAndDmState();
+}
+
+class _BookAndDmState extends State<BookAndDm> {
+  RangeValues _values = const RangeValues(0, 10000);
+
+  void _openBookingOverlay() {
+    showBookingOverlay(
+      context,
+      values: _values,
+      onChanged: (newValues) {
+        setState(() {
+          _values = newValues;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +33,10 @@ class BookAndDm extends StatelessWidget {
           child: TextButton.icon(
             style: TextButton.styleFrom(
               foregroundColor: Palette.artGold,
-              padding: EdgeInsets.symmetric(vertical: 12),
+              padding: const EdgeInsets.symmetric(vertical: 12),
             ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return const BookingConfirmationDialog();
-                },
-              );
-            },
-            icon: Icon(
+            onPressed: _openBookingOverlay,
+            icon: const Icon(
               Icons.event,
               size: 30,
               color: Palette.artGold,
@@ -42,7 +52,7 @@ class BookAndDm extends StatelessWidget {
           child: TextButton.icon(
             style: TextButton.styleFrom(
               foregroundColor: Palette.artGold,
-              padding: EdgeInsets.symmetric(vertical: 12),
+              padding: const EdgeInsets.symmetric(vertical: 12),
             ),
             onPressed: () {
               showModalBottomSheet(
@@ -52,7 +62,7 @@ class BookAndDm extends StatelessWidget {
                 builder: (_) => const DmOverlay(),
               );
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.chat,
               size: 30,
               color: Palette.artGold,
@@ -66,4 +76,22 @@ class BookAndDm extends StatelessWidget {
       ],
     );
   }
+}
+
+void showBookingOverlay(
+  BuildContext context, {
+  required RangeValues values,
+  required Function(RangeValues) onChanged,
+}) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) {
+      return BookingOverlay(
+        values: values,
+        onChanged: onChanged,
+      );
+    },
+  );
 }

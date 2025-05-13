@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/back_chevron.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/auth/presentation/login.dart';
-import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_two_cards_row.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_scala.dart';
-import 'package:flutter/material.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_two_cards_row.dart';
 
 class StartTwo extends StatelessWidget {
   const StartTwo({super.key});
@@ -16,28 +16,32 @@ class StartTwo extends StatelessWidget {
         leading: BackChevron(),
         actions: [StartOneScala(widthYellow: 300)],
       ),
-      body: Column(
-        spacing: 8,
-        children: [
-          Center(
-            child: Text('You are',
-                style: Theme.of(context).textTheme.displayMedium),
-          ),
-          StartTwoCardsRow(),
-          SizedBox(height: 50),
-          Image.asset('assets/images/you_are.png'),
-          SizedBox(height: 40),
-          TextButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Login(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Center(
+              child: Text('You are',
+                  style: Theme.of(context).textTheme.displayLarge),
+            ),
+            StartTwoCardsRow(),
+            SizedBox(height: 50),
+            Image.asset('assets/images/you_are.png'),
+            SizedBox(height: 40),
+            TextButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Login(),
+                ),
+              ),
+              child: Text(
+                'Skip',
+                style: TextStyle(color: Colors.white, fontSize: 28),
               ),
             ),
-            child:
-                Text('Skip', style: Theme.of(context).textTheme.headlineMedium),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

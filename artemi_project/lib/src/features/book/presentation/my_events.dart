@@ -3,7 +3,6 @@ import 'package:artemi_project/src/widgets/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/artist_card.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/my_app_bar.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay.dart';
 
 class MyEvents extends StatefulWidget {
   const MyEvents({super.key});
@@ -25,15 +24,6 @@ class _MyEventsState extends State<MyEvents> {
         children: [
           Divider(thickness: 2, color: Colors.white),
           ArtistCard(),
-          Expanded(
-            child: BookingOverlay(
-                values: values,
-                onChanged: (newValues) {
-                  setState(() {
-                    values = newValues;
-                  });
-                }),
-          )
         ],
       ),
     );

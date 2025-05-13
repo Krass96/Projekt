@@ -35,7 +35,6 @@ class AppTheme {
           ),
           bodyMedium: GoogleFonts.poppins(
             fontSize: 14,
-            fontStyle: FontStyle.italic,
             color: Colors.white,
           ),
           labelMedium: GoogleFonts.poppins(

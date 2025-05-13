@@ -16,6 +16,14 @@ class PreisScala extends StatefulWidget {
 }
 
 class _PreisScalaState extends State<PreisScala> {
+  late RangeValues _localValues;
+
+  @override
+  void initState() {
+    super.initState();
+    _localValues = widget.values;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,15 +47,20 @@ class _PreisScalaState extends State<PreisScala> {
             ),
           ),
           child: RangeSlider(
-            values: widget.values,
+            values: _localValues,
             min: 0,
             max: 10000,
             divisions: 100,
             labels: RangeLabels(
-              _formatValue(widget.values.start),
-              _formatValue(widget.values.end),
+              _formatValue(_localValues.start),
+              _formatValue(_localValues.end),
             ),
-            onChanged: widget.onChanged,
+            onChanged: (newValues) {
+              setState(() {
+                _localValues = newValues;
+              });
+              widget.onChanged(newValues);
+            },
           ),
         ),
         Padding(
@@ -68,10 +81,6 @@ class _PreisScalaState extends State<PreisScala> {
   }
 
   String _formatValue(double value) {
-    if (value >= 10000) return "10.000";
-    if (value >= 1000) return "${value.round()}";
-    if (value >= 100) return "${value.round()}";
-    if (value >= 10) return "${value.round()}";
-    return value.round().toString();
+    return "${value.round()} €";
   }
 }

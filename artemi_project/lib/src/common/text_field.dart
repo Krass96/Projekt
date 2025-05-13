@@ -7,6 +7,7 @@ class MyInputDecoration {
     required BuildContext context,
     String? labelText,
     Widget? suffixIcon,
+    Widget? prefixIcon,
   }) {
     return InputDecoration(
       hintText: hintText,
@@ -24,6 +25,7 @@ class MyInputDecoration {
         borderSide: BorderSide(color: Color(0xC3FFFFFF), width: 2),
       ),
       suffixIcon: suffixIcon,
+      prefixIcon: prefixIcon,
     );
   }
 }
