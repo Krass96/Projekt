@@ -3,8 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ArtistCardInfo extends StatelessWidget {
+  final String name;
+  final double rating;
+  final String genre;
+  final int price;
+
   const ArtistCardInfo({
     super.key,
+    required this.name,
+    required this.rating,
+    required this.genre,
+    required this.price,
   });
 
   @override
@@ -16,26 +25,24 @@ class ArtistCardInfo extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Lorem Ipsum',
+              Text(name,
                   style: Theme.of(context)
                       .textTheme
                       .headlineMedium
                       ?.copyWith(color: Palette.artGold)),
               Row(
-                spacing: 6,
                 children: [
                   Text(
-                    '4.0',
+                    rating.toStringAsFixed(1),
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
                   RatingBar.builder(
-                      itemSize: 15,
-                      initialRating: 3.5,
-                      itemBuilder: (context, _) => Icon(
-                            Icons.star,
-                            color: Palette.artGold,
-                          ),
-                      onRatingUpdate: (rating) {}),
+                    itemSize: 15,
+                    initialRating: rating,
+                    itemBuilder: (context, _) =>
+                        Icon(Icons.star, color: Palette.artGold),
+                    onRatingUpdate: (rating) {},
+                  ),
                   Text(
                     '(123)',
                     style: Theme.of(context).textTheme.labelSmall,
@@ -51,9 +58,9 @@ class ArtistCardInfo extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Genre: Music',
+              Text('Genre: $genre',
                   style: Theme.of(context).textTheme.titleMedium),
-              Text('Price:  200€/h',
+              Text('Price: $price€/h',
                   style: Theme.of(context).textTheme.titleMedium),
             ],
           ),

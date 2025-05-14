@@ -3,7 +3,7 @@ import 'package:artemi_project/src/common/text_field.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({
     super.key,
     required this.usernameController,
@@ -16,11 +16,24 @@ class SignUpForm extends StatelessWidget {
   final TextEditingController passwordController;
 
   @override
+  State<SignUpForm> createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  bool _obscureText = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TextField(
-          controller: usernameController,
+          controller: widget.usernameController,
           decoration: MyInputDecoration.styled(
             context: context,
             hintText: 'Enter Username',
@@ -29,7 +42,7 @@ class SignUpForm extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         TextField(
-          controller: emailController,
+          controller: widget.emailController,
           decoration: MyInputDecoration.styled(
             context: context,
             hintText: 'Enter your email address',
@@ -38,15 +51,21 @@ class SignUpForm extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         PasswordField(
-          controller: passwordController,
+          controller: widget.passwordController,
           hintText: 'Create your password',
           labelText: 'Password',
+          obscureText: _obscureText,
+          onToggleVisibility: _toggleVisibility,
         ),
         const SizedBox(height: 10),
         PasswordField(
-            controller: passwordController,
-            hintText: 'Repeat your password',
-            labelText: 'Repeat password'),
+          controller: widget.passwordController,
+          hintText: 'Repeat your password',
+          labelText: 'Repeat password',
+          obscureText: _obscureText,
+          onToggleVisibility: _toggleVisibility,
+          showVisibility: false,
+        ),
         const SizedBox(height: 30),
         Button(
           text: 'Create',

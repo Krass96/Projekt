@@ -1,27 +1,25 @@
-enum Categories { Musiker, Maler, Komediant, Taenzer, Zauberer }
+enum Categories { music, paint, comedy, dance, magic }
 
-class ArtistCard {
+class ArtistCardDb {
   // Attribute
   final String? profilePicUrl;
   final String artistName;
-  final String email;
-  final categories;
+  final Categories genre;
   final bool isFavorit;
   final double rating;
   final int price;
 
   // Konstruktor
-  ArtistCard({
+  ArtistCardDb({
     this.profilePicUrl,
-    required this.email,
     required this.isFavorit,
-    required this.categories,
+    required this.genre,
     required this.artistName,
     required this.rating,
     required this.price,
   });
 
-  // Methode
+//    Methoden
   void showArtistName() {
     print('The artist name: ${artistName}');
   }

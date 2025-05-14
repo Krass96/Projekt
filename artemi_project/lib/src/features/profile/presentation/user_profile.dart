@@ -3,7 +3,6 @@ import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/widgets/my_app_bar.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/cover_photo.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
-import 'package:artemi_project/src/widgets/text_field.dart';
 import 'package:artemi_project/src/features/artist_galery/galery/domain/date_label.dart';
 import 'package:artemi_project/src/widgets/nav_bar.dart';
 
@@ -18,14 +17,17 @@ class UserProfile extends StatelessWidget {
       body: Column(
         children: [
           Divider(height: 10, thickness: 2, color: Colors.white),
-          SizedBox(height: 10),
           Stack(
+            alignment: Alignment.bottomCenter,
             clipBehavior: Clip.none,
             children: [
               CoverPhoto(),
-              ProfileAvatar(
-                width: 108,
-                height: 108,
+              Positioned(
+                top: 80,
+                child: ProfileAvatar(
+                  width: 150,
+                  height: 150,
+                ),
               ),
             ],
           ),
@@ -33,17 +35,26 @@ class UserProfile extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              MyTextField(title: 'Username', text: 'testUser'),
-              MyTextField(title: 'Email', text: 'test@gmail.com'),
-              MyTextField(title: 'Password', text: '********'),
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    DateLabel(text: 'Genre'),
-                    DateLabel(text: 'Time'),
+                    DateLabel(
+                      text: 'Genre',
+                      options: ['Music', 'Dance', 'Magic', 'Stand-up', 'Paint'],
+                    ),
+                    // ExpansionTile(
+                    //   title: Text('Genre'),
+                    //   backgroundColor: Colors.white,
+                    //   children: [
+                    //     ListTile(title: Text('Music')),
+                    //     ListTile(title: Text('Dance')),
+                    //     ListTile(title: Text('MAgic')),
+                    //     ListTile(title: Text('Stand-Up')),
+                    //   ],
+                    // ),
                   ],
                 ),
               )

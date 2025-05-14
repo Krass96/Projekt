@@ -5,13 +5,26 @@ import 'package:artemi_project/src/features/auth/presentation/widgets/remember_m
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
     required this.passwordController,
   });
 
   final TextEditingController passwordController;
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  bool _obscureText = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,30 +35,34 @@ class LoginForm extends StatelessWidget {
         children: [
           TextField(
             decoration: MyInputDecoration.styled(
-                context: context,
-                hintText: 'Enter your mail or username',
-                labelText: 'Email / Username'),
+              context: context,
+              hintText: 'Enter your mail or username',
+              labelText: 'Email / Username',
+            ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           PasswordField(
-            controller: passwordController,
+            controller: widget.passwordController,
             hintText: 'Enter your password',
             labelText: 'Password',
+            obscureText: _obscureText,
+            onToggleVisibility: _toggleVisibility,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const RememberMeCheckbox(),
+            children: const [
+              RememberMeCheckbox(),
               ForgotPassword(),
             ],
           ),
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: Button(
-                width: 200,
-                fontSize: 24,
-                text: 'Login',
-                onPressed: () => Navigator.pop(context)),
+              width: 200,
+              fontSize: 24,
+              text: 'Login',
+              onPressed: () => Navigator.pop(context),
+            ),
           ),
           Center(
             child: Opacity(

@@ -1,35 +1,32 @@
-import 'artist_card.dart';
-import 'button.dart';
-import 'user_profile.dart';
+import '../features/book/domain/artist_card_db.dart';
+import '../features/onboarding/domain/button.dart';
+import '../features/profile/domain/user_profile.dart';
 
 void main() {
   // ArtisCard Test
 
-  ArtistCard a = ArtistCard(
+  ArtistCardDb a = ArtistCardDb(
     profilePicUrl: null,
-    email: '',
     isFavorit: true,
     artistName: 'Leonardo',
     rating: 4.2,
-    categories: Categories.Maler,
+    genre: Categories.paint,
     price: 500,
   );
-  ArtistCard b = ArtistCard(
+  ArtistCardDb b = ArtistCardDb(
     profilePicUrl: null,
-    email: '',
     isFavorit: false,
     artistName: 'Mozart',
     rating: 3.6,
-    categories: Categories.Musiker,
+    genre: Categories.music,
     price: 1000,
   );
-  ArtistCard c = ArtistCard(
+  ArtistCardDb c = ArtistCardDb(
     profilePicUrl: null,
-    email: '',
     isFavorit: false,
     artistName: 'Charlie',
     rating: 5.0,
-    categories: Categories.Komediant,
+    genre: Categories.comedy,
     price: 200,
   );
 
@@ -38,7 +35,7 @@ void main() {
   c.showRating();
   a.checkFavorit();
 
-  // Button Test
+  //Button Test
 
   Button logIn = Button('Log In', 'Gold', true);
   Button signUp = Button('Sing Up', 'Gold', false);

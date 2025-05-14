@@ -1,5 +1,5 @@
 import 'package:artemi_project/src/common/my_scaffold.dart';
-import 'package:artemi_project/src/features/book/presentation/my_events.dart';
+import 'package:artemi_project/src/features/book/presentation/favorites.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
 import 'package:artemi_project/src/features/profile/presentation/user_profile.dart';
 import 'package:artemi_project/src/theme/app_theme.dart';
@@ -27,8 +27,8 @@ class App extends StatelessWidget {
       ),
       routes: {
         //'/home': (context) => HomeScreen(),
-        '/events': (context) => MyEvents(),
-        //'/favorites': (context) => FavoriteScreen(),
+        '/favorites': (context) => Favorites(),
+        //'/events': (context) => MyEvents(),
         '/profile': (context) => UserProfile(),
       },
     );

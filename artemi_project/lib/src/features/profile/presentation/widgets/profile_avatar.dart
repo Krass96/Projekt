@@ -12,21 +12,17 @@ class ProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: -54.10,
-      left: MediaQuery.of(context).size.width / 2 - 54.10,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(
-            color: const Color(0xFFFFEE32),
-            width: 3,
-          ),
-          image: const DecorationImage(
-            image: AssetImage('assets/images/my_portre.png'),
-          ),
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: const Color(0xFFFFEE32),
+          width: 2,
+        ),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/my_portre.png'),
         ),
       ),
     );

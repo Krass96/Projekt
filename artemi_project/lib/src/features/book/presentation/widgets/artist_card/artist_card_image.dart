@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ArtistCardImage extends StatelessWidget {
-  const ArtistCardImage({
-    super.key,
-  });
+  final String? imagePath;
+
+  const ArtistCardImage({super.key, this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,11 @@ class ArtistCardImage extends StatelessWidget {
         height: 200,
         decoration: ShapeDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/music.png'),
-            colorFilter: ColorFilter.mode(Colors.grey, BlendMode.saturation),
+            image: imagePath != null
+                ? AssetImage(imagePath!)
+                : AssetImage('assets/images/music.png'),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(Colors.grey, BlendMode.saturation),
           ),
           shape: RoundedRectangleBorder(
             side: BorderSide(width: 1, color: Colors.white),

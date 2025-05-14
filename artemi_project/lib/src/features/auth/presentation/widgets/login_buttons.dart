@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/features/book/presentation/my_events.dart';
+import 'package:artemi_project/src/features/book/presentation/favorites.dart';
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
 import 'package:artemi_project/src/features/auth/presentation/sing_up_overlay.dart';
 import 'package:artemi_project/src/widgets/button.dart';
@@ -58,7 +58,7 @@ class LoginButtons extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const MyEvents(),
+                  builder: (context) => const Favorites(),
                 ),
               ),
               height: 50,

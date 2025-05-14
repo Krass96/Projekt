@@ -1,10 +1,11 @@
+import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card.dart';
 import 'package:flutter/material.dart';
 
 class ArtistCardsList extends StatelessWidget {
-  const ArtistCardsList({
-    super.key,
-  });
+  final List<ArtistCardDb> artistDataList;
+
+  const ArtistCardsList({super.key, required this.artistDataList});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,13 @@ class ArtistCardsList extends StatelessWidget {
         physics: FixedExtentScrollPhysics(),
         childDelegate: ListWheelChildBuilderDelegate(
           builder: (context, index) {
-            return ArtistCard();
+            if (index < artistDataList.length) {
+              return ArtistCard(
+                  artist: artistDataList[index]); // ✅ Daten übergeben
+            }
+            return null;
           },
-          childCount: 10,
+          childCount: artistDataList.length,
         ),
       ),
     );

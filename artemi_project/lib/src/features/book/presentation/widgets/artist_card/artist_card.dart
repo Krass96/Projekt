@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card_favorite_icon.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card_info.dart';
@@ -5,7 +6,9 @@ import 'package:artemi_project/src/features/book/presentation/widgets/artist_car
 import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card_image.dart';
 
 class ArtistCard extends StatelessWidget {
-  const ArtistCard({super.key});
+  final ArtistCardDb artist;
+
+  const ArtistCard({super.key, required this.artist});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +20,16 @@ class ArtistCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              ArtistCardImage(),
-              ArtistCardFavoriteIcon(),
+              ArtistCardImage(imagePath: artist.profilePicUrl),
+              ArtistCardFavoriteIcon(isFavorite: artist.isFavorit),
             ],
           ),
-          ArtistCardInfo(),
+          ArtistCardInfo(
+            name: artist.artistName,
+            rating: artist.rating,
+            genre: artist.genre.name,
+            price: artist.price,
+          ),
           const Divider(color: Colors.white),
           BookAndDm(),
         ],

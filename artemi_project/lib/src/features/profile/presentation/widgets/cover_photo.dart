@@ -11,6 +11,7 @@ class CoverPhoto extends StatelessWidget {
       width: double.infinity,
       height: 150,
       decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
         image: DecorationImage(
           image: NetworkImage("https://picsum.photos/383/151?grayscale"),
           fit: BoxFit.cover,

@@ -30,49 +30,44 @@ class MyInputDecoration {
   }
 }
 
-class PasswordField extends StatefulWidget {
+class PasswordField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final String? labelText;
+  final bool showVisibility;
+  final bool obscureText;
+  final VoidCallback onToggleVisibility;
 
   const PasswordField({
     super.key,
     required this.controller,
     required this.hintText,
     this.labelText,
+    this.showVisibility = true,
+    required this.obscureText,
+    required this.onToggleVisibility,
   });
-
-  @override
-  State<PasswordField> createState() => _PasswordFieldState();
-}
-
-class _PasswordFieldState extends State<PasswordField> {
-  bool _obscureText = true;
-
-  void _toggleVisibility() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: widget.controller,
-      obscureText: _obscureText,
+      controller: controller,
+      obscureText: showVisibility ? obscureText : true,
       cursorColor: Palette.artGold,
       style: TextStyle(color: Palette.textColor),
       decoration: MyInputDecoration.styled(
         context: context,
-        labelText: widget.labelText,
-        hintText: widget.hintText,
-        suffixIcon: IconButton(
-          icon: Icon(
-            _obscureText ? Icons.visibility_off : Icons.visibility,
-            color: Palette.artGold,
-          ),
-          onPressed: _toggleVisibility,
-        ),
+        labelText: labelText,
+        hintText: hintText,
+        suffixIcon: showVisibility
+            ? IconButton(
+                icon: Icon(
+                  obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: Palette.artGold,
+                ),
+                onPressed: onToggleVisibility,
+              )
+            : null,
       ),
     );
   }
