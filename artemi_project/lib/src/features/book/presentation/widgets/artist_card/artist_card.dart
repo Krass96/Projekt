@@ -7,8 +7,10 @@ import 'package:artemi_project/src/features/book/presentation/widgets/artist_car
 
 class ArtistCard extends StatelessWidget {
   final ArtistCardDb artist;
+  final VoidCallback onToggleFavorite;
 
-  const ArtistCard({super.key, required this.artist});
+  const ArtistCard(
+      {super.key, required this.artist, required this.onToggleFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,10 @@ class ArtistCard extends StatelessWidget {
           Stack(
             children: [
               ArtistCardImage(imagePath: artist.profilePicUrl),
-              ArtistCardFavoriteIcon(isFavorite: artist.isFavorit),
+              ArtistCardFavoriteIcon(
+                isFavorite: artist.isFavorit,
+                onToggleFavorite: onToggleFavorite,
+              ),
             ],
           ),
           ArtistCardInfo(

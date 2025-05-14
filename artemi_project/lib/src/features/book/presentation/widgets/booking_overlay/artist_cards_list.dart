@@ -1,11 +1,32 @@
+import 'package:flutter/material.dart';
 import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card.dart';
-import 'package:flutter/material.dart';
 
-class ArtistCardsList extends StatelessWidget {
+class ArtistCardsList extends StatefulWidget {
   final List<ArtistCardDb> artistDataList;
 
   const ArtistCardsList({super.key, required this.artistDataList});
+
+  @override
+  State<ArtistCardsList> createState() => _ArtistCardsListState();
+}
+
+class _ArtistCardsListState extends State<ArtistCardsList> {
+  late List<ArtistCardDb> _artists;
+
+  @override
+  void initState() {
+    super.initState();
+    _artists = List.from(widget.artistDataList);
+  }
+
+  void toggleFavorite(int index) {
+    setState(() {
+      _artists[index] = _artists[index].copyWith(
+        isFavorit: !_artists[index].isFavorit,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +38,13 @@ class ArtistCardsList extends StatelessWidget {
         physics: FixedExtentScrollPhysics(),
         childDelegate: ListWheelChildBuilderDelegate(
           builder: (context, index) {
-            if (index < artistDataList.length) {
-              return ArtistCard(
-                  artist: artistDataList[index]); // ✅ Daten übergeben
-            }
-            return null;
+            final artist = _artists[index];
+            return ArtistCard(
+              artist: artist,
+              onToggleFavorite: () => toggleFavorite(index),
+            );
           },
-          childCount: artistDataList.length,
+          childCount: _artists.length,
         ),
       ),
     );

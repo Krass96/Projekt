@@ -18,55 +18,6 @@ class _FavoritesState extends State<Favorites> {
 
   final mockDB = MockDatabaseRepository();
 
-  List<ArtistCardDb> getArtists() {
-    mockDB.createArtist(ArtistCardDb(
-      profilePicUrl: 'assets/images/paint.jpg',
-      isFavorit: true,
-      artistName: 'Leonardo',
-      rating: 4.9,
-      genre: Categories.paint,
-      price: 800,
-    ));
-
-    mockDB.createArtist(ArtistCardDb(
-      profilePicUrl: 'assets/images/music.png',
-      isFavorit: true,
-      artistName: 'Mozart',
-      rating: 4.3,
-      genre: Categories.music,
-      price: 1200,
-    ));
-
-    mockDB.createArtist(ArtistCardDb(
-      profilePicUrl: 'assets/images/comedy.jpg',
-      isFavorit: true,
-      artistName: 'Charlie',
-      rating: 4.5,
-      genre: Categories.paint,
-      price: 100,
-    ));
-
-    mockDB.createArtist(ArtistCardDb(
-      profilePicUrl: 'assets/images/magic.jpg',
-      isFavorit: true,
-      artistName: 'Houdini',
-      rating: 3.5,
-      genre: Categories.magic,
-      price: 200,
-    ));
-
-    mockDB.createArtist(ArtistCardDb(
-      profilePicUrl: 'assets/images/danc.jpg',
-      isFavorit: true,
-      artistName: 'Sara',
-      rating: 4.1,
-      genre: Categories.dance,
-      price: 500,
-    ));
-
-    return mockDB.artists;
-  }
-
   @override
   Widget build(BuildContext context) {
     final List<ArtistCardDb> artists = getArtists();

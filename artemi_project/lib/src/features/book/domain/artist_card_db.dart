@@ -19,25 +19,22 @@ class ArtistCardDb {
     required this.price,
   });
 
-//    Methoden
-  void showArtistName() {
-    print('The artist name: ${artistName}');
-  }
-
-  void showPrice() {
-    print('The price: ${price}');
-  }
-
-  void showRating() {
-    print('The rating: ${rating}');
-  }
-
-  void checkFavorit() {
-    if (isFavorit) {
-      print('This artist is favorit');
-    } else {
-      print('This artist is not favorit');
-    }
+  ArtistCardDb copyWith({
+    String? profilePicUrl,
+    bool? isFavorit,
+    String? artistName,
+    double? rating,
+    Categories? genre,
+    int? price,
+  }) {
+    return ArtistCardDb(
+      profilePicUrl: profilePicUrl ?? this.profilePicUrl,
+      isFavorit: isFavorit ?? this.isFavorit,
+      artistName: artistName ?? this.artistName,
+      rating: rating ?? this.rating,
+      genre: genre ?? this.genre,
+      price: price ?? this.price,
+    );
   }
 }
 
@@ -49,3 +46,48 @@ class ArtistCardDb {
 //   print('Rating: $rating');
 //   print('Price: $price');
 // }
+
+List<ArtistCardDb> getArtists() {
+  return [
+    ArtistCardDb(
+      profilePicUrl: 'assets/images/paint.jpg',
+      isFavorit: true,
+      artistName: 'Leonardo',
+      rating: 4.9,
+      genre: Categories.paint,
+      price: 800,
+    ),
+    ArtistCardDb(
+      profilePicUrl: 'assets/images/music.png',
+      isFavorit: true,
+      artistName: 'Mozart',
+      rating: 4.3,
+      genre: Categories.music,
+      price: 1200,
+    ),
+    ArtistCardDb(
+      profilePicUrl: 'assets/images/comedy.jpg',
+      isFavorit: true,
+      artistName: 'Charlie',
+      rating: 4.5,
+      genre: Categories.paint,
+      price: 100,
+    ),
+    ArtistCardDb(
+      profilePicUrl: 'assets/images/magic.jpg',
+      isFavorit: true,
+      artistName: 'Houdini',
+      rating: 3.5,
+      genre: Categories.magic,
+      price: 200,
+    ),
+    ArtistCardDb(
+      profilePicUrl: 'assets/images/danc.jpg',
+      isFavorit: true,
+      artistName: 'Sara',
+      rating: 4.1,
+      genre: Categories.dance,
+      price: 500,
+    ),
+  ];
+}
