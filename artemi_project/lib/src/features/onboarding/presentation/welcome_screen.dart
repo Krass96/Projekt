@@ -1,6 +1,6 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:artemi_project/src/common/logo_widget.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
-import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -21,17 +21,18 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Text(
-                'WELCOME TO ARTEMI',
-                style: welcomeTitle,
-              ),
+              AnimatedTextKit(animatedTexts: [
+                TyperAnimatedText('Welcome to Artemi',
+                    curve: Curves.easeIn,
+                    textStyle: Theme.of(context).textTheme.displaySmall)
+              ]),
               const SizedBox(height: 40),
               const LogoWidget(widht: 200),
               const SizedBox(height: 30),
-              Text(
-                '"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
-                style: welcomeSubtitle,
-              ),
+              AnimatedTextKit(animatedTexts: [
+                TyperAnimatedText('"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
+                    curve: Curves.easeIn)
+              ]),
               const SizedBox(height: 10),
             ],
           ),

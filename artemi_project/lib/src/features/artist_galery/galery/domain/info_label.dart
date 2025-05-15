@@ -1,23 +1,22 @@
 import 'package:artemi_project/src/theme/palette.dart';
-import 'package:artemi_project/src/theme/my_font.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-class DateLabel extends StatefulWidget {
+class InfoLabel extends StatefulWidget {
   final String text;
   final List<String> options;
 
-  const DateLabel({
+  const InfoLabel({
     super.key,
     required this.text,
     required this.options,
   });
 
   @override
-  State<DateLabel> createState() => _DateLabelState();
+  State<InfoLabel> createState() => _InfoLabelState();
 }
 
-class _DateLabelState extends State<DateLabel> {
+class _InfoLabelState extends State<InfoLabel> {
   late String _currentText;
 
   @override
@@ -41,21 +40,14 @@ class _DateLabelState extends State<DateLabel> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'Set Genre',
-                  style: TextStyle(
-                    color: Palette.artGold,
-                    fontSize: 20,
-                    fontFamily: myFont.fontFamily,
-                  ),
-                ),
+                Text('Set Genre',
+                    style: Theme.of(context).textTheme.headlineSmall),
                 const SizedBox(height: 16),
                 ...widget.options.map((option) => ListTile(
                       title: Text(
                         option,
                         style: TextStyle(
                           color: Colors.white,
-                          fontFamily: myFont.fontFamily,
                         ),
                       ),
                       onTap: () {
@@ -93,16 +85,11 @@ class _DateLabelState extends State<DateLabel> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: Text(
-                _currentText,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22.25,
-                  fontFamily: myFont.fontFamily,
-                  fontWeight: FontWeight.w500,
-                  height: 1.67,
-                ),
-              ),
+              child: Text(_currentText,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ?.copyWith(color: Colors.white)),
             ),
             IconButton(
               icon: Icon(

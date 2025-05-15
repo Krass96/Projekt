@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/features/artist_galery/main_screen.dart';
+import 'package:artemi_project/src/features/artist_galery/galery.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Palette.artGold,
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: const MainScreen(),
+      home: const Galery(),
     );
   }
 }

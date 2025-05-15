@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'galery/presentation/artist_galery.dart';
 import 'about_me/presentation/about_me.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class Galery extends StatefulWidget {
+  const Galery({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<Galery> createState() => _GaleryState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _GaleryState extends State<Galery> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [

@@ -2,6 +2,7 @@ import 'package:artemi_project/src/features/book/presentation/widgets/booking_ov
 import 'package:artemi_project/src/features/dm/presentation/dm.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BookAndDm extends StatefulWidget {
   const BookAndDm({super.key});
@@ -36,10 +37,10 @@ class _BookAndDmState extends State<BookAndDm> {
               padding: const EdgeInsets.symmetric(vertical: 12),
             ),
             onPressed: _openBookingOverlay,
-            icon: const Icon(
-              Icons.event,
-              size: 30,
+            icon: const FaIcon(
+              FontAwesomeIcons.cartPlus,
               color: Palette.artGold,
+              size: 22,
             ),
             label: Text(
               'Book',
@@ -62,10 +63,10 @@ class _BookAndDmState extends State<BookAndDm> {
                 builder: (_) => const DmOverlay(),
               );
             },
-            icon: const Icon(
-              Icons.chat,
-              size: 30,
+            icon: const FaIcon(
+              FontAwesomeIcons.paperPlane,
               color: Palette.artGold,
+              size: 22,
             ),
             label: Text(
               'DM',

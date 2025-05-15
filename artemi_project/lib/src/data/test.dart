@@ -30,10 +30,10 @@ void main() {
     price: 200,
   );
 
-  a.showArtistName();
-  b.showPrice();
-  c.showRating();
-  a.checkFavorit();
+  // a.showArtistName();
+  // b.showPrice();
+  // c.showRating();
+  // a.checkFavorit();
 
   //Button Test
 

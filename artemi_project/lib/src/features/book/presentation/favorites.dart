@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/artist_cards_list.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_cards_list.dart';
 import 'package:artemi_project/src/widgets/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/widgets/my_app_bar.dart';

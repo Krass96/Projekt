@@ -64,7 +64,7 @@ class _SignUpFormState extends State<SignUpForm> {
           labelText: 'Repeat password',
           obscureText: _obscureText,
           onToggleVisibility: _toggleVisibility,
-          showVisibility: false,
+          showVisibility: true,
         ),
         const SizedBox(height: 30),
         Button(

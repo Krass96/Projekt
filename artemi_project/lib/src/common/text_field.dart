@@ -1,5 +1,7 @@
-import 'package:artemi_project/src/theme/palette.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:artemi_project/src/theme/palette.dart';
 
 class MyInputDecoration {
   static InputDecoration styled({
@@ -36,6 +38,7 @@ class PasswordField extends StatelessWidget {
   final String? labelText;
   final bool showVisibility;
   final bool obscureText;
+  final Widget? suffixIcon;
   final VoidCallback onToggleVisibility;
 
   const PasswordField({
@@ -46,6 +49,7 @@ class PasswordField extends StatelessWidget {
     this.showVisibility = true,
     required this.obscureText,
     required this.onToggleVisibility,
+    this.suffixIcon,
   });
 
   @override
@@ -67,7 +71,7 @@ class PasswordField extends StatelessWidget {
                 ),
                 onPressed: onToggleVisibility,
               )
-            : null,
+            : IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
       ),
     );
   }
