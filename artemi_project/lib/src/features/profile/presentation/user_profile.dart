@@ -1,6 +1,9 @@
 import 'package:artemi_project/src/features/profile/presentation/widgets/availability_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/genre_dialog.dart';
+import 'package:artemi_project/src/features/profile/presentation/widgets/save_button.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/user_name.dart';
+import 'package:artemi_project/src/theme/palette.dart';
+import 'package:artemi_project/src/widgets/preis_scala.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_data.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
@@ -20,6 +23,7 @@ class _UserProfileState extends State<UserProfile> {
   final bool _obscureText = true;
   String _selectedGenre = 'Genre';
   String _selectedAvailability = 'Avaibility';
+  RangeValues _priceRange = const RangeValues(0, 10000);
 
   final List<String> _genreOptions = [
     'Paint',
@@ -72,56 +76,71 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      appBar: MyAppBar(title: 'Profile'),
+      appBar: MyAppBar(
+        title: 'Profile',
+        action: SaveButton(),
+      ),
       bottomNavigationBar: const NavBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Divider(height: 10, thickness: 2, color: Colors.white),
-          Stack(
-            alignment: Alignment.bottomCenter,
-            clipBehavior: Clip.none,
-            children: [
-              CoverPhoto(),
-              Positioned(
-                top: 70,
-                left: 5,
-                child: ProfileAvatar(
-                  width: 140,
-                  height: 140,
-                ),
-              ),
-              Positioned(top: 160, right: 80, child: UserName()),
-            ],
-          ),
-          SizedBox(height: 90),
-          ProfileData(obscureText: _obscureText),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: GenreButton(
-                    selectedGenre: _selectedGenre,
-                    onTap: _showGenreDialog,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              alignment: Alignment.bottomCenter,
+              clipBehavior: Clip.none,
+              children: [
+                CoverPhoto(),
+                Positioned(
+                  top: 70,
+                  left: 5,
+                  child: ProfileAvatar(
+                    width: 120,
+                    height: 120,
                   ),
                 ),
-              ),
-              SizedBox(width: 20),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
-                  child: AvailabilityButton(
-                    selectedAvailability: _selectedAvailability,
-                    onTap: _showAvailabilityDialog,
+                Positioned(top: 155, right: 90, child: UserName()),
+              ],
+            ),
+            SizedBox(height: 60),
+            ProfileData(obscureText: _obscureText),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: GenreButton(
+                      selectedGenre: _selectedGenre,
+                      onTap: _showGenreDialog,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                SizedBox(width: 20),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: AvailabilityButton(
+                      selectedAvailability: _selectedAvailability,
+                      onTap: _showAvailabilityDialog,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: PreisScala(
+                  values: _priceRange,
+                  onChanged: (RangeValues values) {
+                    setState(() {
+                      _priceRange = values;
+                    });
+                  }),
+            )
+          ],
+        ),
       ),
     );
   }

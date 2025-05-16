@@ -23,13 +23,12 @@ class AvailabilityDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Select Availability',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+              'Select Availability 🗓️',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
-            SizedBox(height: 16),
+            Divider(
+              color: Colors.white,
+            ),
             Container(
               constraints: BoxConstraints(maxHeight: 250),
               child: ListView.builder(
@@ -58,7 +57,9 @@ class AvailabilityDialog extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 8),
+            Divider(
+              color: Colors.white,
+            ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
               child: Text(

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final Widget? action;
 
-  const MyAppBar({super.key, required this.title});
+  const MyAppBar({super.key, required this.title, this.action});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -21,10 +22,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       backgroundColor: const Color(0x00FFEE32),
-      actions: const [
-        Padding(
-            padding: EdgeInsets.all(8.0),
-            child: ProfileAvatar(width: 50, height: 50))
+      actions: [
+        if (action != null)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: action!,
+          ),
       ],
       leading: const BackChevron(),
       title: Text(

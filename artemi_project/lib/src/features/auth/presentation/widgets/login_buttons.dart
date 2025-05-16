@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/features/book/presentation/favorites.dart';
+import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
 import 'package:artemi_project/src/features/auth/presentation/sing_up_overlay.dart';
 import 'package:artemi_project/src/widgets/button.dart';

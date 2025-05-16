@@ -1,6 +1,6 @@
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/artist_galery/galery.dart';
-import 'package:artemi_project/src/features/book/presentation/favorites.dart';
+import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
 import 'package:artemi_project/src/features/profile/presentation/user_profile.dart';
 import 'package:artemi_project/src/theme/app_theme.dart';

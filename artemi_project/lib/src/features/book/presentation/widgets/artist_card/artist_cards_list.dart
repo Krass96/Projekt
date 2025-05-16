@@ -31,22 +31,20 @@ class _ArtistCardsListState extends State<ArtistCardsList> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Scrollbar(
-        child: ListWheelScrollView.useDelegate(
-          itemExtent: 375,
-          perspective: 0.003,
-          diameterRatio: 2.5,
-          physics: FixedExtentScrollPhysics(),
-          childDelegate: ListWheelChildBuilderDelegate(
-            builder: (context, index) {
-              final artist = _artists[index];
-              return ArtistCard(
-                artist: artist,
-                onToggleFavorite: () => toggleFavorite(index),
-              );
-            },
-            childCount: _artists.length,
-          ),
+      child: ListWheelScrollView.useDelegate(
+        itemExtent: 375,
+        perspective: 0.003,
+        diameterRatio: 2.5,
+        physics: FixedExtentScrollPhysics(),
+        childDelegate: ListWheelChildBuilderDelegate(
+          builder: (context, index) {
+            final artist = _artists[index];
+            return ArtistCard(
+              artist: artist,
+              onToggleFavorite: () => toggleFavorite(index),
+            );
+          },
+          childCount: _artists.length,
         ),
       ),
     );

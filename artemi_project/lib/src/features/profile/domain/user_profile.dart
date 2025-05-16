@@ -1,5 +1,6 @@
 class UserProfile {
   // Attribute
+  final String id;
   final String? coverImageUrl;
   final String? profilImageUrl;
   final String userName;
@@ -13,6 +14,7 @@ class UserProfile {
   UserProfile({
     this.coverImageUrl,
     this.profilImageUrl,
+    required this.id,
     required this.userName,
     required this.password,
     required this.eMail,
@@ -21,36 +23,36 @@ class UserProfile {
     required DateTime date,
   });
 
-  // Methode
-  void showUserName() {
-    print('User name: $userName');
-  }
+  // Methode(n)
+  // void showUserName() {
+  //   print('User name: $userName');
+  // }
 
-  void showEmail() {
-    print('Email: $eMail');
-  }
+  // void showEmail() {
+  //   print('Email: $eMail');
+  // }
 
-  void showGenre() {
-    print('Genre: $genre');
-  }
+  // void showGenre() {
+  //   print('Genre: $genre');
+  // }
 
-  void showDate() {
-    print('Date: $date');
-  }
+  // void showDate() {
+  //   print('Date: $date');
+  // }
 
-  void showPriceScala() {
-    print('Price Scala: $priceScala');
-  }
+  // void showPriceScala() {
+  //   print('Price Scala: $priceScala');
+  // }
 
-  void showCoverImageUrl() {
-    print('Cover Image Url: $coverImageUrl');
-  }
+  // void showCoverImageUrl() {
+  //   print('Cover Image Url: $coverImageUrl');
+  // }
 
-  void showProfilImageUrl() {
-    print('Profil Image Url: $profilImageUrl');
-  }
+  // void showProfilImageUrl() {
+  //   print('Profil Image Url: $profilImageUrl');
+  // }
 
-  void showPassword() {
-    print('Password: $password');
-  }
+  // void showPassword() {
+  //   print('Password: $password');
+  // }
 }

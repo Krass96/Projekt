@@ -48,6 +48,7 @@ void main() {
   // User Test
 
   UserProfile d = UserProfile(
+    id: '1',
     coverImageUrl: null,
     profilImageUrl: null,
     userName: 'Leonardo',
@@ -58,6 +59,7 @@ void main() {
     priceScala: 0 - 100,
   );
   UserProfile e = UserProfile(
+    id: '2',
     coverImageUrl: null,
     profilImageUrl: null,
     userName: 'Rafaelo',
@@ -68,6 +70,7 @@ void main() {
     priceScala: 500,
   );
   UserProfile f = UserProfile(
+    id: '3',
     coverImageUrl: null,
     profilImageUrl: null,
     userName: 'Charlie',
@@ -78,7 +81,7 @@ void main() {
     priceScala: 300,
   );
 
-  d.showUserName();
-  e.showEmail();
-  f.showGenre();
+  // d.showUserName();
+  // e.showEmail();
+  // f.showGenre();
 }

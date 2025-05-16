@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyBgColor extends StatelessWidget {
-  BorderRadius? borderRadius;
+  final BorderRadius? borderRadius;
 
-  MyBgColor({
+  const MyBgColor({
     super.key,
     this.borderRadius,
   });
