@@ -23,13 +23,13 @@ class GenreDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Select Genre',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+              'Set your Genre  🧑‍🎨',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
-            SizedBox(height: 16),
+            Divider(
+              color: Color(0xABFFFFFF),
+            ),
+            SizedBox(height: 5),
             Container(
               constraints: BoxConstraints(maxHeight: 250),
               child: ListView.builder(
@@ -59,6 +59,9 @@ class GenreDialog extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8),
+            Divider(
+              color: Color(0xABFFFFFF),
+            ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
               child: Text(
@@ -101,7 +104,7 @@ class GenreButton extends StatelessWidget {
               selectedGenre,
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
-            Icon(Icons.keyboard_arrow_down, color: Colors.yellow),
+            Icon(Icons.keyboard_arrow_up, color: Colors.yellow),
           ],
         ),
       ),

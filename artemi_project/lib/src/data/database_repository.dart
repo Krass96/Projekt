@@ -23,9 +23,9 @@ void main() {
     userName: 'Krass',
     password: '0000',
     eMail: 'krass@web.com',
-    genre: 'musik',
+    genres: ['musik'],
     priceScala: 2000,
-    date: DateTime.now(),
+    status: ['Part Time'],
   );
   mockDatabaseRepository.createUser(a);
 }

@@ -1,27 +1,38 @@
 class UserProfile {
-  // Attribute
   final String id;
   final String? coverImageUrl;
   final String? profilImageUrl;
   final String userName;
   final String password;
   final String eMail;
-  final String genre;
-  final int date = DateTime.now().year;
+  final List<String> genres;
+  final List<String> status;
+
   final int priceScala;
 
-  // Konstruktor
   UserProfile({
+    required this.id,
     this.coverImageUrl,
     this.profilImageUrl,
-    required this.id,
     required this.userName,
     required this.password,
     required this.eMail,
-    required this.genre,
+    required this.genres,
+    required this.status,
     required this.priceScala,
-    required DateTime date,
   });
+}
+
+final List<String> genres = [
+  'Paint 🎨',
+  'Music 🎹',
+  'Dance 💃',
+  'Comedy 😄',
+  'Magic 🪄'
+];
+final List<String> status = ['Weekends', 'Evenings', 'Full-time', 'Part-time'];
+
+
 
   // Methode(n)
   // void showUserName() {
@@ -55,4 +66,4 @@ class UserProfile {
   // void showPassword() {
   //   print('Password: $password');
   // }
-}
+

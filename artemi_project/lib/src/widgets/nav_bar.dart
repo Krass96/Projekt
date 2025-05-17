@@ -46,8 +46,8 @@ class _NavBarState extends State<NavBar> {
           _buildNavBarItem(
             context,
             icon: Icons.person,
-            label: 'Profile',
-            routeName: '/profile',
+            label: 'My Stage',
+            routeName: '/mystage',
           ),
         ],
       ),

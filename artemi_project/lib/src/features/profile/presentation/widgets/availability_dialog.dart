@@ -23,12 +23,13 @@ class AvailabilityDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Select Availability 🗓️',
+              'Set your Status 🗓️',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             Divider(
-              color: Colors.white,
+              color: const Color(0xABFFFFFF),
             ),
+            SizedBox(height: 5),
             Container(
               constraints: BoxConstraints(maxHeight: 250),
               child: ListView.builder(
@@ -58,7 +59,7 @@ class AvailabilityDialog extends StatelessWidget {
               ),
             ),
             Divider(
-              color: Colors.white,
+              color: Color(0xABFFFFFF),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -102,7 +103,7 @@ class AvailabilityButton extends StatelessWidget {
               selectedAvailability,
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
-            Icon(Icons.keyboard_arrow_down, color: Colors.yellow),
+            Icon(Icons.keyboard_arrow_up, color: Colors.yellow),
           ],
         ),
       ),

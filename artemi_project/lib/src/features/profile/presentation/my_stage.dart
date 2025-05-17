@@ -1,50 +1,47 @@
-import 'package:artemi_project/src/features/profile/presentation/widgets/availability_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:artemi_project/src/widgets/nav_bar.dart';
+import 'package:artemi_project/src/data/mock_database_repository.dart';
+import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
+import 'package:artemi_project/src/widgets/my_app_bar.dart';
+import 'package:artemi_project/src/common/my_scaffold.dart';
+import 'package:artemi_project/src/widgets/preis_scala.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/genre_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/save_button.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/user_name.dart';
-import 'package:artemi_project/src/theme/palette.dart';
-import 'package:artemi_project/src/widgets/preis_scala.dart';
-import 'package:flutter/material.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_data.dart';
-import 'package:artemi_project/src/common/my_scaffold.dart';
-import 'package:artemi_project/src/widgets/my_app_bar.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/cover_photo.dart';
+import 'package:artemi_project/src/features/profile/presentation/widgets/availability_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
-import 'package:artemi_project/src/widgets/nav_bar.dart';
 
-class UserProfile extends StatefulWidget {
-  const UserProfile({super.key});
+class MyStage extends StatefulWidget {
+  final UserProfile? user;
+
+  const MyStage({super.key, required this.user});
 
   @override
-  State<UserProfile> createState() => _UserProfileState();
+  State<MyStage> createState() => _MyStageState();
 }
 
-class _UserProfileState extends State<UserProfile> {
+class _MyStageState extends State<MyStage> {
+  final mockDB = MockDatabaseRepository();
+  UserProfile? user;
   final bool _obscureText = true;
   String _selectedGenre = 'Genre';
-  String _selectedAvailability = 'Avaibility';
+  String _selectedAvailability = 'Status';
   RangeValues _priceRange = const RangeValues(0, 10000);
 
-  final List<String> _genreOptions = [
-    'Paint',
-    'Music',
-    'Dance',
-    'Comedy',
-    'Magic'
-  ];
-  final List<String> _availabilityOptions = [
-    'Weekends',
-    'Evenings',
-    'Full-time',
-    'Part-time'
-  ];
+  @override
+  void initState() {
+    super.initState();
+    user = widget.user;
+  }
 
   void _showGenreDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return GenreDialog(
-          options: _genreOptions,
+          options: genres,
           selectedOption: _selectedGenre,
           onSelect: (value) {
             setState(() {
@@ -61,7 +58,7 @@ class _UserProfileState extends State<UserProfile> {
       context: context,
       builder: (BuildContext context) {
         return AvailabilityDialog(
-          options: _availabilityOptions,
+          options: status,
           selectedOption: _selectedAvailability,
           onSelect: (value) {
             setState(() {
@@ -77,7 +74,7 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return MyScaffold(
       appBar: MyAppBar(
-        title: 'Profile',
+        title: 'My Stage',
         action: SaveButton(),
       ),
       bottomNavigationBar: const NavBar(),
@@ -99,11 +96,17 @@ class _UserProfileState extends State<UserProfile> {
                     height: 120,
                   ),
                 ),
-                Positioned(top: 155, right: 90, child: UserName()),
+                Positioned(
+                    top: 155,
+                    right: 90,
+                    child: UserName(
+                      name: user?.userName ?? '',
+                    )),
               ],
             ),
             SizedBox(height: 60),
-            ProfileData(obscureText: _obscureText),
+            if (user != null)
+              ProfileData(obscureText: _obscureText, user: user!),
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

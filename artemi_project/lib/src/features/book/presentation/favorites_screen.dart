@@ -22,7 +22,6 @@ class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
     final List<ArtistCardDb> artists = getArtists();
-
     return MyScaffold(
       bottomNavigationBar: NavBar(),
       appBar: MyAppBar(
@@ -32,7 +31,6 @@ class _FavoritesState extends State<Favorites> {
       body: Column(
         children: [
           Divider(thickness: 2, color: Colors.white),
-          SizedBox(height: 10),
           ArtistCardsList(artistDataList: artists),
         ],
       ),

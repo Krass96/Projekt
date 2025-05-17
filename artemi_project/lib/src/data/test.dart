@@ -47,37 +47,35 @@ void main() {
 
   // User Test
 
-  UserProfile d = UserProfile(
+  UserProfile painter = UserProfile(
     id: '1',
-    coverImageUrl: null,
-    profilImageUrl: null,
     userName: 'Leonardo',
     password: '*',
     eMail: 'leo@web.de',
-    genre: 'painter',
-    date: DateTime(1452),
-    priceScala: 0 - 100,
+    genres: ['painter'],
+    status: ['Weekends'],
+    priceScala: 2000,
   );
-  UserProfile e = UserProfile(
+  UserProfile musiker = UserProfile(
     id: '2',
     coverImageUrl: null,
     profilImageUrl: null,
     userName: 'Rafaelo',
     password: '*',
     eMail: 'rafa@web.de',
-    genre: 'musiker',
-    date: DateTime(1483),
+    genres: ['musiker'],
+    status: ['Part-time'],
     priceScala: 500,
   );
-  UserProfile f = UserProfile(
+  UserProfile comediant = UserProfile(
     id: '3',
     coverImageUrl: null,
     profilImageUrl: null,
     userName: 'Charlie',
     password: '*',
     eMail: 'char@web.de',
-    genre: 'komediant',
-    date: DateTime(1889),
+    genres: ['komediant'],
+    status: ['Full-time'],
     priceScala: 300,
   );
 

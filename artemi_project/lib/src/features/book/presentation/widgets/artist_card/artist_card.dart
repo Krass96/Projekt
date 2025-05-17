@@ -32,7 +32,7 @@ class ArtistCard extends StatelessWidget {
           ArtistCardInfo(
             name: artist.artistName,
             rating: artist.rating,
-            genre: artist.genre.name,
+            genre: artist.genre.name.toString().toUpperCase(),
             price: artist.price,
           ),
           const Divider(color: Colors.white),
