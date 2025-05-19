@@ -18,19 +18,15 @@ class ButtonsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          ),
+          style: ElevatedButton.styleFrom(),
           onPressed: onPrevious,
-          child: Icon(Icons.chevron_left, size: 32, color: buttonColor),
+          child: Icon(Icons.chevron_left, size: 32, color: Colors.black),
         ),
         const SizedBox(width: 32),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          ),
+          style: ElevatedButton.styleFrom(),
           onPressed: onNext,
-          child: Icon(Icons.chevron_right, size: 32, color: buttonColor),
+          child: Icon(Icons.chevron_right, size: 32, color: Colors.black),
         ),
       ],
     );

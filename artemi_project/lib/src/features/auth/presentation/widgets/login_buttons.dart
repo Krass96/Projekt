@@ -1,6 +1,7 @@
 import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
 import 'package:artemi_project/src/features/auth/presentation/sing_up_overlay.dart';
+import 'package:artemi_project/src/features/home/presentation/home.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -15,6 +16,7 @@ class LoginButtons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 32),
       child: Column(
+        spacing: 20,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Button(
@@ -49,16 +51,13 @@ class LoginButtons extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: SignInWithAppleButton(
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Favorites(),
+                  builder: (context) => const DashBoard(),
                 ),
               ),
               height: 50,

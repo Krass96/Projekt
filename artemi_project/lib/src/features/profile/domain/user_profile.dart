@@ -28,7 +28,7 @@ final List<String> genres = [
   'Music 🎹',
   'Dance 💃',
   'Comedy 😄',
-  'Magic 🪄'
+  'Magic 🎩'
 ];
 final List<String> status = ['Weekends', 'Evenings', 'Full-time', 'Part-time'];
 

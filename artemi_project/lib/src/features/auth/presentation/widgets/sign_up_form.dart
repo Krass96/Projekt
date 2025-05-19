@@ -75,7 +75,7 @@ class _SignUpFormState extends State<SignUpForm> {
             Navigator.pop(context);
           },
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 50),
         Center(
           child: Opacity(
             opacity: 0.4,

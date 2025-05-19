@@ -5,7 +5,7 @@ class ArtistCardDb {
   final String? profilePicUrl;
   final String artistName;
   final Categories genre;
-  final bool isFavorit;
+  late final bool isFavorit;
   final double rating;
   final int price;
 

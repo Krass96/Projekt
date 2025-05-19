@@ -1,5 +1,4 @@
 import 'package:artemi_project/src/common/back_chevron.dart';
-import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {

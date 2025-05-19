@@ -98,7 +98,7 @@ class _MyStageState extends State<MyStage> {
                 ),
                 Positioned(
                     top: 155,
-                    right: 90,
+                    left: 130,
                     child: UserName(
                       name: user?.userName ?? '',
                     )),

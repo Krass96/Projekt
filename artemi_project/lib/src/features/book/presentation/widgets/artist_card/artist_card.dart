@@ -8,36 +8,48 @@ import 'package:artemi_project/src/features/book/presentation/widgets/artist_car
 class ArtistCard extends StatelessWidget {
   final ArtistCardDb artist;
   final VoidCallback onToggleFavorite;
+  final bool showBookAndDm;
+  final double? height;
+  final double? widht;
 
   const ArtistCard(
-      {super.key, required this.artist, required this.onToggleFavorite});
+      {super.key,
+      required this.artist,
+      required this.onToggleFavorite,
+      this.showBookAndDm = true,
+      this.height,
+      this.widht});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Stack(
-            children: [
-              ArtistCardImage(imagePath: artist.profilePicUrl),
-              ArtistCardFavoriteIcon(
-                isFavorite: artist.isFavorit,
-                onToggleFavorite: onToggleFavorite,
-              ),
-            ],
-          ),
-          ArtistCardInfo(
-            name: artist.artistName,
-            rating: artist.rating,
-            genre: artist.genre.name.toString().toUpperCase(),
-            price: artist.price,
-          ),
-          const Divider(color: Colors.white),
-          BookAndDm(),
-        ],
+    return SizedBox(
+      height: height,
+      width: widht,
+      child: Card(
+        color: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Stack(
+              children: [
+                ArtistCardImage(imagePath: artist.profilePicUrl),
+                ArtistCardFavoriteIcon(
+                  isFavorite: artist.isFavorit,
+                  onToggleFavorite: onToggleFavorite,
+                ),
+              ],
+            ),
+            ArtistCardInfo(
+              name: artist.artistName,
+              rating: artist.rating,
+              genre: artist.genre.name.toString().toUpperCase(),
+              price: artist.price,
+            ),
+            const Divider(color: Colors.white),
+            if (showBookAndDm) BookAndDm(),
+          ],
+        ),
       ),
     );
   }

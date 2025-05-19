@@ -28,8 +28,8 @@ class _NavBarState extends State<NavBar> {
           _buildNavBarItem(
             context,
             icon: Icons.home_filled,
-            label: 'Home',
-            routeName: '/home',
+            label: 'Dashboard',
+            routeName: '/dashboard',
           ),
           _buildNavBarItem(
             context,

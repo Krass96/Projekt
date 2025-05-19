@@ -1,6 +1,7 @@
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/artist_galery/galery.dart';
 import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
+import 'package:artemi_project/src/features/home/presentation/home.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 import 'package:artemi_project/src/features/profile/presentation/my_stage.dart';
@@ -28,7 +29,7 @@ class App extends StatelessWidget {
         ),
       ),
       routes: {
-        //'/home': (context) => HomeScreen(),
+        '/dashboard': (context) => DashBoard(),
         '/favorites': (context) => Favorites(),
         '/events': (context) => Galery(),
         '/mystage': (context) => MyStage(

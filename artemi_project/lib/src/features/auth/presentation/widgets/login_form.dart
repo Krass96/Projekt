@@ -64,6 +64,7 @@ class _LoginFormState extends State<LoginForm> {
               onPressed: () => Navigator.pop(context),
             ),
           ),
+          SizedBox(height: 50),
           Center(
             child: Opacity(
               opacity: 0.4,
