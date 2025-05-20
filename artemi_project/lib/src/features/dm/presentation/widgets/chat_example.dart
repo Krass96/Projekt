@@ -2,38 +2,21 @@ import 'package:artemi_project/src/features/dm/presentation/widgets/chat_bubble.
 import 'package:flutter/material.dart';
 
 class ChatExample extends StatelessWidget {
-  const ChatExample({
-    super.key,
-  });
+  final List<String> messages;
+  const ChatExample({super.key, required this.messages});
 
   @override
   Widget build(BuildContext context) {
-    var scrollController;
+    var scrollController = ScrollController();
     return Expanded(
-      child: ListView(
+      child: ListView.builder(
+        itemBuilder: (context, index) => ChatBubble(
+          message: messages[index],
+          isSender: true,
+        ),
+        physics: const BouncingScrollPhysics(),
+        itemCount: messages.length,
         controller: scrollController,
-        children: const [
-          ChatBubble(
-            message:
-                "Hallo! Ich interessiere mich für deine Kunst. Bist du für ein Event verfügbar?",
-            isSender: false,
-          ),
-          ChatBubble(
-            message:
-                "Hi! Danke für deine Nachricht. Wann und wo soll das Event stattfinden?",
-            isSender: true,
-          ),
-          ChatBubble(
-            message:
-                "Es ist am 15. März in Hamburg. Ich brauche eine Live-Performance für ca. 2 Stunden.",
-            isSender: false,
-          ),
-          ChatBubble(
-            message:
-                "Natürlich, ich schicke dir gleich einen Termin-Vorschlag.",
-            isSender: true,
-          ),
-        ],
       ),
     );
   }

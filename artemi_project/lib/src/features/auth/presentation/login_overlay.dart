@@ -1,9 +1,9 @@
-import 'package:artemi_project/src/features/auth/presentation/widgets/close_button.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/login_form.dart';
-import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_divider.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/close_button.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_title.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_divider.dart';
 
 void showLoginBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -22,13 +22,6 @@ class LoginOverlay extends StatefulWidget {
 }
 
 class _LoginOverlayState extends State<LoginOverlay> {
-  final passwordController = TextEditingController();
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -50,7 +43,7 @@ class _LoginOverlayState extends State<LoginOverlay> {
                 padding: const EdgeInsets.only(top: 70),
                 child: OverlayTitle(title: 'Welcome Back! 🖐️'),
               ),
-              LoginForm(passwordController: passwordController),
+              LoginForm(),
             ],
           ),
           Positioned(top: 15, child: OverlayDivider()),

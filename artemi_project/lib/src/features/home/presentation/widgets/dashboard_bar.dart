@@ -24,7 +24,7 @@ class DashboardBar extends StatelessWidget {
             ),
           ],
         ),
-        LogoWidget(widht: 35)
+        LogoWidget(width: 35)
       ],
     );
   }

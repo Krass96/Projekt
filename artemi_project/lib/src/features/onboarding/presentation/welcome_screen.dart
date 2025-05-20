@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
                     textStyle: Theme.of(context).textTheme.displaySmall)
               ]),
               const SizedBox(height: 40),
-              const LogoWidget(widht: 200),
+              const LogoWidget(width: 200),
               const SizedBox(height: 30),
               AnimatedTextKit(animatedTexts: [
                 TyperAnimatedText('"CONNECTING ARTIST AND EVENTS, EASY PEASY"',

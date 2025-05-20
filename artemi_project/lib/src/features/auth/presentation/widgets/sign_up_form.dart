@@ -6,14 +6,7 @@ import 'package:flutter/material.dart';
 class SignUpForm extends StatefulWidget {
   const SignUpForm({
     super.key,
-    required this.usernameController,
-    required this.emailController,
-    required this.passwordController,
   });
-
-  final TextEditingController usernameController;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
 
   @override
   State<SignUpForm> createState() => _SignUpFormState();
@@ -21,6 +14,19 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   bool _obscureText = true;
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController repeatPasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    repeatPasswordController.dispose();
+    super.dispose();
+  }
 
   void _toggleVisibility() {
     setState(() {
@@ -33,7 +39,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return Column(
       children: [
         TextField(
-          controller: widget.usernameController,
+          controller: usernameController,
           decoration: MyInputDecoration.styled(
             context: context,
             hintText: 'Enter Username',
@@ -42,7 +48,7 @@ class _SignUpFormState extends State<SignUpForm> {
         ),
         const SizedBox(height: 10),
         TextField(
-          controller: widget.emailController,
+          controller: emailController,
           decoration: MyInputDecoration.styled(
             context: context,
             hintText: 'Enter your email address',
@@ -51,7 +57,7 @@ class _SignUpFormState extends State<SignUpForm> {
         ),
         const SizedBox(height: 10),
         PasswordField(
-          controller: widget.passwordController,
+          controller: passwordController,
           hintText: 'Create your password',
           labelText: 'Password',
           obscureText: _obscureText,
@@ -59,7 +65,7 @@ class _SignUpFormState extends State<SignUpForm> {
         ),
         const SizedBox(height: 10),
         PasswordField(
-          controller: widget.passwordController,
+          controller: repeatPasswordController,
           hintText: 'Repeat your password',
           labelText: 'Repeat password',
           obscureText: _obscureText,
@@ -72,14 +78,17 @@ class _SignUpFormState extends State<SignUpForm> {
           width: 200,
           fontSize: 24,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(
+              context,
+              '/dashboard',
+            );
           },
         ),
         const SizedBox(height: 50),
         Center(
           child: Opacity(
             opacity: 0.4,
-            child: LogoWidget(widht: 120),
+            child: LogoWidget(width: 120),
           ),
         ),
       ],

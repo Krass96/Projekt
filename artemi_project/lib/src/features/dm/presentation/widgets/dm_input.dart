@@ -1,10 +1,22 @@
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
-class DmInput extends StatelessWidget {
-  const DmInput({
-    super.key,
-  });
+class DmInput extends StatefulWidget {
+  final void Function(String) onSend;
+  const DmInput({super.key, required this.onSend});
+
+  @override
+  State<DmInput> createState() => _DmInputState();
+}
+
+class _DmInputState extends State<DmInput> {
+  TextEditingController chatController = TextEditingController();
+
+  @override
+  void dispose() {
+    chatController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +26,8 @@ class DmInput extends StatelessWidget {
             size: 30, color: Palette.bitcoinOrange),
         const SizedBox(width: 8),
         Expanded(
-          child: TextField(
+          child: TextFormField(
+            controller: chatController,
             decoration: InputDecoration(
               hintText: 'Type',
               hintStyle: const TextStyle(color: Colors.grey),
@@ -32,7 +45,12 @@ class DmInput extends StatelessWidget {
         ),
         IconButton(
           icon: const Icon(Icons.send, color: Palette.bitcoinOrange),
-          onPressed: () {},
+          onPressed: () {
+            if (chatController.text.isNotEmpty) {
+              widget.onSend(chatController.text);
+              chatController.clear();
+            }
+          },
         )
       ],
     );

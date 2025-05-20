@@ -8,17 +8,28 @@ import 'package:flutter/material.dart';
 class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
-    required this.passwordController,
   });
-
-  final TextEditingController passwordController;
 
   @override
   State<LoginForm> createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   void _toggleVisibility() {
     setState(() {
@@ -34,6 +45,7 @@ class _LoginFormState extends State<LoginForm> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           TextField(
+            controller: usernameController,
             decoration: MyInputDecoration.styled(
               context: context,
               hintText: 'Enter your mail or username',
@@ -42,7 +54,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const SizedBox(height: 20),
           PasswordField(
-            controller: widget.passwordController,
+            controller: passwordController,
             hintText: 'Enter your password',
             labelText: 'Password',
             obscureText: _obscureText,
@@ -61,14 +73,17 @@ class _LoginFormState extends State<LoginForm> {
               width: 200,
               fontSize: 24,
               text: 'Login',
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.pushNamed(
+                context,
+                '/dashboard',
+              ),
             ),
           ),
           SizedBox(height: 50),
           Center(
             child: Opacity(
               opacity: 0.4,
-              child: LogoWidget(widht: 130),
+              child: LogoWidget(width: 130),
             ),
           ),
         ],

@@ -22,18 +22,6 @@ class SignUpOverlay extends StatefulWidget {
 }
 
 class _SignUpOverlayState extends State<SignUpOverlay> {
-  final usernameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    usernameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -56,10 +44,7 @@ class _SignUpOverlayState extends State<SignUpOverlay> {
               ),
               Padding(
                 padding: const EdgeInsets.all(24.0),
-                child: SignUpForm(
-                    usernameController: usernameController,
-                    emailController: emailController,
-                    passwordController: passwordController),
+                child: SignUpForm(),
               ),
             ],
           ),
