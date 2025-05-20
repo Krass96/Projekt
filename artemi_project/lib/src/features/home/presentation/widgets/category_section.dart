@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -32,20 +33,45 @@ class CategorySection extends StatelessWidget {
           child: Row(
             spacing: 12,
             children: [
-              Button(
-                text: '🎵 Music',
+              OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Palette.textColor),
+                ),
+                onPressed: () {},
+                child: Text('🎵 Music',
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
-              Button(
-                text: '💃 Dance',
+              OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Palette.textColor),
+                ),
+                onPressed: () {},
+                child: Text('💃 Dance',
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
-              Button(
-                text: '🎨 Paint',
+              OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Palette.textColor),
+                ),
+                onPressed: () {},
+                child: Text('🎨 Paint',
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
-              Button(
-                text: '😄 Comedy',
+              OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Palette.textColor),
+                ),
+                onPressed: () {},
+                child: Text('😄 Comedy',
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
-              Button(
-                text: '🎩 Magic',
+              OutlinedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Palette.textColor),
+                ),
+                onPressed: () {},
+                child: Text('🎩 Magic',
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
             ],
           ),

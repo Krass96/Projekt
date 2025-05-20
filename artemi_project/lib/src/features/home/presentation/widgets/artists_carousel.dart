@@ -1,6 +1,5 @@
 import 'package:artemi_project/src/data/mock_database_repository.dart';
 import 'package:artemi_project/src/features/artist_galery/galery/domain/artist_gallery_viewmodel.dart';
-import 'package:artemi_project/src/features/artist_galery/galery/domain/buttons_row.dart';
 import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -20,11 +19,13 @@ class _ArtistCardCarouselState extends State<ArtistCardCarousel> {
   int _currentIndex = 0;
   final viewModel = ArtistGalleryViewModel();
 
-  final List<ArtistCardDb> artists = MockDatabaseRepository().artists;
+  final List<ArtistCardDb> _artists = MockDatabaseRepository().artists;
 
   void toggleFavorite(int index) {
     setState(() {
-      artists[index].isFavorit = !artists[index].isFavorit;
+      _artists[index] = _artists[index].copyWith(
+        isFavorit: !_artists[index].isFavorit,
+      );
     });
   }
 
@@ -35,56 +36,73 @@ class _ArtistCardCarouselState extends State<ArtistCardCarousel> {
         CarouselSlider.builder(
           carouselController: _carouselController,
           options: CarouselOptions(
+            height: 318,
             enlargeCenterPage: true,
-            enableInfiniteScroll: true,
+            enableInfiniteScroll: false,
             onPageChanged: (index, reason) {
               setState(() {
                 _currentIndex = index;
               });
             },
           ),
-          itemCount: artists.length,
+          itemCount: _artists.length,
           itemBuilder: (context, index, realIndex) {
-            return ArtistCard(
-              height: 100,
-              widht: 300,
-              artist: artists[index],
-              onToggleFavorite: () => toggleFavorite(index),
-              showBookAndDm: false,
+            return InkWell(
+              onTap: () => Navigator.pushNamed(
+                context,
+                '/favorites',
+                arguments: _artists[index],
+              ),
+              child: ArtistCard(
+                artist: _artists[index],
+                onToggleFavorite: () => toggleFavorite(index),
+                showBookAndDm: false,
+              ),
             );
           },
         ),
-        SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            artists.length,
-            (index) => Container(
-              width: 15,
-              height: 15,
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _currentIndex == index ? Palette.artGold : Colors.grey,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.chevron_left,
+                  size: 52, color: Palette.artGold),
+              onPressed: () {
+                setState(() {
+                  viewModel.previous(_artists.length);
+                  _carouselController.previousPage();
+                });
+              },
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            ...List.generate(
+              _artists.length,
+              (index) => Container(
+                width: 15,
+                height: 15,
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: _currentIndex == index ? Palette.artGold : Colors.grey,
+                ),
               ),
             ),
-          ),
-        ),
-        SizedBox(height: 20),
-        ButtonsRow(
-          onPrevious: () {
-            setState(() {
-              viewModel.previous(artists.length);
-              _carouselController.previousPage();
-            });
-          },
-          onNext: () {
-            setState(() {
-              viewModel.next(artists.length);
-              _carouselController.nextPage();
-            });
-          },
-          buttonColor: Palette.artGold,
+            SizedBox(
+              width: 20,
+            ),
+            IconButton(
+              icon: const Icon(Icons.chevron_right,
+                  size: 52, color: Palette.artGold),
+              onPressed: () {
+                setState(() {
+                  viewModel.next(_artists.length);
+                  _carouselController.nextPage();
+                });
+              },
+            ),
+          ],
         ),
       ],
     );

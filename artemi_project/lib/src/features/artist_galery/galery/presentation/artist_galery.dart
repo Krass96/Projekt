@@ -22,6 +22,16 @@ class _ArtistGaleryState extends State<ArtistGalery> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.chevron_left,
+            color: Colors.yellow,
+            size: 35,
+          ),
+          onPressed: () {
+            Navigator.pushNamed(context, '/dashboard');
+          },
+        ),
         backgroundColor: Colors.black,
         title: const Text(
           'Artist Galery',

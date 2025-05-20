@@ -5,7 +5,7 @@ class ArtistCardDb {
   final String? profilePicUrl;
   final String artistName;
   final Categories genre;
-  late final bool isFavorit;
+  final bool isFavorit;
   final double rating;
   final int price;
 
@@ -51,7 +51,7 @@ List<ArtistCardDb> getArtists() {
   return [
     ArtistCardDb(
       profilePicUrl: 'assets/images/paint.jpg',
-      isFavorit: true,
+      isFavorit: false,
       artistName: 'Leonardo',
       rating: 4.9,
       genre: Categories.paint,
@@ -59,7 +59,7 @@ List<ArtistCardDb> getArtists() {
     ),
     ArtistCardDb(
       profilePicUrl: 'assets/images/music.png',
-      isFavorit: true,
+      isFavorit: false,
       artistName: 'Mozart',
       rating: 4.3,
       genre: Categories.music,
@@ -67,7 +67,7 @@ List<ArtistCardDb> getArtists() {
     ),
     ArtistCardDb(
       profilePicUrl: 'assets/images/comedy.jpg',
-      isFavorit: true,
+      isFavorit: false,
       artistName: 'Charlie',
       rating: 4.5,
       genre: Categories.paint,
@@ -75,7 +75,7 @@ List<ArtistCardDb> getArtists() {
     ),
     ArtistCardDb(
       profilePicUrl: 'assets/images/magic.jpg',
-      isFavorit: true,
+      isFavorit: false,
       artistName: 'Houdini',
       rating: 3.5,
       genre: Categories.magic,
@@ -83,7 +83,7 @@ List<ArtistCardDb> getArtists() {
     ),
     ArtistCardDb(
       profilePicUrl: 'assets/images/danc.jpg',
-      isFavorit: true,
+      isFavorit: false,
       artistName: 'Sara',
       rating: 4.1,
       genre: Categories.dance,

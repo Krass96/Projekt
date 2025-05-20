@@ -28,51 +28,56 @@ class _BookAndDmState extends State<BookAndDm> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Expanded(
-          child: TextButton.icon(
-            style: TextButton.styleFrom(
-              foregroundColor: Palette.artGold,
-              padding: const EdgeInsets.symmetric(vertical: 12),
+        const Divider(color: Colors.white),
+        Row(
+          children: [
+            Expanded(
+              child: TextButton.icon(
+                style: TextButton.styleFrom(
+                  foregroundColor: Palette.artGold,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                onPressed: _openBookingOverlay,
+                icon: const FaIcon(
+                  FontAwesomeIcons.cartPlus,
+                  color: Palette.artGold,
+                  size: 22,
+                ),
+                label: Text(
+                  'Book',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
             ),
-            onPressed: _openBookingOverlay,
-            icon: const FaIcon(
-              FontAwesomeIcons.cartPlus,
-              color: Palette.artGold,
-              size: 22,
+            Container(width: 1, height: 40, color: Colors.white),
+            Expanded(
+              child: TextButton.icon(
+                style: TextButton.styleFrom(
+                  foregroundColor: Palette.artGold,
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) => const DmOverlay(),
+                  );
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.paperPlane,
+                  color: Palette.artGold,
+                  size: 22,
+                ),
+                label: Text(
+                  'DM',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
             ),
-            label: Text(
-              'Book',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
-        ),
-        Container(width: 1, height: 40, color: Colors.white),
-        Expanded(
-          child: TextButton.icon(
-            style: TextButton.styleFrom(
-              foregroundColor: Palette.artGold,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-            ),
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent,
-                builder: (_) => const DmOverlay(),
-              );
-            },
-            icon: const FaIcon(
-              FontAwesomeIcons.paperPlane,
-              color: Palette.artGold,
-              size: 22,
-            ),
-            label: Text(
-              'DM',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
+          ],
         ),
       ],
     );

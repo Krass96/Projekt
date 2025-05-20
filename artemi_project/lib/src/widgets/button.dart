@@ -2,7 +2,7 @@ import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  final String text;
+  final String? text;
   final IconData? icon;
   final Alignment alignment;
   final VoidCallback? onPressed;
@@ -13,7 +13,7 @@ class Button extends StatelessWidget {
   final Color foregroundColor;
 
   const Button({
-    required this.text,
+    this.text,
     this.icon,
     this.alignment = Alignment.bottomCenter,
     this.width,
@@ -44,28 +44,28 @@ class Button extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
-            disabledBackgroundColor: const Color(0xFFC5C4B9),
-            disabledForegroundColor: Colors.black,
+            disabledBackgroundColor: const Color.fromARGB(255, 49, 49, 48),
+            disabledForegroundColor: const Color.fromARGB(255, 151, 150, 150),
           ),
           child: icon != null
               ? Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      text,
+                      text ?? '',
                       style: const TextStyle(fontSize: 24),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(width: 10),
                     Icon(
                       icon,
-                      size: 35,
+                      size: 32,
                       color: Colors.black,
                     ),
                   ],
                 )
               : Text(
-                  text,
+                  text ?? '',
                   style: TextStyle(fontSize: fontSize),
                   textAlign: TextAlign.center,
                 ),

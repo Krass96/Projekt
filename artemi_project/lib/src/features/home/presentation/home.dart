@@ -17,7 +17,7 @@ class DashBoard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              spacing: 16,
+              spacing: 10,
               children: [
                 DashboardBar(),
                 SearchArtistBar(),
