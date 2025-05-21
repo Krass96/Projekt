@@ -44,12 +44,16 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          TextField(
+          TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            cursorColor: Theme.of(context).colorScheme.error,
+            style: Theme.of(context).textTheme.titleSmall,
+            validator: MyInputDecoration.emailValidator,
             controller: usernameController,
             decoration: MyInputDecoration.styled(
               context: context,
-              hintText: 'Enter your mail or username',
-              labelText: 'Email / Username',
+              hintText: 'Enter your mail@.com',
+              labelText: 'Email',
             ),
           ),
           const SizedBox(height: 20),

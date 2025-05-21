@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import 'package:artemi_project/src/theme/palette.dart';
 
 class MyInputDecoration {
@@ -30,6 +28,13 @@ class MyInputDecoration {
       prefixIcon: prefixIcon,
     );
   }
+
+  static String? emailValidator(String? value) {
+    if (value == null || !value.contains('@')) {
+      return 'Please enter a valid email';
+    }
+    return null;
+  }
 }
 
 class PasswordField extends StatelessWidget {
@@ -52,26 +57,56 @@ class PasswordField extends StatelessWidget {
     this.suffixIcon,
   });
 
+  String? passwordValidator(String? value) {
+    if (value == null || value.length < 6) {
+      return 'Password must be at least 6 characters';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      obscureText: showVisibility ? obscureText : true,
-      cursorColor: Palette.artGold,
-      style: TextStyle(color: Palette.textColor),
+    return TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: passwordValidator,
+        controller: controller,
+        obscureText: showVisibility ? obscureText : true,
+        cursorColor: Palette.artGold,
+        style: TextStyle(color: Palette.textColor),
+        decoration: MyInputDecoration.styled(
+          context: context,
+          labelText: labelText,
+          hintText: hintText,
+          suffixIcon: showVisibility
+              ? IconButton(
+                  icon: Icon(
+                    obscureText ? Icons.visibility_off : Icons.visibility,
+                    color: Palette.artGold,
+                  ),
+                  onPressed: onToggleVisibility,
+                )
+              : IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+        ));
+  }
+}
+
+class EmailField extends StatelessWidget {
+  final TextEditingController usernameController;
+
+  const EmailField({super.key, required this.usernameController});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      cursorColor: Theme.of(context).colorScheme.error,
+      style: Theme.of(context).textTheme.titleSmall,
+      validator: MyInputDecoration.emailValidator,
+      controller: usernameController,
       decoration: MyInputDecoration.styled(
         context: context,
-        labelText: labelText,
-        hintText: hintText,
-        suffixIcon: showVisibility
-            ? IconButton(
-                icon: Icon(
-                  obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Palette.artGold,
-                ),
-                onPressed: onToggleVisibility,
-              )
-            : IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+        hintText: 'Enter your mail@.com',
+        labelText: 'Email',
       ),
     );
   }

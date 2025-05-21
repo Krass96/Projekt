@@ -11,6 +11,19 @@ class AppTheme {
 
       // TextField
       inputDecorationTheme: InputDecorationTheme(
+        errorStyle: TextStyle(
+          color: Palette.errorColor,
+          fontSize: 12,
+          fontStyle: FontStyle.italic,
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(24),
+          borderSide: BorderSide(color: Palette.errorColor),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(24),
+          borderSide: BorderSide(color: Palette.errorColor, width: 2),
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24),
           borderSide: BorderSide(color: Palette.textColor),

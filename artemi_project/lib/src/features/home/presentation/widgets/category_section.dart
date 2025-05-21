@@ -1,5 +1,4 @@
 import 'package:artemi_project/src/theme/palette.dart';
-import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class CategorySection extends StatelessWidget {
@@ -39,7 +38,10 @@ class CategorySection extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: Text('🎵 Music',
-                    style: Theme.of(context).textTheme.bodyMedium),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(color: Colors.black)),
               ),
               OutlinedButton(
                 style: ButtonStyle(
@@ -47,7 +49,10 @@ class CategorySection extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: Text('💃 Dance',
-                    style: Theme.of(context).textTheme.bodyMedium),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(color: Colors.black)),
               ),
               OutlinedButton(
                 style: ButtonStyle(
@@ -55,7 +60,10 @@ class CategorySection extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: Text('🎨 Paint',
-                    style: Theme.of(context).textTheme.bodyMedium),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(color: Colors.black)),
               ),
               OutlinedButton(
                 style: ButtonStyle(
@@ -63,7 +71,10 @@ class CategorySection extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: Text('😄 Comedy',
-                    style: Theme.of(context).textTheme.bodyMedium),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(color: Colors.black)),
               ),
               OutlinedButton(
                 style: ButtonStyle(
@@ -71,7 +82,10 @@ class CategorySection extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: Text('🎩 Magic',
-                    style: Theme.of(context).textTheme.bodyMedium),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(color: Colors.black)),
               ),
             ],
           ),
