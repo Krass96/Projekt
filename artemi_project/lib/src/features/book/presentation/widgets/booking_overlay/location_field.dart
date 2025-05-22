@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/common/text_field.dart';
+import 'package:artemi_project/src/common/my_input_decoration.dart';
 import 'package:flutter/material.dart';
 
 class LocationField extends StatelessWidget {

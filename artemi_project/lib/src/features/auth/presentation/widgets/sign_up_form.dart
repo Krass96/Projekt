@@ -1,5 +1,7 @@
 import 'package:artemi_project/src/common/logo_widget.dart';
-import 'package:artemi_project/src/common/text_field.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/email_field.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/user_name_field.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -38,36 +40,20 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
-          controller: usernameController,
-          decoration: MyInputDecoration.styled(
-            context: context,
-            hintText: 'Enter Username',
-            labelText: 'Username',
-          ),
-        ),
+        UserNameField(usernameController: usernameController),
         const SizedBox(height: 10),
-        TextField(
-          controller: emailController,
-          decoration: MyInputDecoration.styled(
-            context: context,
-            hintText: 'Enter your email address',
-            labelText: 'Email',
-          ),
+        EmailField(
+          emailController: emailController,
         ),
         const SizedBox(height: 10),
         PasswordField(
           controller: passwordController,
-          hintText: 'Create your password',
-          labelText: 'Password',
           obscureText: _obscureText,
           onToggleVisibility: _toggleVisibility,
         ),
         const SizedBox(height: 10),
         PasswordField(
           controller: repeatPasswordController,
-          hintText: 'Repeat your password',
-          labelText: 'Repeat password',
           obscureText: _obscureText,
           onToggleVisibility: _toggleVisibility,
           showVisibility: true,

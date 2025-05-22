@@ -1,4 +1,5 @@
-import 'package:artemi_project/src/common/text_field.dart';
+import 'package:artemi_project/src/common/my_input_decoration.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 import 'package:flutter/material.dart';
 
@@ -47,8 +48,6 @@ class _ProfileDataState extends State<ProfileData> {
         PasswordField(
           controller: passwordController,
           showVisibility: false,
-          hintText: 'Change your password',
-          labelText: user.password,
           obscureText: widget._obscureText,
           onToggleVisibility: _toggleVisibility,
         ),

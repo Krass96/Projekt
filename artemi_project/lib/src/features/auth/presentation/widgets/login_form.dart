@@ -1,7 +1,8 @@
 import 'package:artemi_project/src/common/logo_widget.dart';
-import 'package:artemi_project/src/common/text_field.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/forgot_password.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/remember_me_checkbox.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/email_field.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
 import 'package:artemi_project/src/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
 
@@ -26,7 +27,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void dispose() {
-    usernameController.dispose();
+    emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -44,23 +45,12 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            cursorColor: Theme.of(context).colorScheme.error,
-            style: Theme.of(context).textTheme.titleSmall,
-            validator: MyInputDecoration.emailValidator,
-            controller: usernameController,
-            decoration: MyInputDecoration.styled(
-              context: context,
-              hintText: 'Enter your mail@.com',
-              labelText: 'Email',
-            ),
+          EmailField(
+            emailController: emailController,
           ),
           const SizedBox(height: 20),
           PasswordField(
             controller: passwordController,
-            hintText: 'Enter your password',
-            labelText: 'Password',
             obscureText: _obscureText,
             onToggleVisibility: _toggleVisibility,
           ),
