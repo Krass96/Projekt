@@ -1,21 +1,25 @@
-import 'package:artemi_project/src/common/my_input_decoration.dart';
+import 'package:artemi_project/src/theme/my_input_decoration.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 class PasswordField extends StatelessWidget {
-  final TextEditingController controller;
   final bool showVisibility;
   final bool obscureText;
   final Widget? suffixIcon;
   final VoidCallback onToggleVisibility;
+  final TextEditingController? controller;
+  final String? labelText;
+  final String? hintText;
 
   const PasswordField({
     super.key,
-    required this.controller,
     this.showVisibility = true,
     required this.obscureText,
     required this.onToggleVisibility,
     this.suffixIcon,
+    this.controller,
+    this.labelText,
+    this.hintText,
   });
 
   String? passwordValidator(String? value) {
@@ -26,46 +30,55 @@ class PasswordField extends StatelessWidget {
       return 'Password must be at least 8 characters';
     }
     if (value.contains(' ')) {
-      return 'Password cannot contain spaces " "';
+      return 'Password cannot contain spaces';
     }
-    if (value.contains(capsABC)) {
+
+    // Prüfe auf Großbuchstaben
+    if (!RegExp(r'[A-Z]').hasMatch(value)) {
       return 'Password must contain at least one uppercase letter';
     }
-    if (value.contains(nums)) {
+
+    // Prüfe auf Kleinbuchstaben
+    if (!RegExp(r'[a-z]').hasMatch(value)) {
+      return 'Password must contain at least one lowercase letter';
+    }
+
+    // Prüfe auf Zahlen
+    if (!RegExp(r'[0-9]').hasMatch(value)) {
       return 'Password must contain at least one number';
     }
-    if (value.contains(special)) {
+
+    // Prüfe auf Sonderzeichen
+    if (!RegExp(r'[!@#$%^&*()_+\[\]{}|;:,.<>?]').hasMatch(value)) {
       return 'Password must contain at least one special character';
     }
+
     return null;
   }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        autovalidateMode: AutovalidateMode.onUnfocus,
-        validator: passwordValidator,
-        controller: controller,
-        obscureText: showVisibility ? obscureText : true,
-        cursorColor: Palette.artGold,
-        style: TextStyle(color: Palette.textColor),
-        decoration: MyInputDecoration.styled(
-          context: context,
-          labelText: 'Password',
-          hintText: 'Enter your password',
-          suffixIcon: showVisibility
-              ? IconButton(
-                  icon: Icon(
-                    obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: Palette.artGold,
-                  ),
-                  onPressed: onToggleVisibility,
-                )
-              : IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-        ));
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: passwordValidator,
+      controller: controller,
+      obscureText: showVisibility ? obscureText : true,
+      cursorColor: Palette.artGold,
+      style: TextStyle(color: Palette.textColor),
+      decoration: MyInputDecoration.styled(
+        context: context,
+        labelText: labelText ?? 'Password',
+        hintText: hintText ?? 'Enter your password',
+        suffixIcon: showVisibility
+            ? IconButton(
+                icon: Icon(
+                  obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: Palette.artGold,
+                ),
+                onPressed: onToggleVisibility,
+              )
+            : null,
+      ),
+    );
   }
 }
-
-String capsABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-String nums = '0123456789';
-String special = r'!@#$%^&*()_+[]{}|;:,.<>?';

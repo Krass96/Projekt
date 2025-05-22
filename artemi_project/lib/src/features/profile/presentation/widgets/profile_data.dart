@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/common/my_input_decoration.dart';
+import 'package:artemi_project/src/theme/my_input_decoration.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +46,6 @@ class _ProfileDataState extends State<ProfileData> {
               suffixIcon: IconButton(onPressed: () {}, icon: Icon(Icons.edit))),
         ),
         PasswordField(
-          controller: passwordController,
           showVisibility: false,
           obscureText: widget._obscureText,
           onToggleVisibility: _toggleVisibility,
