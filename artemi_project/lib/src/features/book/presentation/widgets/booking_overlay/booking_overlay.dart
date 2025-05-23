@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/widgets/preis_scala.dart';
+import 'package:artemi_project/src/common/preis_scala.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/bo_divider.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/book_button.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/booking_confirm.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/widgets/nav_bar.dart';
+import 'package:artemi_project/src/common/nav_bar.dart';
 import 'package:artemi_project/src/data/mock_database_repository.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
-import 'package:artemi_project/src/widgets/my_app_bar.dart';
+import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
-import 'package:artemi_project/src/widgets/preis_scala.dart';
+import 'package:artemi_project/src/common/preis_scala.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/genre_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/save_button.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/user_name.dart';

@@ -1,13 +1,20 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:artemi_project/src/common/logo_widget.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
-import 'package:artemi_project/src/widgets/button.dart';
+import 'package:artemi_project/src/common/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'start_one.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  bool _showSecond = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +25,42 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                width: 10,
-              ),
-              AnimatedTextKit(animatedTexts: [
-                TyperAnimatedText('Welcome to Artemi',
+              const SizedBox(width: 10),
+              AnimatedTextKit(
+                animatedTexts: [
+                  TyperAnimatedText(
+                    'Welcome to Artemi',
                     curve: Curves.easeIn,
-                    textStyle: Theme.of(context).textTheme.displaySmall)
-              ]),
+                    textStyle: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ],
+                onFinished: () {
+                  setState(() {
+                    _showSecond = true;
+                  });
+                },
+                isRepeatingAnimation: false,
+              ),
               const SizedBox(height: 40),
               const LogoWidget(width: 200),
               const SizedBox(height: 30),
-              AnimatedTextKit(animatedTexts: [
-                TyperAnimatedText('"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
-                    curve: Curves.easeIn)
-              ]),
+              if (_showSecond)
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TyperAnimatedText(
+                      '"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
+                      curve: Curves.easeIn,
+                    ),
+                  ],
+                  isRepeatingAnimation: false,
+                ),
               const SizedBox(height: 10),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(36.0),
-          child: Button(
+          child: MyButton(
             width: 250,
             height: 60,
             text: 'Get Started',

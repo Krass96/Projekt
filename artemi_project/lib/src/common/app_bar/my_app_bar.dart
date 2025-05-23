@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/common/back_chevron.dart';
+import 'package:artemi_project/src/common/app_bar/back_chevron.dart';
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {

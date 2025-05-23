@@ -3,7 +3,7 @@ import 'package:artemi_project/src/features/auth/presentation/widgets/forgot_pas
 import 'package:artemi_project/src/features/auth/presentation/widgets/remember_me_checkbox.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/email_field.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
-import 'package:artemi_project/src/widgets/button.dart';
+import 'package:artemi_project/src/common/my_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -135,7 +135,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             Padding(
               padding: const EdgeInsets.all(24.0),
-              child: Button(
+              child: MyButton(
                 width: 200,
                 fontSize: 24,
                 text: 'Login',

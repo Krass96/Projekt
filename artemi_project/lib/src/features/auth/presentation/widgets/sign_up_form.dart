@@ -3,7 +3,7 @@ import 'package:artemi_project/src/features/auth/presentation/widgets/text_field
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/repeat_password.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/user_name_field.dart';
-import 'package:artemi_project/src/widgets/button.dart';
+import 'package:artemi_project/src/common/my_button.dart';
 import 'package:flutter/material.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -184,7 +184,7 @@ class _SignUpFormState extends State<SignUpForm> {
             passwordController: _passwordController,
           ),
           const SizedBox(height: 30),
-          Button(
+          MyButton(
             text: 'Create',
             width: 200,
             fontSize: 24,

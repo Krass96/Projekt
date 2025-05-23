@@ -2,7 +2,7 @@ import 'package:artemi_project/src/features/book/presentation/favorites_screen.d
 import 'package:artemi_project/src/features/auth/presentation/login_overlay.dart';
 import 'package:artemi_project/src/features/auth/presentation/sing_up_overlay.dart';
 import 'package:artemi_project/src/features/home/presentation/home.dart';
-import 'package:artemi_project/src/widgets/button.dart';
+import 'package:artemi_project/src/common/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -19,14 +19,14 @@ class LoginButtons extends StatelessWidget {
         spacing: 20,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Button(
+          MyButton(
             text: 'Log In',
             fontSize: 22,
             width: 300,
             height: 50,
             onPressed: () => showLoginBottomSheet(context),
           ),
-          Button(
+          MyButton(
             text: 'Sign Up',
             fontSize: 22,
             width: 300,

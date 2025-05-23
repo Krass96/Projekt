@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/common/back_chevron.dart';
+import 'package:artemi_project/src/common/app_bar/back_chevron.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/start_two.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_cards.dart';
 import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_scala.dart';
-import 'package:artemi_project/src/widgets/button.dart';
+import 'package:artemi_project/src/common/my_button.dart';
 
 class StartOne extends StatelessWidget {
   const StartOne({super.key});
@@ -50,7 +50,7 @@ class StartOne extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Button(
+                MyButton(
                     width: 150,
                     text: 'Continue',
                     fontSize: 20,

@@ -1,7 +1,7 @@
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
-class Button extends StatelessWidget {
+class MyButton extends StatelessWidget {
   final String? text;
   final IconData? icon;
   final Alignment alignment;
@@ -12,7 +12,7 @@ class Button extends StatelessWidget {
   final Color backgroundColor;
   final Color foregroundColor;
 
-  const Button({
+  const MyButton({
     this.text,
     this.icon,
     this.alignment = Alignment.bottomCenter,

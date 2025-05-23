@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/widgets/nav_bar.dart';
+import 'package:artemi_project/src/common/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/home/presentation/widgets/dashboard_bar.dart';
 import 'package:artemi_project/src/features/home/presentation/widgets/artists_carousel.dart';
