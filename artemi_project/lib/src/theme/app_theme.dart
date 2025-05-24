@@ -14,6 +14,8 @@ class AppTheme {
         errorStyle: TextStyle(
           color: Palette.errorColor,
           fontSize: 12,
+          fontWeight: FontWeight.w500,
+          fontFamily: GoogleFonts.poppins().fontFamily,
           fontStyle: FontStyle.italic,
         ),
         errorBorder: OutlineInputBorder(

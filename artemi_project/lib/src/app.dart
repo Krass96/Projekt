@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/data/database_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/features/artist_galery/galery.dart';
@@ -10,7 +11,8 @@ import 'package:artemi_project/src/theme/app_theme.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final DatabaseRepository db;
+  const App(this.db, {super.key});
 
   @override
   Widget build(BuildContext context) {

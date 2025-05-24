@@ -40,7 +40,7 @@ class RepeatPasswordField extends StatelessWidget {
       decoration: MyInputDecoration.styled(
         context: context,
         labelText: 'Confirm Password',
-        hintText: 'Re-enter your password',
+        hintText: 'Repeat your password',
         suffixIcon: showVisibility
             ? IconButton(
                 icon: Icon(

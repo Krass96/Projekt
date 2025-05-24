@@ -134,16 +134,16 @@ class _SignUpFormState extends State<SignUpForm> {
       return 'Password cannot contain spaces';
     }
     if (!RegExp(r'[A-Z]').hasMatch(value)) {
-      return 'Password must contain at least one uppercase letter';
+      return 'Password must contain at least\none uppercase(A) letter';
     }
     if (!RegExp(r'[a-z]').hasMatch(value)) {
-      return 'Password must contain at least one lowercase letter';
+      return 'Password must contain at least\none lowercase(a) letter';
     }
     if (!RegExp(r'[0-9]').hasMatch(value)) {
-      return 'Password must contain at least one number';
+      return 'Password must contain at least\none number';
     }
     if (!RegExp(r'[!@#$%^&*()_+\[\]{}|;:,.<>?]').hasMatch(value)) {
-      return 'Password must contain at least one special character';
+      return 'Password must contain at least\none special character (!@#\$%^&*)';
     }
     return null;
   }
@@ -162,7 +162,7 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.onUnfocus,
       child: Column(
         children: [
           UserNameField(controller: _userNameController),
@@ -190,7 +190,8 @@ class _SignUpFormState extends State<SignUpForm> {
             fontSize: 24,
             onPressed: _isButtonEnabled
                 ? () {
-                    if (formKey.currentState!.validate()) {
+                    final bool isFormValid = formKey.currentState!.validate();
+                    if (isFormValid) {
                       Navigator.pushNamed(context, '/dashboard');
                     }
                   }

@@ -33,24 +33,20 @@ class PasswordField extends StatelessWidget {
       return 'Password cannot contain spaces';
     }
 
-    // Prüfe auf Großbuchstaben
     if (!RegExp(r'[A-Z]').hasMatch(value)) {
-      return 'Password must contain at least one uppercase letter';
+      return '...one uppercase(A) letter';
     }
 
-    // Prüfe auf Kleinbuchstaben
     if (!RegExp(r'[a-z]').hasMatch(value)) {
-      return 'Password must contain at least one lowercase letter';
+      return '...one lowercase(a) letter';
     }
 
-    // Prüfe auf Zahlen
     if (!RegExp(r'[0-9]').hasMatch(value)) {
-      return 'Password must contain at least one number';
+      return '...one number';
     }
 
-    // Prüfe auf Sonderzeichen
     if (!RegExp(r'[!@#$%^&*()_+\[\]{}|;:,.<>?]').hasMatch(value)) {
-      return 'Password must contain at least one special character';
+      return '...one special character (!@#\$%^&*)';
     }
 
     return null;

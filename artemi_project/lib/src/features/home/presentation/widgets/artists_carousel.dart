@@ -36,10 +36,10 @@ class _ArtistCardCarouselState extends State<ArtistCardCarousel> {
         CarouselSlider.builder(
           carouselController: _carouselController,
           options: CarouselOptions(
-            height: 318,
+            height: 320,
             enlargeFactor: 0,
             viewportFraction: 0.85,
-            enlargeCenterPage: false,
+            enlargeCenterPage: true,
             enableInfiniteScroll: false,
             onPageChanged: (index, reason) {
               setState(() {

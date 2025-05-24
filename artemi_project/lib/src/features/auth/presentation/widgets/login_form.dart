@@ -45,12 +45,10 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _validateForm() {
-    // Prüfe ob beide Felder ausgefüllt sind
     final isEmailFilled = _emailController.text.isNotEmpty;
     final isPasswordFilled = _passwordController.text.isNotEmpty;
 
     if (isEmailFilled && isPasswordFilled) {
-      // Manuelle Validierung ohne das Form zu triggern
       final emailError = _validateEmail(_emailController.text);
       final passwordError = _validatePassword(_passwordController.text);
 
