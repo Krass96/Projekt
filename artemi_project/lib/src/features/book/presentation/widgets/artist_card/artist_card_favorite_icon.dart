@@ -18,7 +18,7 @@ class ArtistCardFavoriteIcon extends StatelessWidget {
       left: 15,
       child: IconButton(
         icon: Icon(
-          isFavorite ? Icons.favorite : Icons.favorite_border,
+          isFavorite ? Icons.favorite_border : Icons.favorite,
           color: Palette.artGold,
           size: 30,
         ),
