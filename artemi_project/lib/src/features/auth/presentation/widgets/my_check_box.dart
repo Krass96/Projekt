@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 
-class RememberMeCheckbox extends StatefulWidget {
-  const RememberMeCheckbox({super.key});
+class MyCheckBox extends StatefulWidget {
+  final String label;
+  const MyCheckBox({super.key, required this.label});
 
   @override
-  State<RememberMeCheckbox> createState() => _RememberMeCheckboxState();
+  State<MyCheckBox> createState() => _MyCheckBoxState();
 }
 
-class _RememberMeCheckboxState extends State<RememberMeCheckbox> {
+class _MyCheckBoxState extends State<MyCheckBox> {
   bool _rememberMe = false;
 
   @override
@@ -26,7 +27,7 @@ class _RememberMeCheckboxState extends State<RememberMeCheckbox> {
           activeColor: Palette.artGold,
         ),
         Text(
-          'Remember Me',
+          widget.label,
           style: Theme.of(context)
               .textTheme
               .titleSmall

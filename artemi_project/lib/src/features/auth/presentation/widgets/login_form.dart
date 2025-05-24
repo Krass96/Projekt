@@ -1,6 +1,6 @@
 import 'package:artemi_project/src/common/logo_widget.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/forgot_password.dart';
-import 'package:artemi_project/src/features/auth/presentation/widgets/remember_me_checkbox.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/my_check_box.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/email_field.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
 import 'package:artemi_project/src/common/my_button.dart';
@@ -127,7 +127,7 @@ class _LoginFormState extends State<LoginForm> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                RememberMeCheckbox(),
+                MyCheckBox(label: 'Remember Me'),
                 ForgotPassword(),
               ],
             ),

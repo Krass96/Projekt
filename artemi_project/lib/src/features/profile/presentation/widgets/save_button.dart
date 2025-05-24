@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/features/auth/presentation/widgets/my_check_box.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
@@ -18,17 +19,13 @@ class SaveButton extends StatelessWidget {
             child: Material(
               color: Colors.transparent,
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade800,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Text(
-                  'Saved ✅',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade800,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: MyCheckBox(label: 'Save')),
             ),
           ),
         );
