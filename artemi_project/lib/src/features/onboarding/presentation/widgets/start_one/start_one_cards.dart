@@ -1,5 +1,5 @@
-import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_cards_row.dart';
-import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one_cards_title.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one/start_one_cards_row.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/widgets/start_one/start_one_cards_title.dart';
 import 'package:flutter/material.dart';
 
 class StartOneCards extends StatelessWidget {

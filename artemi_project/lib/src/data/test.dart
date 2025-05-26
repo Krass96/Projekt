@@ -12,6 +12,8 @@ void main() {
     rating: 4.2,
     genre: Categories.paint,
     price: 500,
+    artistDescription:
+        ' Leonardo da Vinci was an Italian polymath of the High Renaissance who is widely considered one of the greatest painters of all time and a universal genius.',
   );
   ArtistCardDb b = ArtistCardDb(
     profilePicUrl: null,
@@ -20,6 +22,8 @@ void main() {
     rating: 3.6,
     genre: Categories.music,
     price: 1000,
+    artistDescription:
+        'Wolfgang Amadeus Mozart was a prolific and influential composer of the Classical era.',
   );
   ArtistCardDb c = ArtistCardDb(
     profilePicUrl: null,
@@ -28,6 +32,8 @@ void main() {
     rating: 5.0,
     genre: Categories.comedy,
     price: 200,
+    artistDescription:
+        'Charlie Chaplin was a comic actor, filmmaker, and composer who is best remembered for his silent films.',
   );
 
   // a.showArtistName();

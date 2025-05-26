@@ -1,14 +1,14 @@
-import 'package:artemi_project/src/data/database_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/common/my_scaffold.dart';
-import 'package:artemi_project/src/features/artist_galery/galery.dart';
-import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
-import 'package:artemi_project/src/features/home/presentation/home.dart';
-import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
-import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
-import 'package:artemi_project/src/features/profile/presentation/my_stage.dart';
 import 'package:artemi_project/src/theme/app_theme.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
+import 'package:artemi_project/src/common/my_scaffold.dart';
+import 'package:artemi_project/src/data/database_repository.dart';
+import 'package:artemi_project/src/features/home/presentation/home.dart';
+import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
+import 'package:artemi_project/src/features/profile/presentation/my_stage.dart';
+import 'package:artemi_project/src/features/events/presentation/my_events.dart';
+import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
+import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
 
 class App extends StatelessWidget {
   final DatabaseRepository db;
@@ -33,7 +33,7 @@ class App extends StatelessWidget {
       routes: {
         '/dashboard': (context) => DashBoard(),
         '/favorites': (context) => Favorites(),
-        '/events': (context) => Galery(),
+        '/events': (context) => MyEvents(),
         '/mystage': (context) => MyStage(
               user: UserProfile(
                   id: '1',
