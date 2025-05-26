@@ -8,6 +8,7 @@ class ArtistCardDb {
   final bool isFavorit;
   final double rating;
   final int price;
+  final String artistDescription;
 
   // Konstruktor
   ArtistCardDb({
@@ -17,11 +18,13 @@ class ArtistCardDb {
     required this.artistName,
     required this.rating,
     required this.price,
+    required this.artistDescription,
   });
 
   ArtistCardDb copyWith({
     String? profilePicUrl,
     bool? isFavorit,
+    String? artistDescription,
     String? artistName,
     double? rating,
     Categories? genre,
@@ -34,6 +37,7 @@ class ArtistCardDb {
       rating: rating ?? this.rating,
       genre: genre ?? this.genre,
       price: price ?? this.price,
+      artistDescription: artistDescription ?? this.artistDescription,
     );
   }
 }
@@ -56,6 +60,7 @@ List<ArtistCardDb> getArtists() {
       rating: 4.9,
       genre: Categories.paint,
       price: 800,
+      artistDescription: 'A master of the Renaissance',
     ),
     ArtistCardDb(
       profilePicUrl: 'assets/images/music.png',
@@ -64,11 +69,13 @@ List<ArtistCardDb> getArtists() {
       rating: 4.3,
       genre: Categories.music,
       price: 1200,
+      artistDescription: 'A prolific and influential composer',
     ),
     ArtistCardDb(
       profilePicUrl: 'assets/images/comedy.jpg',
       isFavorit: false,
       artistName: 'Charlie',
+      artistDescription: 'A stand-up comedian and actor',
       rating: 4.5,
       genre: Categories.paint,
       price: 100,
@@ -77,6 +84,7 @@ List<ArtistCardDb> getArtists() {
       profilePicUrl: 'assets/images/magic.jpg',
       isFavorit: false,
       artistName: 'Houdini',
+      artistDescription: 'A famous magician and escapologist',
       rating: 3.5,
       genre: Categories.magic,
       price: 200,
@@ -85,6 +93,7 @@ List<ArtistCardDb> getArtists() {
       profilePicUrl: 'assets/images/danc.jpg',
       isFavorit: false,
       artistName: 'Sara',
+      artistDescription: 'A talented dancer and choreographer',
       rating: 4.1,
       genre: Categories.dance,
       price: 500,
