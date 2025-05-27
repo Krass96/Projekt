@@ -24,7 +24,9 @@ class GenreDialog extends StatelessWidget {
           children: [
             Text(
               'Set your Genre  🧑‍🎨',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             Divider(
               color: Color(0xABFFFFFF),

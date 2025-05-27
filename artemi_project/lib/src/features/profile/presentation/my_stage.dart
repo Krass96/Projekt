@@ -10,7 +10,7 @@ import 'package:artemi_project/src/features/profile/presentation/widgets/save_bu
 import 'package:artemi_project/src/features/profile/presentation/widgets/user_name.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_data.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/cover_photo.dart';
-import 'package:artemi_project/src/features/profile/presentation/widgets/availability_dialog.dart';
+import 'package:artemi_project/src/features/profile/presentation/widgets/status_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
 
 class MyStage extends StatefulWidget {
@@ -57,7 +57,7 @@ class _MyStageState extends State<MyStage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AvailabilityDialog(
+        return StatusDialog(
           options: status,
           selectedOption: _selectedAvailability,
           onSelect: (value) {

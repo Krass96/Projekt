@@ -17,7 +17,6 @@ class MyEvents extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Divider(thickness: 2, color: Colors.white),
           Expanded(
             child: ListView.builder(
               itemCount: 10,

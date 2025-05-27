@@ -48,8 +48,9 @@ class _StartTwoCardsRowState extends State<StartTwoCardsRow> {
             ),
             Text('or',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: Palette.artGold,
-                    )),
+                    color: Palette.artGold,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold)),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 24, 0, 0),
               child: GestureDetector(
@@ -87,7 +88,9 @@ class _StartTwoCardsRowState extends State<StartTwoCardsRow> {
           child: widget.selected != null
               ? Row(
                   key: ValueKey(widget.selected),
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: widget.selected == 0
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.end,
                   children: [
                     if (widget.selected == 0)
                       Text('Artist',
@@ -95,8 +98,6 @@ class _StartTwoCardsRowState extends State<StartTwoCardsRow> {
                               .textTheme
                               .displaySmall
                               ?.copyWith(color: Palette.artGold)),
-                    if (widget.selected == 1)
-                      Text('', style: Theme.of(context).textTheme.labelMedium),
                     if (widget.selected == 1)
                       Text('User',
                           style: Theme.of(context)

@@ -47,7 +47,10 @@ class _BookAndDmState extends State<BookAndDm> {
                 ),
                 label: Text(
                   'Book',
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -73,7 +76,9 @@ class _BookAndDmState extends State<BookAndDm> {
                 ),
                 label: Text(
                   'DM',
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ),
             ),

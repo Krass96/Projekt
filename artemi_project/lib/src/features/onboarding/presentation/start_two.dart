@@ -43,16 +43,18 @@ class _StartTwoState extends State<StartTwo> {
               selected: selectedRole,
               onSelected: onRoleSelected,
             ),
-            SizedBox(height: 0),
+            SizedBox(height: 20),
             Image.asset('assets/images/you_are.png'),
-            SizedBox(height: 50),
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
-                  onPressed: () => Navigator.pushNamed(
+                  onPressed: () => Navigator.push(
                     context,
-                    '/login',
+                    MaterialPageRoute(
+                      builder: (context) => const Login(),
+                    ),
                   ),
                   child: Text(
                     'Skip',
@@ -78,6 +80,7 @@ class _StartTwoState extends State<StartTwo> {
                 ),
               ],
             ),
+            SizedBox(height: 30),
           ],
         ),
       ),

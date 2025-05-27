@@ -12,7 +12,7 @@ class UserName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       name,
-      style: Theme.of(context).textTheme.headlineSmall,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 }

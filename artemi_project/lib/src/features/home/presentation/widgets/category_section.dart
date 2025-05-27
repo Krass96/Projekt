@@ -1,6 +1,5 @@
-import 'package:artemi_project/src/features/home/presentation/widgets/category_button.dart';
-import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:artemi_project/src/features/home/presentation/widgets/category_button.dart';
 
 class CategorySection extends StatelessWidget {
   const CategorySection({
@@ -17,7 +16,10 @@ class CategorySection extends StatelessWidget {
           children: [
             Text(
               'Category',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(fontSize: 20),
             ),
             // IconButton(
             //   onPressed: () {},

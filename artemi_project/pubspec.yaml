@@ -43,6 +43,7 @@ flutter_icons:
 
 flutter_native_splash:
   image: 'assets/splash_screen/splash.png'
+  duration: 3
   android: true
   ios: true
   fullscreen: true

@@ -30,7 +30,6 @@ class _FavoritesState extends State<Favorites> {
       ),
       body: Column(
         children: [
-          Divider(thickness: 2, color: Colors.white),
           ArtistCardsList(artistDataList: artists),
         ],
       ),

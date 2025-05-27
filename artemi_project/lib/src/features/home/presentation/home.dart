@@ -31,7 +31,10 @@ class DashBoard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Trend Artists',
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(fontSize: 20),
                       ),
                     ),
                     ArtistCardCarousel(),

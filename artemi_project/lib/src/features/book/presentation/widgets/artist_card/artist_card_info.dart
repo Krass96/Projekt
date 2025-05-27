@@ -39,10 +39,8 @@ class _ArtistCardInfoState extends State<ArtistCardInfo> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(widget.name,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium
-                      ?.copyWith(color: Palette.artGold)),
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      color: Palette.artGold, fontWeight: FontWeight.bold)),
               Row(
                 children: [
                   Text(

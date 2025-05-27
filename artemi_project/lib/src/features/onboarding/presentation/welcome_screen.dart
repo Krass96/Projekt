@@ -59,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(36.0),
+          padding: const EdgeInsets.all(50.0),
           child: MyButton(
             width: 250,
             height: 60,

@@ -13,12 +13,12 @@ class StartOneCardsTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 250.0,
-      height: 32.83,
+      height: 30,
       child: Text(title,
           textAlign: TextAlign.center,
           style: Theme.of(context)
               .textTheme
-              .headlineSmall
+              .displaySmall
               ?.copyWith(color: Palette.artGold)),
     );
   }

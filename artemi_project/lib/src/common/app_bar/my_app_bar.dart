@@ -31,10 +31,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: const BackChevron(),
       title: Text(
         title,
-        style: Theme.of(context)
-            .textTheme
-            .headlineSmall
-            ?.copyWith(fontStyle: FontStyle.normal),
+        style:
+            Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 24),
       ),
     );
   }

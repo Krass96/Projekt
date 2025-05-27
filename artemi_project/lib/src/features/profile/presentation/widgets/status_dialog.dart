@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AvailabilityDialog extends StatelessWidget {
+class StatusDialog extends StatelessWidget {
   final List<String> options;
   final String selectedOption;
   final Function(String) onSelect;
 
-  const AvailabilityDialog({
+  const StatusDialog({
     super.key,
     required this.options,
     required this.selectedOption,
@@ -24,7 +24,9 @@ class AvailabilityDialog extends StatelessWidget {
           children: [
             Text(
               'Set your Status 🗓️',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             Divider(
               color: const Color(0xABFFFFFF),
