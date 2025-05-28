@@ -22,25 +22,25 @@ class _NavBarState extends State<NavBar> {
         children: [
           _buildNavBarItem(
             context,
-            icon: Icons.home_filled,
+            Icons.home_filled,
             label: 'Dashboard',
             routeName: '/dashboard',
           ),
           _buildNavBarItem(
             context,
-            icon: Icons.event,
+            Icons.event,
             label: 'My Events',
             routeName: '/events',
           ),
           _buildNavBarItem(
             context,
-            icon: Icons.favorite,
+            Icons.favorite,
             label: 'Favorites',
             routeName: '/favorites',
           ),
           _buildNavBarItem(
             context,
-            icon: Icons.person,
+            Icons.person,
             label: 'My Stage',
             routeName: '/mystage',
           ),
@@ -49,18 +49,15 @@ class _NavBarState extends State<NavBar> {
     );
   }
 
-  Widget _buildNavBarItem(BuildContext context,
-      {required IconData icon,
-      required String label,
-      required String routeName}) {
+  Widget _buildNavBarItem(BuildContext context, IconData? icon,
+      {required String label, required String routeName}) {
     final String? currentRoute = ModalRoute.of(context)?.settings.name;
     final bool isActive = currentRoute == routeName;
 
     return GestureDetector(
       onTap: () {
         if (!isActive) {
-          Navigator.pushNamedAndRemoveUntil(
-              context, routeName, (route) => false);
+          Navigator.pushNamed(context, routeName);
         }
       },
       child: Column(
