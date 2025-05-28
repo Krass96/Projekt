@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
 import 'package:flutter/material.dart';
 
 class SearchArtistBar extends StatelessWidget {
@@ -5,6 +6,8 @@ class SearchArtistBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<ArtistCardDb> allArtists = getArtists();
+
     return SearchAnchor.bar(
       barHintText: 'Find your Artist',
       barLeading: const Icon(Icons.search),
@@ -13,22 +16,19 @@ class SearchArtistBar extends StatelessWidget {
       ),
       suggestionsBuilder: (context, controller) {
         final query = controller.text.toLowerCase();
-        final allArtists = [
-          'Varnaliev',
-          'Luna Lumen',
-          'DJ Nova',
-          'Mister Magic',
-          'Karma Kicks'
-        ];
         final results = allArtists
-            .where((artist) => artist.toLowerCase().contains(query))
+            .where((artist) => artist.artistName.toLowerCase().contains(query))
             .toList();
-
         return results.map((artist) {
           return ListTile(
-            title: Text(artist),
+            leading: artist.profilePicUrl != null
+                ? CircleAvatar(
+                    backgroundImage: AssetImage(artist.profilePicUrl!),
+                  )
+                : null,
+            title: Text(artist.artistName),
             onTap: () {
-              controller.text = artist;
+              controller.text = artist.artistName;
             },
           );
         }).toList();

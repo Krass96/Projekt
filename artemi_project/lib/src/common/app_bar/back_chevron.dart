@@ -9,12 +9,13 @@ class BackChevron extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: const Icon(
-        LucideIcons.chevronLeft,
-        color: Color(0xFFFFEE32),
-        size: 40,
-      ),
-      onPressed: () => Navigator.of(context).pop(),
-    );
+        icon: const Icon(
+          LucideIcons.chevronLeft,
+          color: Color(0xFFFFEE32),
+          size: 40,
+        ),
+        onPressed: () {
+          Navigator.of(context).pop();
+        });
   }
 }

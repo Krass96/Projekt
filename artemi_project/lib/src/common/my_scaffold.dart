@@ -16,7 +16,7 @@ class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       appBar: appBar,
       bottomNavigationBar: bottomNavigationBar,
       body: Stack(

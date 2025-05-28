@@ -15,12 +15,7 @@ class _NavBarState extends State<NavBar> {
       width: double.infinity,
       height: 100,
       decoration: BoxDecoration(
-        color: Colors.black,
-        border: Border.all(color: const Color(0x8CFFFFFF)),
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
-        ),
+        color: Colors.transparent,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -64,7 +59,8 @@ class _NavBarState extends State<NavBar> {
     return GestureDetector(
       onTap: () {
         if (!isActive) {
-          Navigator.pushReplacementNamed(context, routeName);
+          Navigator.pushNamedAndRemoveUntil(
+              context, routeName, (route) => false);
         }
       },
       child: Column(

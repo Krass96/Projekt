@@ -19,7 +19,7 @@ class StartOneCardsTitle extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .displaySmall
-              ?.copyWith(color: Palette.artGold)),
+              ?.copyWith(color: Palette.artGold, fontSize: 24)),
     );
   }
 }

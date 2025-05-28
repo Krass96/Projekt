@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:artemi_project/src/common/logo_widget.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
 import 'package:artemi_project/src/common/my_button.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'start_one.dart';
@@ -31,7 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   TyperAnimatedText(
                     'Welcome to Artemi',
                     curve: Curves.easeIn,
-                    textStyle: Theme.of(context).textTheme.displaySmall,
+                    textStyle: Theme.of(context).textTheme.displayMedium,
                   ),
                 ],
                 onFinished: () {
@@ -49,6 +50,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   animatedTexts: [
                     TyperAnimatedText(
                       '"CONNECTING ARTIST AND EVENTS, EASY PEASY"',
+                      textStyle: Theme.of(context)
+                          .textTheme
+                          .titleSmall
+                          ?.copyWith(
+                              color: Palette.textColor,
+                              fontStyle: FontStyle.italic),
                       curve: Curves.easeIn,
                     ),
                   ],
