@@ -4,19 +4,21 @@ import 'package:artemi_project/src/data/mock_database_repository.dart';
 
 abstract class DatabaseRepository {
   // Benutzer erstellen und löschen
-  void createUser(UserProfile user);
-  UserProfile getUser(String id);
-  void deleteUser(String userId);
+  Future<void> createUser(UserProfile user);
+  Future<void> deleteUser(String userId);
+
+  // User aufrufen
+  Future<UserProfile> getUser(String id);
 
   // Künstlerprofil erstellen und löschen
-  void createArtist(ArtistCardDb artist);
-  void deleteArtist(String artistId);
+  Future<void> createArtist(ArtistCardDb artist);
+  Future<void> deleteArtist(String artistId);
 }
 
 void main() {
   MockDatabaseRepository mockDatabaseRepository = MockDatabaseRepository();
 
-  // User erstellen und löschen
+  // User erstellen und löschen Beispiel
 
   UserProfile a = UserProfile(
     id: '111',

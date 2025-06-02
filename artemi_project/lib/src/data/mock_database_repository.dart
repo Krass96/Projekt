@@ -55,22 +55,26 @@ class MockDatabaseRepository implements DatabaseRepository {
   final List<Button> buttons = [];
 
   @override
-  void createUser(UserProfile appUser) {
+  Future<void> createUser(UserProfile appUser) async {
+    await Future.delayed(Duration(seconds: 3));
     _userList.add(appUser);
   }
 
   @override
-  UserProfile getUser(String id) {
+  Future<UserProfile> getUser(String id) async {
+    await Future.delayed(Duration(seconds: 3));
     return _userList.firstWhere((user) => user.id == id);
   }
 
   @override
-  void deleteUser(String userId) {
+  Future<void> deleteUser(String userId) async {
+    await Future.delayed(Duration(seconds: 3));
     _userList.removeWhere((user) => user.id == userId);
   }
 
   @override
-  void createArtist(ArtistCardDb artist) {
+  Future<void> createArtist(ArtistCardDb artist) async {
+    await Future.delayed(Duration(seconds: 3));
     final exists = artists.any((a) => a.artistName == artist.artistName);
     if (!exists) {
       artists.add(artist);
@@ -78,7 +82,8 @@ class MockDatabaseRepository implements DatabaseRepository {
   }
 
   @override
-  void deleteArtist(String artistId) {
+  Future<void> deleteArtist(String artistId) async {
+    await Future.delayed(Duration(seconds: 3));
     artists.removeWhere((artist) => artist.artistName == artistId);
   }
 }
