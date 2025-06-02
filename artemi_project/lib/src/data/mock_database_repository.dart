@@ -7,6 +7,7 @@ class MockDatabaseRepository implements DatabaseRepository {
   final List<UserProfile> _userList = [];
   final List<ArtistCardDb> artists = [
     ArtistCardDb(
+      artistId: '1',
       profilePicUrl: 'assets/images/paint.jpg',
       isFavorit: true,
       artistName: 'Leonardo',
@@ -16,6 +17,7 @@ class MockDatabaseRepository implements DatabaseRepository {
       price: 800,
     ),
     ArtistCardDb(
+      artistId: '2',
       profilePicUrl: 'assets/images/music.png',
       isFavorit: true,
       artistName: 'Mozart',
@@ -25,6 +27,7 @@ class MockDatabaseRepository implements DatabaseRepository {
       price: 1200,
     ),
     ArtistCardDb(
+      artistId: '3',
       profilePicUrl: 'assets/images/comedy.jpg',
       isFavorit: true,
       artistName: 'Charlie',
@@ -34,6 +37,7 @@ class MockDatabaseRepository implements DatabaseRepository {
       price: 100,
     ),
     ArtistCardDb(
+      artistId: '4',
       profilePicUrl: 'assets/images/magic.jpg',
       isFavorit: true,
       artistName: 'Houdini',
@@ -43,6 +47,7 @@ class MockDatabaseRepository implements DatabaseRepository {
       price: 200,
     ),
     ArtistCardDb(
+      artistId: '5',
       profilePicUrl: 'assets/images/danc.jpg',
       isFavorit: true,
       artistName: 'Sara',
@@ -85,5 +90,11 @@ class MockDatabaseRepository implements DatabaseRepository {
   Future<void> deleteArtist(String artistId) async {
     await Future.delayed(Duration(seconds: 3));
     artists.removeWhere((artist) => artist.artistName == artistId);
+  }
+
+  @override
+  Future<ArtistCardDb> getArtist(String artistId) async {
+    await Future.delayed(Duration(seconds: 3));
+    return artists.firstWhere((artist) => artist.artistId == artistId);
   }
 }

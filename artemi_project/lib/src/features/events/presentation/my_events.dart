@@ -5,9 +5,14 @@ import 'package:artemi_project/src/features/profile/presentation/widgets/profile
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
-class MyEvents extends StatelessWidget {
+class MyEvents extends StatefulWidget {
   const MyEvents({super.key});
 
+  @override
+  State<MyEvents> createState() => _MyEventsState();
+}
+
+class _MyEventsState extends State<MyEvents> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
@@ -17,6 +22,8 @@ class MyEvents extends StatelessWidget {
         action: ProfileAvatar(width: 40, height: 40),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
             child: ListView.builder(
@@ -31,6 +38,18 @@ class MyEvents extends StatelessWidget {
                   onTap: () {},
                 );
               },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: FloatingActionButton(
+              tooltip: 'Add event',
+              backgroundColor: Palette.bitcoinOrange,
+              onPressed: () {},
+              child: Icon(
+                Icons.add,
+                color: Colors.black,
+              ),
             ),
           ),
         ],

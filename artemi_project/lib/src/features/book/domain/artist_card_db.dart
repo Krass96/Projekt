@@ -2,6 +2,7 @@ enum Categories { music, paint, comedy, dance, magic }
 
 class ArtistCardDb {
   // Attribute
+  final String artistId;
   final String? profilePicUrl;
   final String artistName;
   final Categories genre;
@@ -13,6 +14,7 @@ class ArtistCardDb {
   // Konstruktor
   ArtistCardDb({
     this.profilePicUrl,
+    required this.artistId,
     required this.isFavorit,
     required this.genre,
     required this.artistName,
@@ -38,6 +40,7 @@ class ArtistCardDb {
       genre: genre ?? this.genre,
       price: price ?? this.price,
       artistDescription: artistDescription ?? this.artistDescription,
+      artistId: '',
     );
   }
 }
@@ -54,6 +57,7 @@ class ArtistCardDb {
 List<ArtistCardDb> getArtists() {
   return [
     ArtistCardDb(
+      artistId: '1',
       profilePicUrl: 'assets/images/paint.jpg',
       isFavorit: false,
       artistName: 'Leonardo',
@@ -63,6 +67,7 @@ List<ArtistCardDb> getArtists() {
       artistDescription: 'A master of the Renaissance',
     ),
     ArtistCardDb(
+      artistId: '2',
       profilePicUrl: 'assets/images/music.png',
       isFavorit: false,
       artistName: 'Mozart',
@@ -72,6 +77,7 @@ List<ArtistCardDb> getArtists() {
       artistDescription: 'A prolific and influential composer',
     ),
     ArtistCardDb(
+      artistId: '3',
       profilePicUrl: 'assets/images/comedy.jpg',
       isFavorit: false,
       artistName: 'Charlie',
@@ -81,6 +87,7 @@ List<ArtistCardDb> getArtists() {
       price: 100,
     ),
     ArtistCardDb(
+      artistId: '4',
       profilePicUrl: 'assets/images/magic.jpg',
       isFavorit: false,
       artistName: 'Houdini',
@@ -90,6 +97,7 @@ List<ArtistCardDb> getArtists() {
       price: 200,
     ),
     ArtistCardDb(
+      artistId: '5',
       profilePicUrl: 'assets/images/danc.jpg',
       isFavorit: false,
       artistName: 'Sara',

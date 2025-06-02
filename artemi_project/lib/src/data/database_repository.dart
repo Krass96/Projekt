@@ -6,13 +6,12 @@ abstract class DatabaseRepository {
   // Benutzer erstellen und löschen
   Future<void> createUser(UserProfile user);
   Future<void> deleteUser(String userId);
-
-  // User aufrufen
   Future<UserProfile> getUser(String id);
 
   // Künstlerprofil erstellen und löschen
   Future<void> createArtist(ArtistCardDb artist);
   Future<void> deleteArtist(String artistId);
+  Future<ArtistCardDb> getArtist(String artistId);
 }
 
 void main() {
