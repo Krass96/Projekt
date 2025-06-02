@@ -1,6 +1,7 @@
 import 'package:artemi_project/src/data/mock_database_repository.dart';
 import 'package:artemi_project/src/features/artist_galery/galery/domain/artist_gallery_viewmodel.dart';
 import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
+import 'package:artemi_project/src/features/home/presentation/widgets/artist_card_shimmer.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -47,12 +48,7 @@ class _ArtistCardCarouselState extends State<ArtistCardCarousel> {
       future: _artistFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-              child: Shimmer.fromColors(
-            baseColor: Palette.bitcoinOrange,
-            highlightColor: Palette.artGold,
-            child: CircularProgressIndicator(),
-          ));
+          return const ArtistCardShimmer();
         } else if (snapshot.hasError) {
           return Center(child: Text("Fehler beim Laden der Künstler."));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
