@@ -42,6 +42,7 @@ class _ArtistCardsListState extends State<ArtistCardsList> {
             return ArtistCard(
               artist: artist,
               onToggleFavorite: () => toggleFavorite(index),
+              filledFavIcon: true,
             );
           },
           childCount: _artists.length,

@@ -5,7 +5,6 @@ import 'package:artemi_project/src/features/book/presentation/widgets/artist_car
 import 'package:artemi_project/src/common/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
-import '../domain/artist_card_db.dart';
 
 class Favorites extends StatefulWidget {
   const Favorites({super.key});
@@ -21,7 +20,8 @@ class _FavoritesState extends State<Favorites> {
 
   @override
   Widget build(BuildContext context) {
-    final List<ArtistCardDb> artists = getArtists();
+    final favoriteArtists =
+        MockDatabaseRepository().artists.where((a) => a.isFavorit).toList();
     return MyScaffold(
       bottomNavigationBar: NavBar(),
       appBar: MyAppBar(
@@ -30,7 +30,7 @@ class _FavoritesState extends State<Favorites> {
       ),
       body: Column(
         children: [
-          ArtistCardsList(artistDataList: artists),
+          ArtistCardsList(artistDataList: favoriteArtists),
         ],
       ),
     );

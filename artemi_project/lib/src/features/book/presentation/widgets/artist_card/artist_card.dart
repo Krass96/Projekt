@@ -9,13 +9,14 @@ class ArtistCard extends StatelessWidget {
   final ArtistCardDb artist;
   final VoidCallback onToggleFavorite;
   final bool showBookAndDm;
+  final bool filledFavIcon;
 
-  const ArtistCard({
-    super.key,
-    required this.artist,
-    required this.onToggleFavorite,
-    this.showBookAndDm = true,
-  });
+  const ArtistCard(
+      {super.key,
+      required this.artist,
+      required this.onToggleFavorite,
+      this.showBookAndDm = true,
+      this.filledFavIcon = false});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class ArtistCard extends StatelessWidget {
               ArtistCardFavoriteIcon(
                 isFavorite: artist.isFavorit,
                 onToggleFavorite: onToggleFavorite,
+                useFilledIcon: filledFavIcon,
               ),
             ],
           ),

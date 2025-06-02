@@ -48,21 +48,10 @@ class _ArtistCardCarouselState extends State<ArtistCardCarousel> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-              child: SizedBox(
-            width: 200.0,
-            height: 100.0,
-            child: Shimmer.fromColors(
-              baseColor: Colors.red,
-              highlightColor: Colors.yellow,
-              child: Text(
-                'Shimmer',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+              child: Shimmer.fromColors(
+            baseColor: Palette.bitcoinOrange,
+            highlightColor: Palette.artGold,
+            child: CircularProgressIndicator(),
           ));
         } else if (snapshot.hasError) {
           return Center(child: Text("Fehler beim Laden der Künstler."));
@@ -100,6 +89,7 @@ class _ArtistCardCarouselState extends State<ArtistCardCarousel> {
                     artist: artists[index],
                     onToggleFavorite: () => toggleFavorite(artists, index),
                     showBookAndDm: false,
+                    filledFavIcon: false,
                   ),
                 );
               },

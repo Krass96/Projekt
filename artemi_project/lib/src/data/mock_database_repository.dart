@@ -4,7 +4,16 @@ import 'package:artemi_project/src/features/onboarding/domain/button.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 
 class MockDatabaseRepository implements DatabaseRepository {
-  final List<UserProfile> _userList = [];
+  final List<UserProfile> _userList = [
+    UserProfile(
+        id: '1',
+        userName: 'Varnaliev',
+        password: '********',
+        eMail: 'test@web.de',
+        genres: ['Music'],
+        status: ['Evenings'],
+        priceScala: 1000),
+  ];
   final List<ArtistCardDb> artists = [
     ArtistCardDb(
       artistId: '1',
@@ -68,7 +77,11 @@ class MockDatabaseRepository implements DatabaseRepository {
   @override
   Future<UserProfile> getUser(String id) async {
     await Future.delayed(Duration(seconds: 3));
-    return _userList.firstWhere((user) => user.id == id);
+    final user = _userList.firstWhere(
+      (u) => u.id == id,
+      orElse: () => throw Exception('Kein Benutzerprofil gefunden'),
+    );
+    return user;
   }
 
   @override

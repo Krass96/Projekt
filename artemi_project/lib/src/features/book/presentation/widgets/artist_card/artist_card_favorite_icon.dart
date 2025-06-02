@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class ArtistCardFavoriteIcon extends StatelessWidget {
   final bool isFavorite;
   final VoidCallback onToggleFavorite;
+  final bool useFilledIcon;
 
   const ArtistCardFavoriteIcon({
     super.key,
     required this.isFavorite,
     required this.onToggleFavorite,
+    this.useFilledIcon = false,
   });
 
   @override
@@ -17,12 +19,12 @@ class ArtistCardFavoriteIcon extends StatelessWidget {
       top: 15,
       left: 15,
       child: IconButton(
+        onPressed: onToggleFavorite,
         icon: Icon(
-          isFavorite ? Icons.favorite_border : Icons.favorite,
+          useFilledIcon ? Icons.favorite : Icons.favorite_border,
           color: Palette.artGold,
           size: 30,
         ),
-        onPressed: onToggleFavorite,
       ),
     );
   }

@@ -33,6 +33,7 @@ class ArtistCardDb {
     int? price,
   }) {
     return ArtistCardDb(
+      artistId: artistId,
       profilePicUrl: profilePicUrl ?? this.profilePicUrl,
       isFavorit: isFavorit ?? this.isFavorit,
       artistName: artistName ?? this.artistName,
@@ -40,7 +41,6 @@ class ArtistCardDb {
       genre: genre ?? this.genre,
       price: price ?? this.price,
       artistDescription: artistDescription ?? this.artistDescription,
-      artistId: '',
     );
   }
 }

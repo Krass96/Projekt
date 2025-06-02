@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/nav_bar.dart';
 import 'package:artemi_project/src/data/mock_database_repository.dart';
@@ -24,7 +25,7 @@ class MyStage extends StatefulWidget {
 
 class _MyStageState extends State<MyStage> {
   final mockDB = MockDatabaseRepository();
-  UserProfile? user;
+  late Future<UserProfile> _userFuture;
   final bool _obscureText = true;
   String _selectedGenre = 'Genre';
   String _selectedAvailability = 'Status';
@@ -33,7 +34,7 @@ class _MyStageState extends State<MyStage> {
   @override
   void initState() {
     super.initState();
-    user = widget.user;
+    _userFuture = mockDB.getUser('1');
   }
 
   void _showGenreDialog() {
@@ -72,79 +73,100 @@ class _MyStageState extends State<MyStage> {
 
   @override
   Widget build(BuildContext context) {
-    return MyScaffold(
-      appBar: MyAppBar(
-        title: 'My Stage',
-        action: SaveButton(),
-      ),
-      bottomNavigationBar: const NavBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              alignment: Alignment.bottomCenter,
-              clipBehavior: Clip.none,
+    return FutureBuilder<UserProfile>(
+      future: _userFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(
+                child: CircularProgressIndicator(
+                    backgroundColor: Palette.artGold)),
+          );
+        } else if (snapshot.hasError) {
+          return Scaffold(
+            body: Center(child: Text('Fehler: ${snapshot.error}')),
+          );
+        } else if (!snapshot.hasData) {
+          return const Scaffold(
+            body: Center(child: Text('Kein Benutzerprofil gefunden')),
+          );
+        }
+
+        final user = snapshot.data!;
+
+        return MyScaffold(
+          appBar: MyAppBar(
+            title: 'My Stage',
+            action: SaveButton(),
+          ),
+          bottomNavigationBar: const NavBar(),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CoverPhoto(),
-                Positioned(
-                  top: 70,
-                  left: 5,
-                  child: ProfileAvatar(
-                    width: 120,
-                    height: 120,
+                Stack(
+                  alignment: Alignment.bottomCenter,
+                  clipBehavior: Clip.none,
+                  children: [
+                    CoverPhoto(),
+                    Positioned(
+                      top: 70,
+                      left: 5,
+                      child: ProfileAvatar(
+                        width: 120,
+                        height: 120,
+                      ),
+                    ),
+                    Positioned(
+                        top: 155,
+                        left: 130,
+                        child: UserName(name: user.userName)),
+                  ],
+                ),
+                const SizedBox(height: 60),
+                ProfileData(obscureText: _obscureText, user: user),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: GenreButton(
+                          selectedGenre: _selectedGenre,
+                          onTap: _showGenreDialog,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: AvailabilityButton(
+                          selectedAvailability: _selectedAvailability,
+                          onTap: _showAvailabilityDialog,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: PreisScala(
+                    values: _priceRange,
+                    onChanged: (RangeValues values) {
+                      setState(() {
+                        _priceRange = values;
+                      });
+                    },
                   ),
                 ),
-                Positioned(
-                    top: 155,
-                    left: 130,
-                    child: UserName(
-                      name: user?.userName ?? '',
-                    )),
               ],
             ),
-            SizedBox(height: 60),
-            if (user != null)
-              ProfileData(obscureText: _obscureText, user: user!),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: GenreButton(
-                      selectedGenre: _selectedGenre,
-                      onTap: _showGenreDialog,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 20),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: AvailabilityButton(
-                      selectedAvailability: _selectedAvailability,
-                      onTap: _showAvailabilityDialog,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: PreisScala(
-                  values: _priceRange,
-                  onChanged: (RangeValues values) {
-                    setState(() {
-                      _priceRange = values;
-                    });
-                  }),
-            )
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
