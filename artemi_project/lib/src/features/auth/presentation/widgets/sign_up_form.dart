@@ -6,6 +6,7 @@ import 'package:artemi_project/src/features/auth/presentation/widgets/text_field
 import 'package:artemi_project/src/common/my_button.dart';
 import 'package:artemi_project/src/data/database_repository.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
+import 'package:artemi_project/src/services/user_service.dart'; // UserService hinzufügen
 import 'package:flutter/material.dart';
 import 'dart:math'; // Für die userId Generierung
 
@@ -165,7 +166,6 @@ class _SignUpFormState extends State<SignUpForm> {
     return null;
   }
 
-  // Neue Funktion für Benutzer-Erstellung
   Future<void> _createUser() async {
     if (!formKey.currentState!.validate()) {
       return;
@@ -176,19 +176,21 @@ class _SignUpFormState extends State<SignUpForm> {
     });
 
     try {
-      // UserProfile erstellen
       final newUser = UserProfile(
-        userId: _generateUserId(), // Eine einfache ID-Generierung
+        userId: _generateUserId(),
         userName: _userNameController.text,
         password: _passwordController.text,
         eMail: _emailController.text,
-        genres: [], // Kann später ergänzt werden
-        status: [], // Kann später ergänzt werden
-        priceScala: 0, // Default-Wert
+        genres: [],
+        status: [],
+        priceScala: 0,
       );
 
       // Benutzer in Datenbank erstellen
       await widget.databaseRepository.createUser(newUser);
+
+      // Benutzer als aktuellen Benutzer setzen
+      UserService().setCurrentUser(newUser);
 
       // Erfolg - Navigation zum Dashboard
       if (mounted) {
@@ -213,6 +215,7 @@ class _SignUpFormState extends State<SignUpForm> {
     }
   }
 
+  // Einfache userId Generierung (in der Praxis würden Sie UUID verwenden)
   String _generateUserId() {
     return DateTime.now().millisecondsSinceEpoch.toString() +
         Random().nextInt(1000).toString();
