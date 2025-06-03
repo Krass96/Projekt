@@ -24,5 +24,5 @@ class UserService {
   bool get isLoggedIn => _currentUser != null;
 
   // Username bekommen (mit Fallback)
-  String get userName => _currentUser?.userName ?? 'User';
+  String get userName => _currentUser?.userName ?? 'Guest';
 }

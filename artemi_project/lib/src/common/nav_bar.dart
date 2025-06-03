@@ -13,7 +13,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 100,
+      height: 95,
       decoration: BoxDecoration(
         color: Colors.transparent,
       ),

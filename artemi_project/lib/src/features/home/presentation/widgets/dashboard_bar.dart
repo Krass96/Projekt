@@ -10,7 +10,6 @@ class DashboardBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Username vom UserService holen
     String dashboardName = UserService().userName;
 
     return Row(
