@@ -9,7 +9,6 @@ import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 import 'package:artemi_project/src/features/profile/presentation/my_stage.dart';
 import 'package:artemi_project/src/features/events/presentation/my_events.dart';
 import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
-import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
 
 class App extends StatelessWidget {
   final DatabaseRepository db;

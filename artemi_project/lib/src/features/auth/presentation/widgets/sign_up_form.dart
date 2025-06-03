@@ -4,11 +4,17 @@ import 'package:artemi_project/src/features/auth/presentation/widgets/text_field
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/repeat_password.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/user_name_field.dart';
 import 'package:artemi_project/src/common/my_button.dart';
+import 'package:artemi_project/src/data/database_repository.dart';
+import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 import 'package:flutter/material.dart';
+import 'dart:math'; // Für die userId Generierung
 
 class SignUpForm extends StatefulWidget {
+  final DatabaseRepository databaseRepository;
+
   const SignUpForm({
     super.key,
+    required this.databaseRepository,
   });
 
   @override
@@ -18,6 +24,7 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   bool _obscureText = true;
   bool _isButtonEnabled = false;
+  bool _isLoading = false; // Für Loading State
   final formKey = GlobalKey<FormState>();
 
   final _userNameController = TextEditingController();
@@ -158,6 +165,59 @@ class _SignUpFormState extends State<SignUpForm> {
     return null;
   }
 
+  // Neue Funktion für Benutzer-Erstellung
+  Future<void> _createUser() async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      // UserProfile erstellen
+      final newUser = UserProfile(
+        userId: _generateUserId(), // Eine einfache ID-Generierung
+        userName: _userNameController.text,
+        password: _passwordController.text,
+        eMail: _emailController.text,
+        genres: [], // Kann später ergänzt werden
+        status: [], // Kann später ergänzt werden
+        priceScala: 0, // Default-Wert
+      );
+
+      // Benutzer in Datenbank erstellen
+      await widget.databaseRepository.createUser(newUser);
+
+      // Erfolg - Navigation zum Dashboard
+      if (mounted) {
+        Navigator.pushNamed(context, '/dashboard');
+      }
+    } catch (error) {
+      // Fehlerbehandlung
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Fehler beim Erstellen des Benutzers: $error'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
+
+  String _generateUserId() {
+    return DateTime.now().millisecondsSinceEpoch.toString() +
+        Random().nextInt(1000).toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -185,17 +245,10 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: 30),
           MyButton(
-            text: 'Create',
+            text: _isLoading ? 'Creating...' : 'Create',
             width: 200,
             fontSize: 24,
-            onPressed: _isButtonEnabled
-                ? () {
-                    final bool isFormValid = formKey.currentState!.validate();
-                    if (isFormValid) {
-                      Navigator.pushNamed(context, '/dashboard');
-                    }
-                  }
-                : null,
+            onPressed: (_isButtonEnabled && !_isLoading) ? _createUser : null,
           ),
           const SizedBox(height: 40),
           Center(

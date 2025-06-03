@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
+import 'package:artemi_project/src/data/mock_database_repository.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/close_button.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_divider.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/overlay_title.dart';
@@ -22,6 +23,7 @@ class SignUpOverlay extends StatefulWidget {
 }
 
 class _SignUpOverlayState extends State<SignUpOverlay> {
+  final db = MockDatabaseRepository();
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -44,7 +46,7 @@ class _SignUpOverlayState extends State<SignUpOverlay> {
               ),
               Padding(
                 padding: const EdgeInsets.all(24.0),
-                child: SignUpForm(),
+                child: SignUpForm(databaseRepository: db),
               ),
             ],
           ),
