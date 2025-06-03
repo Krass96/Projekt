@@ -54,7 +54,7 @@ void main() {
   // User Test
 
   UserProfile painter = UserProfile(
-    id: '1',
+    userId: '1',
     userName: 'Leonardo',
     password: '*',
     eMail: 'leo@web.de',
@@ -63,7 +63,7 @@ void main() {
     priceScala: 2000,
   );
   UserProfile musiker = UserProfile(
-    id: '2',
+    userId: '2',
     coverImageUrl: null,
     profilImageUrl: null,
     userName: 'Rafaelo',
@@ -74,7 +74,7 @@ void main() {
     priceScala: 500,
   );
   UserProfile comediant = UserProfile(
-    id: '3',
+    userId: '3',
     coverImageUrl: null,
     profilImageUrl: null,
     userName: 'Charlie',

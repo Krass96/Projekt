@@ -1,16 +1,16 @@
-import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/common/nav_bar.dart';
-import 'package:artemi_project/src/data/mock_database_repository.dart';
-import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
-import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/common/preis_scala.dart';
-import 'package:artemi_project/src/features/profile/presentation/widgets/genre_dialog.dart';
-import 'package:artemi_project/src/features/profile/presentation/widgets/save_button.dart';
+import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
+import 'package:artemi_project/src/data/mock_database_repository.dart';
+import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/user_name.dart';
+import 'package:artemi_project/src/features/profile/presentation/widgets/save_button.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_data.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/cover_photo.dart';
+import 'package:artemi_project/src/features/profile/presentation/widgets/genre_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/status_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
 
@@ -80,7 +80,9 @@ class _MyStageState extends State<MyStage> {
           return const Scaffold(
             body: Center(
                 child: CircularProgressIndicator(
-                    backgroundColor: Palette.artGold)),
+              backgroundColor: Palette.artGold,
+              color: Palette.bitcoinOrange,
+            )),
           );
         } else if (snapshot.hasError) {
           return Scaffold(

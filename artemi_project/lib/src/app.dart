@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/common/splash_screen_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/app_theme.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
@@ -25,7 +26,7 @@ class App extends StatelessWidget {
             MyBgColor(),
             Material(
               type: MaterialType.transparency,
-              child: WelcomeScreen(),
+              child: SplashScreenShimmer(),
             ),
           ],
         ),
@@ -36,7 +37,7 @@ class App extends StatelessWidget {
         '/events': (context) => MyEvents(),
         '/mystage': (context) => MyStage(
               user: UserProfile(
-                  id: '1',
+                  userId: '1',
                   userName: 'Varnaliev',
                   password: '********',
                   eMail: 'test@web.de',

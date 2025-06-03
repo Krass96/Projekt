@@ -1,5 +1,5 @@
 class UserProfile {
-  final String id;
+  final String userId;
   final String? coverImageUrl;
   final String? profilImageUrl;
   final String userName;
@@ -11,7 +11,7 @@ class UserProfile {
   final int priceScala;
 
   UserProfile({
-    required this.id,
+    required this.userId,
     this.coverImageUrl,
     this.profilImageUrl,
     required this.userName,

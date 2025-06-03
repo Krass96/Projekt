@@ -6,7 +6,7 @@ import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 class MockDatabaseRepository implements DatabaseRepository {
   final List<UserProfile> _userList = [
     UserProfile(
-        id: '1',
+        userId: '1',
         userName: 'Varnaliev',
         password: '********',
         eMail: 'test@web.de',
@@ -75,11 +75,11 @@ class MockDatabaseRepository implements DatabaseRepository {
   }
 
   @override
-  Future<UserProfile> getUser(String id) async {
+  Future<UserProfile> getUser(String userId) async {
     await Future.delayed(Duration(seconds: 3));
     final user = _userList.firstWhere(
-      (u) => u.id == id,
-      orElse: () => throw Exception('Kein Benutzerprofil gefunden'),
+      (u) => u.userId == userId,
+      orElse: () => throw Exception('No user profile found'),
     );
     return user;
   }
@@ -87,7 +87,7 @@ class MockDatabaseRepository implements DatabaseRepository {
   @override
   Future<void> deleteUser(String userId) async {
     await Future.delayed(Duration(seconds: 3));
-    _userList.removeWhere((user) => user.id == userId);
+    _userList.removeWhere((user) => user.userId == userId);
   }
 
   @override
@@ -109,5 +109,23 @@ class MockDatabaseRepository implements DatabaseRepository {
   Future<ArtistCardDb> getArtist(String artistId) async {
     await Future.delayed(Duration(seconds: 3));
     return artists.firstWhere((artist) => artist.artistId == artistId);
+  }
+
+  @override
+  Future<void> updateUser(UserProfile updatedUser) async {
+    await Future.delayed(Duration(seconds: 1));
+    final index =
+        _userList.indexWhere((user) => user.userId == updatedUser.userId);
+    if (index == -1) throw Exception('User not found');
+    _userList[index] = updatedUser;
+  }
+
+  @override
+  Future<void> updateArtist(ArtistCardDb updatedArtist) async {
+    await Future.delayed(Duration(seconds: 1));
+    final index = artists
+        .indexWhere((artist) => artist.artistId == updatedArtist.artistId);
+    if (index == -1) throw Exception('Artist not found');
+    artists[index] = updatedArtist;
   }
 }

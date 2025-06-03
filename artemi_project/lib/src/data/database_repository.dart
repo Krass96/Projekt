@@ -3,15 +3,17 @@ import '../features/book/domain/artist_card_db.dart';
 import 'package:artemi_project/src/data/mock_database_repository.dart';
 
 abstract class DatabaseRepository {
-  // Benutzer erstellen und löschen
+  // Benutzer CRUD
   Future<void> createUser(UserProfile user);
-  Future<void> deleteUser(String userId);
   Future<UserProfile> getUser(String id);
+  Future<void> updateUser(UserProfile updatedUser);
+  Future<void> deleteUser(String userId);
 
-  // Künstlerprofil erstellen und löschen
+  // Künstlerprofil CRUD
   Future<void> createArtist(ArtistCardDb artist);
-  Future<void> deleteArtist(String artistId);
   Future<ArtistCardDb> getArtist(String artistId);
+  Future<void> updateArtist(ArtistCardDb updatedArtist);
+  Future<void> deleteArtist(String artistId);
 }
 
 void main() {
@@ -20,7 +22,7 @@ void main() {
   // User erstellen und löschen Beispiel
 
   UserProfile a = UserProfile(
-    id: '111',
+    userId: '111',
     userName: 'Krass',
     password: '0000',
     eMail: 'krass@web.com',

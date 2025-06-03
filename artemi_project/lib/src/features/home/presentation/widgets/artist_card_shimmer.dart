@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:artemi_project/src/theme/palette.dart';
 
 class ArtistCardShimmer extends StatelessWidget {
   const ArtistCardShimmer({super.key});
@@ -202,87 +201,6 @@ class ArtistCardShimmer extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-// Alternative: Einfachere Shimmer Version mit deinen App-Farben
-class ArtistCardShimmerCustom extends StatelessWidget {
-  const ArtistCardShimmerCustom({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CarouselSlider.builder(
-          options: CarouselOptions(
-            height: 320,
-            enlargeFactor: 0,
-            viewportFraction: 0.85,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: false,
-          ),
-          itemCount: 3,
-          itemBuilder: (context, index, realIndex) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Shimmer.fromColors(
-                baseColor: Palette.bitcoinOrange.withOpacity(0.3),
-                highlightColor: Palette.artGold.withOpacity(0.5),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
-
-        const SizedBox(height: 16),
-
-        // Simple Navigation Shimmer
-        Shimmer.fromColors(
-          baseColor: Palette.bitcoinOrange.withOpacity(0.3),
-          highlightColor: Palette.artGold.withOpacity(0.5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(26),
-                ),
-              ),
-              const SizedBox(width: 20),
-              ...List.generate(
-                3,
-                (index) => Container(
-                  width: 15,
-                  height: 15,
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 20),
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(26),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
