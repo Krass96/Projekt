@@ -1,12 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/data/mock_database_repository.dart';
-import 'package:artemi_project/src/features/artist_galery/galery/domain/artist_gallery_viewmodel.dart';
 import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
 import 'package:artemi_project/src/features/home/presentation/widgets/artist_card_shimmer.dart';
-import 'package:artemi_project/src/theme/palette.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
 import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:artemi_project/src/features/artist_galery/galery/domain/artist_gallery_viewmodel.dart';
 
 class ArtistCardCarousel extends StatefulWidget {
   const ArtistCardCarousel({super.key});

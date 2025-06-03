@@ -20,6 +20,7 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   google_fonts: ^6.2.1
   google_sign_in: ^6.3.0
+  image_picker: ^1.1.2
   intl: ^0.20.2
   lucide_icons: ^0.257.0
   numberpicker: ^2.1.2
@@ -43,7 +44,7 @@ flutter_icons:
 
 flutter_native_splash:
   image: 'assets/splash_screen/splash.png'
-  shimmer: 
+  shimmer: null
   duration: 3
   android: true
   ios: true

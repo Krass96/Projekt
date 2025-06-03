@@ -1,4 +1,5 @@
 import 'package:artemi_project/src/services/user_service.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
@@ -13,6 +14,8 @@ import 'package:artemi_project/src/features/profile/presentation/widgets/cover_p
 import 'package:artemi_project/src/features/profile/presentation/widgets/genre_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/status_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class MyStage extends StatefulWidget {
   const MyStage({super.key});
@@ -23,16 +26,37 @@ class MyStage extends StatefulWidget {
 
 class _MyStageState extends State<MyStage> {
   final mockDB = MockDatabaseRepository();
-
+  final ImagePicker _picker = ImagePicker();
   final bool _obscureText = true;
   String _selectedGenre = 'Genre';
   String _selectedAvailability = 'Status';
   RangeValues _priceRange = const RangeValues(0, 10000);
+  File? _profileImage;
+  File? _coverImage;
+
+  Future<void> _pickProfileImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _profileImage = File(image.path);
+      });
+      // Hier könntest du das Bild auch in deine Datenbank/Cloud speichern
+    }
+  }
+
+  Future<void> _pickCoverImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _coverImage = File(image.path);
+      });
+      // Hier könntest du das Bild auch in deine Datenbank/Cloud speichern
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    // Initialisierung der Werte basierend auf aktuellem Benutzer
     _initializeUserData();
   }
 
@@ -40,15 +64,10 @@ class _MyStageState extends State<MyStage> {
     final currentUser = UserService().currentUser;
     if (currentUser != null) {
       setState(() {
-        // Genre aus User-Daten laden (erstes Genre wenn vorhanden)
         _selectedGenre =
             currentUser.genres.isNotEmpty ? currentUser.genres.first : 'Genre';
-
-        // Status aus User-Daten laden (erster Status wenn vorhanden)
         _selectedAvailability =
             currentUser.status.isNotEmpty ? currentUser.status.first : 'Status';
-
-        // Preis aus User-Daten laden
         _priceRange = RangeValues(0, currentUser.priceScala.toDouble());
       });
     }
@@ -92,7 +111,6 @@ class _MyStageState extends State<MyStage> {
     final currentUser = UserService().currentUser;
     if (currentUser != null) {
       try {
-        // Aktualisierte User-Daten erstellen
         final updatedUser = UserProfile(
           userId: currentUser.userId,
           userName: currentUser.userName,
@@ -120,12 +138,11 @@ class _MyStageState extends State<MyStage> {
           );
         }
       } catch (error) {
-        // Fehler-Nachricht anzeigen
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Error when saving: $error'),
-              backgroundColor: Colors.red,
+              backgroundColor: Palette.errorColor,
             ),
           );
         }
@@ -145,16 +162,16 @@ class _MyStageState extends State<MyStage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.person_off, size: 64, color: Colors.grey),
+              Icon(Icons.person_off, size: 64, color: Palette.textColor),
               SizedBox(height: 16),
               Text(
                 'No user logged in',
-                style: TextStyle(fontSize: 18, color: Colors.grey),
+                style: TextStyle(fontSize: 18, color: Palette.textColor),
               ),
               SizedBox(height: 8),
               Text(
                 'Please log in first',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
+                style: TextStyle(fontSize: 14, color: Palette.textColor),
               ),
             ],
           ),
@@ -179,13 +196,50 @@ class _MyStageState extends State<MyStage> {
               alignment: Alignment.bottomCenter,
               clipBehavior: Clip.none,
               children: [
-                CoverPhoto(),
+                _coverImage != null
+                    ? Image.file(
+                        _coverImage!,
+                        width: double.infinity,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      )
+                    : const CoverPhoto(),
+                Positioned(
+                  bottom: 10,
+                  right: 10,
+                  child: IconButton(
+                    icon: const Icon(Icons.camera_alt_outlined,
+                        color: Colors.white),
+                    onPressed: _pickCoverImage,
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.black54,
+                    ),
+                  ),
+                ),
                 Positioned(
                   top: 70,
                   left: 5,
-                  child: ProfileAvatar(
-                    width: 120,
-                    height: 120,
+                  child: Stack(
+                    children: [
+                      _profileImage != null
+                          ? CircleAvatar(
+                              radius: 60,
+                              backgroundImage: FileImage(_profileImage!),
+                            )
+                          : ProfileAvatar(width: 120, height: 120),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: IconButton(
+                          icon: const Icon(Icons.camera_alt_outlined,
+                              color: Colors.white),
+                          onPressed: _pickProfileImage,
+                          style: IconButton.styleFrom(
+                            backgroundColor: Colors.black54,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Positioned(

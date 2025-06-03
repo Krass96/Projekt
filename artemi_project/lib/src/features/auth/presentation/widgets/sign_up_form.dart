@@ -248,7 +248,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ),
           const SizedBox(height: 30),
           MyButton(
-            text: _isLoading ? 'Creating...' : 'Create',
+            text: _isLoading ? 'Creating... 🔄' : 'Create',
             width: 200,
             fontSize: 24,
             onPressed: (_isButtonEnabled && !_isLoading) ? _createUser : null,
