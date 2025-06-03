@@ -1,10 +1,10 @@
-import 'package:artemi_project/src/data/mock_database_repository.dart';
-import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_cards_list.dart';
 import 'package:artemi_project/src/common/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
+import 'package:artemi_project/src/data/mock_database_repository.dart';
+import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
+import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_cards_list.dart';
 
 class Favorites extends StatefulWidget {
   const Favorites({super.key});

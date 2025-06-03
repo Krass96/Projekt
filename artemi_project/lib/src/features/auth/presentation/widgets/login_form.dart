@@ -32,24 +32,26 @@ class _LoginFormState extends State<LoginForm> {
     final enteredPassword = _passwordController.text.trim();
 
     try {
-      final user = await mockDatabaseRepository.getUserByEmail(enteredEmail);
+      // Benutzer suchen (du kannst auch nach E-Mail suchen, wenn nötig)
+      final user = await mockDatabaseRepository
+          .getUserByEmail(enteredEmail); // Platzhalter-ID
 
       if (user.eMail == enteredEmail && user.password == enteredPassword) {
         userService.setCurrentUser(user); // Benutzer setzen
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login successful')),
+          SnackBar(content: Text('Login erfolgreich')),
         );
 
         Navigator.pushNamed(context, '/dashboard'); // Weiterleiten
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Invalid login data')),
+          SnackBar(content: Text('Ungültige Anmeldedaten')),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('User not found')),
+        SnackBar(content: Text('Benutzer nicht gefunden')),
       );
     }
   }

@@ -25,7 +25,6 @@ class _LoginOverlayState extends State<LoginOverlay> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-
     return SizedBox(
       height: screenHeight * 0.86,
       child: Stack(

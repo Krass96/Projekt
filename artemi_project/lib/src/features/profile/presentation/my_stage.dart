@@ -1,9 +1,11 @@
-import 'package:artemi_project/src/services/user_service.dart';
-import 'package:artemi_project/src/theme/palette.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/common/nav_bar.dart';
-import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/common/preis_scala.dart';
+import 'package:artemi_project/src/common/my_scaffold.dart';
+import 'package:artemi_project/src/services/user_service.dart';
 import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
 import 'package:artemi_project/src/data/mock_database_repository.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
@@ -14,8 +16,6 @@ import 'package:artemi_project/src/features/profile/presentation/widgets/cover_p
 import 'package:artemi_project/src/features/profile/presentation/widgets/genre_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/status_dialog.dart';
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 class MyStage extends StatefulWidget {
   const MyStage({super.key});

@@ -1,10 +1,10 @@
-import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
-import 'package:artemi_project/src/common/my_scaffold.dart';
-import 'package:artemi_project/src/common/nav_bar.dart';
-import 'package:artemi_project/src/features/events/presentation/widgets/event_create_overlay.dart';
-import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
-import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:artemi_project/src/theme/palette.dart';
+import 'package:artemi_project/src/common/nav_bar.dart';
+import 'package:artemi_project/src/common/my_scaffold.dart';
+import 'package:artemi_project/src/common/app_bar/my_app_bar.dart';
+import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
+import 'package:artemi_project/src/features/events/presentation/widgets/event_create_overlay.dart';
 
 class MyEvents extends StatefulWidget {
   const MyEvents({super.key});
