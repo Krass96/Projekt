@@ -1,10 +1,15 @@
+import 'package:artemi_project/src/data/mock_database_repository.dart';
+import 'package:artemi_project/src/services/user_service.dart';
+import 'package:flutter/material.dart';
+import 'package:artemi_project/src/common/my_button.dart';
 import 'package:artemi_project/src/common/logo_widget.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/forgot_password.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/my_check_box.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/email_field.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
-import 'package:artemi_project/src/common/my_button.dart';
-import 'package:flutter/material.dart';
+
+final mockDatabaseRepository = MockDatabaseRepository();
+final userService = UserService();
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -21,6 +26,33 @@ class _LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+  Future<void> _handleLogin() async {
+    final enteredEmail = _emailController.text.trim();
+    final enteredPassword = _passwordController.text.trim();
+
+    try {
+      final user = await mockDatabaseRepository.getUserByEmail(enteredEmail);
+
+      if (user.eMail == enteredEmail && user.password == enteredPassword) {
+        userService.setCurrentUser(user); // Benutzer setzen
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Login successful')),
+        );
+
+        Navigator.pushNamed(context, '/dashboard'); // Weiterleiten
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Invalid login data')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('User not found')),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -139,10 +171,9 @@ class _LoginFormState extends State<LoginForm> {
                 text: 'Login',
                 onPressed: _isButtonEnabled
                     ? () {
-                        final bool isFormValid =
-                            formKey.currentState!.validate();
+                        final isFormValid = formKey.currentState!.validate();
                         if (isFormValid) {
-                          Navigator.pushNamed(context, '/dashboard');
+                          _handleLogin(); // Login ausführen
                         }
                       }
                     : null,

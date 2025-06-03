@@ -85,6 +85,15 @@ class MockDatabaseRepository implements DatabaseRepository {
   }
 
   @override
+  Future<UserProfile> getUserByEmail(String email) async {
+    await Future.delayed(Duration(seconds: 1));
+    return _userList.firstWhere(
+      (u) => u.eMail == email,
+      orElse: () => throw Exception('Kein Benutzer mit dieser E-Mail gefunden'),
+    );
+  }
+
+  @override
   Future<void> deleteUser(String userId) async {
     await Future.delayed(Duration(seconds: 3));
     _userList.removeWhere((user) => user.userId == userId);

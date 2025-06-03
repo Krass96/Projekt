@@ -6,6 +6,7 @@ abstract class DatabaseRepository {
   // Benutzer CRUD
   Future<void> createUser(UserProfile user);
   Future<UserProfile> getUser(String id);
+  Future<UserProfile> getUserByEmail(String email);
   Future<void> updateUser(UserProfile updatedUser);
   Future<void> deleteUser(String userId);
 

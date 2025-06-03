@@ -1,5 +1,5 @@
+import 'package:artemi_project/src/services/user_service.dart';
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/common/nav_bar.dart';
 import 'package:artemi_project/src/common/my_scaffold.dart';
 import 'package:artemi_project/src/common/preis_scala.dart';
@@ -15,9 +15,7 @@ import 'package:artemi_project/src/features/profile/presentation/widgets/status_
 import 'package:artemi_project/src/features/profile/presentation/widgets/profile_avatar.dart';
 
 class MyStage extends StatefulWidget {
-  final UserProfile? user;
-
-  const MyStage({super.key, required this.user});
+  const MyStage({super.key});
 
   @override
   State<MyStage> createState() => _MyStageState();
@@ -25,7 +23,7 @@ class MyStage extends StatefulWidget {
 
 class _MyStageState extends State<MyStage> {
   final mockDB = MockDatabaseRepository();
-  late Future<UserProfile> _userFuture;
+
   final bool _obscureText = true;
   String _selectedGenre = 'Genre';
   String _selectedAvailability = 'Status';
@@ -34,7 +32,26 @@ class _MyStageState extends State<MyStage> {
   @override
   void initState() {
     super.initState();
-    _userFuture = mockDB.getUser('1');
+    // Initialisierung der Werte basierend auf aktuellem Benutzer
+    _initializeUserData();
+  }
+
+  void _initializeUserData() {
+    final currentUser = UserService().currentUser;
+    if (currentUser != null) {
+      setState(() {
+        // Genre aus User-Daten laden (erstes Genre wenn vorhanden)
+        _selectedGenre =
+            currentUser.genres.isNotEmpty ? currentUser.genres.first : 'Genre';
+
+        // Status aus User-Daten laden (erster Status wenn vorhanden)
+        _selectedAvailability =
+            currentUser.status.isNotEmpty ? currentUser.status.first : 'Status';
+
+        // Preis aus User-Daten laden
+        _priceRange = RangeValues(0, currentUser.priceScala.toDouble());
+      });
+    }
   }
 
   void _showGenreDialog() {
@@ -71,104 +88,153 @@ class _MyStageState extends State<MyStage> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<UserProfile>(
-      future: _userFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Scaffold(
-            body: Center(
-                child: CircularProgressIndicator(
-              backgroundColor: Palette.artGold,
-              color: Palette.bitcoinOrange,
-            )),
-          );
-        } else if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(child: Text('Fehler: ${snapshot.error}')),
-          );
-        } else if (!snapshot.hasData) {
-          return const Scaffold(
-            body: Center(child: Text('Kein Benutzerprofil gefunden')),
+  Future<void> _saveProfile() async {
+    final currentUser = UserService().currentUser;
+    if (currentUser != null) {
+      try {
+        // Aktualisierte User-Daten erstellen
+        final updatedUser = UserProfile(
+          userId: currentUser.userId,
+          userName: currentUser.userName,
+          password: currentUser.password,
+          eMail: currentUser.eMail,
+          genres: _selectedGenre != 'Genre' ? [_selectedGenre] : [],
+          status:
+              _selectedAvailability != 'Status' ? [_selectedAvailability] : [],
+          priceScala: _priceRange.end.toInt(),
+        );
+
+        // In Datenbank speichern
+        await mockDB.updateUser(updatedUser);
+
+        // UserService aktualisieren
+        UserService().setCurrentUser(updatedUser);
+
+        // Erfolgs-Nachricht anzeigen
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Profile successfully saved!'),
+              backgroundColor: Colors.green,
+            ),
           );
         }
+      } catch (error) {
+        // Fehler-Nachricht anzeigen
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error when saving: $error'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    }
+  }
 
-        final user = snapshot.data!;
-
-        return MyScaffold(
-          appBar: MyAppBar(
-            title: 'My Stage',
-            action: SaveButton(),
+  @override
+  Widget build(BuildContext context) {
+    final currentUser = UserService().currentUser;
+    // Prüfen ob Benutzer eingeloggt ist
+    if (currentUser == null) {
+      return MyScaffold(
+        appBar: MyAppBar(title: 'My Stage'),
+        bottomNavigationBar: const NavBar(),
+        body: const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.person_off, size: 64, color: Colors.grey),
+              SizedBox(height: 16),
+              Text(
+                'No user logged in',
+                style: TextStyle(fontSize: 18, color: Colors.grey),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Please log in first',
+                style: TextStyle(fontSize: 14, color: Colors.grey),
+              ),
+            ],
           ),
-          bottomNavigationBar: const NavBar(),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        ),
+      );
+    }
+
+    return MyScaffold(
+      appBar: MyAppBar(
+        title: 'My Stage',
+        action: SaveButton(
+          onPressed: () => _saveProfile(),
+        ),
+      ),
+      bottomNavigationBar: const NavBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              alignment: Alignment.bottomCenter,
+              clipBehavior: Clip.none,
               children: [
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  clipBehavior: Clip.none,
-                  children: [
-                    CoverPhoto(),
-                    Positioned(
-                      top: 70,
-                      left: 5,
-                      child: ProfileAvatar(
-                        width: 120,
-                        height: 120,
-                      ),
-                    ),
-                    Positioned(
-                        top: 155,
-                        left: 130,
-                        child: UserName(name: user.userName)),
-                  ],
+                CoverPhoto(),
+                Positioned(
+                  top: 70,
+                  left: 5,
+                  child: ProfileAvatar(
+                    width: 120,
+                    height: 120,
+                  ),
                 ),
-                const SizedBox(height: 60),
-                ProfileData(obscureText: _obscureText, user: user),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: GenreButton(
-                          selectedGenre: _selectedGenre,
-                          onTap: _showGenreDialog,
-                        ),
-                      ),
+                Positioned(
+                    top: 155,
+                    left: 130,
+                    child: UserName(name: currentUser.userName)),
+              ],
+            ),
+            const SizedBox(height: 60),
+            ProfileData(obscureText: _obscureText, user: currentUser),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: GenreButton(
+                      selectedGenre: _selectedGenre,
+                      onTap: _showGenreDialog,
                     ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: AvailabilityButton(
-                          selectedAvailability: _selectedAvailability,
-                          onTap: _showAvailabilityDialog,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: PreisScala(
-                    values: _priceRange,
-                    onChanged: (RangeValues values) {
-                      setState(() {
-                        _priceRange = values;
-                      });
-                    },
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: AvailabilityButton(
+                      selectedAvailability: _selectedAvailability,
+                      onTap: _showAvailabilityDialog,
+                    ),
                   ),
                 ),
               ],
             ),
-          ),
-        );
-      },
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: PreisScala(
+                values: _priceRange,
+                onChanged: (RangeValues values) {
+                  setState(() {
+                    _priceRange = values;
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
