@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/preis_scala.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/bo_divider.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/book_button.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/booking_confirm.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/booking_title.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/date_time_fields_section.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/event_title_field.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/location_field.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/bo_divider.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/book_button.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/booking_confirm.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/booking_title.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/date_time_fields_section.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/event_title_field.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/location_field.dart';
 
 class BookingOverlay extends StatefulWidget {
   final RangeValues values;

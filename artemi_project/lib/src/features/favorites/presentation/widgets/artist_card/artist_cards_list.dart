@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card.dart';
+import 'package:artemi_project/src/features/favorites/domain/artist_card_db.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/artist_card/artist_card.dart';
 
 class ArtistCardsList extends StatefulWidget {
   final List<ArtistCardDb> artistDataList;

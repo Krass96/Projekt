@@ -1,5 +1,5 @@
 import 'package:artemi_project/src/data/database_repository.dart';
-import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
+import 'package:artemi_project/src/features/favorites/domain/artist_card_db.dart';
 import 'package:artemi_project/src/features/onboarding/domain/button.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 
@@ -89,7 +89,7 @@ class MockDatabaseRepository implements DatabaseRepository {
     await Future.delayed(Duration(seconds: 1));
     return _userList.firstWhere(
       (u) => u.eMail == email,
-      orElse: () => throw Exception('Kein Benutzer mit dieser E-Mail gefunden'),
+      orElse: () => throw Exception('No user found with this e-mail'),
     );
   }
 

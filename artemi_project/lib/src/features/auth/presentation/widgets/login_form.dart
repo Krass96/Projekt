@@ -1,10 +1,10 @@
-import 'package:artemi_project/src/data/mock_database_repository.dart';
-import 'package:artemi_project/src/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/my_button.dart';
 import 'package:artemi_project/src/common/logo_widget.dart';
-import 'package:artemi_project/src/features/auth/presentation/widgets/forgot_password.dart';
+import 'package:artemi_project/src/services/user_service.dart';
+import 'package:artemi_project/src/data/mock_database_repository.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/my_check_box.dart';
+import 'package:artemi_project/src/features/auth/presentation/widgets/forgot_password.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/email_field.dart';
 import 'package:artemi_project/src/features/auth/presentation/widgets/text_fields/password_field.dart';
 
@@ -32,26 +32,24 @@ class _LoginFormState extends State<LoginForm> {
     final enteredPassword = _passwordController.text.trim();
 
     try {
-      // Benutzer suchen (du kannst auch nach E-Mail suchen, wenn nötig)
-      final user = await mockDatabaseRepository
-          .getUserByEmail(enteredEmail); // Platzhalter-ID
+      final user = await mockDatabaseRepository.getUserByEmail(enteredEmail);
 
       if (user.eMail == enteredEmail && user.password == enteredPassword) {
-        userService.setCurrentUser(user); // Benutzer setzen
+        userService.setCurrentUser(user);
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login erfolgreich')),
+          SnackBar(content: Text('Login successful')),
         );
 
-        Navigator.pushNamed(context, '/dashboard'); // Weiterleiten
+        Navigator.pushNamed(context, '/dashboard');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Ungültige Anmeldedaten')),
+          SnackBar(content: Text('Invalid login data')),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Benutzer nicht gefunden')),
+        SnackBar(content: Text('User not found')),
       );
     }
   }
@@ -175,7 +173,7 @@ class _LoginFormState extends State<LoginForm> {
                     ? () {
                         final isFormValid = formKey.currentState!.validate();
                         if (isFormValid) {
-                          _handleLogin(); // Login ausführen
+                          _handleLogin();
                         }
                       }
                     : null,

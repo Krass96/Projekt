@@ -1,9 +1,9 @@
-import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
+import 'package:artemi_project/src/features/favorites/domain/artist_card_db.dart';
 import 'package:flutter/material.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card_favorite_icon.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card_info.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/book_and_dm.dart';
-import 'package:artemi_project/src/features/book/presentation/widgets/artist_card/artist_card_image.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/artist_card/artist_card_favorite_icon.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/artist_card/artist_card_info.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/artist_card/book_and_dm.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/artist_card/artist_card_image.dart';
 
 class ArtistCard extends StatelessWidget {
   final ArtistCardDb artist;

@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/features/book/presentation/widgets/booking_overlay/booking_overlay.dart';
+import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/booking_overlay.dart';
 import 'package:artemi_project/src/features/dm/presentation/dm.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';

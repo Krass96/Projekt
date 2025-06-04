@@ -7,7 +7,7 @@ import 'package:artemi_project/src/common/splash_screen_shimmer.dart';
 import 'package:artemi_project/src/features/home/presentation/home.dart';
 import 'package:artemi_project/src/features/profile/presentation/my_stage.dart';
 import 'package:artemi_project/src/features/events/presentation/my_events.dart';
-import 'package:artemi_project/src/features/book/presentation/favorites_screen.dart';
+import 'package:artemi_project/src/features/favorites/presentation/favorites_screen.dart';
 
 class App extends StatelessWidget {
   final DatabaseRepository db;

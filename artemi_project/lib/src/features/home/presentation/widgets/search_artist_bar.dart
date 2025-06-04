@@ -1,4 +1,4 @@
-import 'package:artemi_project/src/features/book/domain/artist_card_db.dart';
+import 'package:artemi_project/src/features/favorites/domain/artist_card_db.dart';
 import 'package:flutter/material.dart';
 
 class SearchArtistBar extends StatelessWidget {

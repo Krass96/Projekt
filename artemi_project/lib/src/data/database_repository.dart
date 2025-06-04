@@ -1,5 +1,5 @@
 import '../features/profile/domain/user_profile.dart';
-import '../features/book/domain/artist_card_db.dart';
+import '../features/favorites/domain/artist_card_db.dart';
 import 'package:artemi_project/src/data/mock_database_repository.dart';
 
 abstract class DatabaseRepository {
