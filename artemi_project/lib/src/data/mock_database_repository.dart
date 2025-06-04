@@ -1,7 +1,7 @@
 import 'package:artemi_project/src/data/database_repository.dart';
-import 'package:artemi_project/src/features/favorites/domain/artist_card_db.dart';
-import 'package:artemi_project/src/features/onboarding/domain/button.dart';
+import 'package:artemi_project/src/features/events/domain/events.dart';
 import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
+import 'package:artemi_project/src/features/favorites/domain/artist_card_db.dart';
 
 class MockDatabaseRepository implements DatabaseRepository {
   final List<UserProfile> _userList = [
@@ -66,7 +66,7 @@ class MockDatabaseRepository implements DatabaseRepository {
       price: 500,
     ),
   ];
-  final List<Button> buttons = [];
+  final List<Event> _events = [];
 
   @override
   Future<void> createUser(UserProfile appUser) async {
@@ -136,5 +136,23 @@ class MockDatabaseRepository implements DatabaseRepository {
         .indexWhere((artist) => artist.artistId == updatedArtist.artistId);
     if (index == -1) throw Exception('Artist not found');
     artists[index] = updatedArtist;
+  }
+
+  @override
+  Future<void> addEvent(Event event) async {
+    await Future.delayed(Duration(milliseconds: 200));
+    _events.add(event);
+  }
+
+  @override
+  Future<void> deleteEvent() async {
+    await Future.delayed(Duration(milliseconds: 200));
+    _events.clear();
+  }
+
+  @override
+  Future<List<Event>> getEvents() async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    return _events;
   }
 }

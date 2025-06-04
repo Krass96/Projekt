@@ -1,3 +1,5 @@
+import 'package:artemi_project/src/features/events/domain/events.dart';
+
 import '../features/profile/domain/user_profile.dart';
 import '../features/favorites/domain/artist_card_db.dart';
 import 'package:artemi_project/src/data/mock_database_repository.dart';
@@ -5,7 +7,7 @@ import 'package:artemi_project/src/data/mock_database_repository.dart';
 abstract class DatabaseRepository {
   // Benutzer CRUD
   Future<void> createUser(UserProfile user);
-  Future<UserProfile> getUser(String id);
+  Future<UserProfile> getUser(String userId);
   Future<UserProfile> getUserByEmail(String email);
   Future<void> updateUser(UserProfile updatedUser);
   Future<void> deleteUser(String userId);
@@ -15,6 +17,11 @@ abstract class DatabaseRepository {
   Future<ArtistCardDb> getArtist(String artistId);
   Future<void> updateArtist(ArtistCardDb updatedArtist);
   Future<void> deleteArtist(String artistId);
+
+  // Events
+  Future<void> addEvent(Event event);
+  Future<void> deleteEvent();
+  Future<List<Event>> getEvents();
 }
 
 void main() {

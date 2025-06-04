@@ -27,6 +27,7 @@ dependencies:
   shimmer: ^3.0.0
   sign_in_with_apple: ^7.0.1
   smooth_page_indicator: ^1.2.1
+  uuid: ^4.5.1
 
 flutter:
   uses-material-design: true

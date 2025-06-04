@@ -1,3 +1,5 @@
+import 'package:artemi_project/src/data/mock_database_repository.dart';
+import 'package:artemi_project/src/features/events/domain/events.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/common/preis_scala.dart';
 import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/bo_divider.dart';
@@ -80,10 +82,31 @@ class _BookingOverlayState extends State<BookingOverlay> {
     );
   }
 
-  void _showBookingConfirmation(BuildContext context) {
-    showDialog(
+  void _saveEvent() async {
+    final repo = MockDatabaseRepository(); // später mit Provider ersetzen
+    await repo.addEvent(
+      Event(
+        artistName: '',
+        location: '',
+        price: 500,
+        eventId: '999',
+        title: 'Booking with Artist',
+        description:
+            'Location: XYZ\nPrice: ${widget.values.start.toInt()}€ - ${widget.values.end.toInt()}€',
+        start: DateTime.tryParse(_startController.text) ?? DateTime.now(),
+        end: DateTime.tryParse(_endController.text) ?? DateTime.now(),
+      ),
+    );
+  }
+
+  void _showBookingConfirmation(BuildContext context) async {
+    final result = await showDialog(
       context: context,
       builder: (_) => const BookingConfirmationDialog(),
     );
+
+    if (result == true) {
+      _saveEvent();
+    }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/data/mock_database_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/palette.dart';
 import 'package:artemi_project/src/common/nav_bar.dart';
@@ -14,7 +15,7 @@ class MyEvents extends StatefulWidget {
 }
 
 class _MyEventsState extends State<MyEvents> {
-  final List<Map<String, String>> _events = [];
+  List<Map<String, String>> _events = [];
 
   Future<void> _showEventOverlay() async => showModalBottomSheet(
         context: context,
@@ -33,6 +34,22 @@ class _MyEventsState extends State<MyEvents> {
           },
         ),
       );
+
+  @override
+  void initState() {
+    super.initState();
+    _loadEvents();
+  }
+
+  Future<void> _loadEvents() async {
+    final repo = MockDatabaseRepository();
+    final events = await repo.getEvents();
+    setState(() {
+      _events = events
+          .map((e) => {'title': e.title, 'description': e.description})
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
