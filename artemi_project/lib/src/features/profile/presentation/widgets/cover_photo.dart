@@ -9,7 +9,7 @@ class CoverPhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 150,
+      height: 140,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12)),
         image: DecorationImage(

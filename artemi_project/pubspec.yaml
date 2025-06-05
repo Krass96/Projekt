@@ -16,6 +16,7 @@ dependencies:
   flutter_native_splash: ^2.4.6
   flutter_pw_validator: ^1.6.0
   flutter_rating_bar: ^4.0.1
+  flutter_slidable: ^4.0.0
   flutter_svg: ^2.1.0
   font_awesome_flutter: ^10.8.0
   google_fonts: ^6.2.1

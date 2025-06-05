@@ -9,6 +9,7 @@ import 'package:artemi_project/src/features/favorites/presentation/widgets/booki
 import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/date_time_fields_section.dart';
 import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/event_title_field.dart';
 import 'package:artemi_project/src/features/favorites/presentation/widgets/booking_overlay/location_field.dart';
+import 'package:artemi_project/src/features/events/presentation/my_events.dart';
 
 class BookingOverlay extends StatefulWidget {
   final RangeValues values;
@@ -84,33 +85,47 @@ class _BookingOverlayState extends State<BookingOverlay> {
     );
   }
 
-  void _saveEvent() async {
-    final repo = MockDatabaseRepository(); // später mit Provider ersetzen
-    await repo.addEvent(
-      Event(
-        eventId:
-            DateTime.now().millisecondsSinceEpoch.toString(), // eindeutige ID
-        title:
-            'Booking with ${widget.selectedArtist}', // z. B. aus Textfeld später
-        description:
-            'Start: ${_startController.text}\nEnd: ${_endController.text}\nPrice: ${widget.values.start.toInt()}€ - ${widget.values.end.toInt()}€',
-        artistName: widget.selectedArtist,
-        start: DateTime.tryParse(_startController.text) ?? DateTime.now(),
-        end: DateTime.tryParse(_endController.text) ?? DateTime.now(),
-        location: 'Berlin', // z. B. aus einem Eingabefeld
-        price: widget.values.end.toDouble(), // Max-Wert aus Range
-      ),
-    );
-  }
-
-  void _showBookingConfirmation(BuildContext context) async {
+  Future<void> _showBookingConfirmation(BuildContext context) async {
     final result = await showDialog(
       context: context,
       builder: (_) => const BookingConfirmationDialog(),
     );
 
     if (result == null) {
-      _saveEvent();
+      await _saveEvent();
+      _navigateToMyEvents();
     }
+  }
+
+  Future<void> _saveEvent() async {
+    final repo = MockDatabaseRepository();
+    final start = DateTime.tryParse(_startController.text) ?? DateTime.now();
+    final end = DateTime.tryParse(_endController.text) ?? DateTime.now();
+    final newEvent = Event(
+      eventId: DateTime.now().millisecondsSinceEpoch.toString(),
+      title: 'Event with ${widget.selectedArtist}',
+      description: 'Start: ${_startController.text}\n'
+          'End: ${_endController.text}\n'
+          'Price: ${widget.values.start.toInt()}€ - ${widget.values.end.toInt()}€',
+      artistName: widget.selectedArtist,
+      start: start,
+      end: end,
+      location: 'Hamburg',
+      price: widget.values.end.toDouble(),
+    );
+
+    await repo.addEvent(newEvent);
+  }
+
+  void _navigateToMyEvents() {
+    Navigator.pop(context);
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) => const MyEvents(),
+        transitionDuration: Duration.zero,
+        reverseTransitionDuration: Duration.zero,
+      ),
+    );
   }
 }

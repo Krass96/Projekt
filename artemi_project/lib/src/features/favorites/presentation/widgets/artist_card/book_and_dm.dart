@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BookAndDm extends StatefulWidget {
-  const BookAndDm({super.key});
+  final String artistName;
+
+  const BookAndDm({super.key, required this.artistName});
 
   @override
   State<BookAndDm> createState() => _BookAndDmState();
@@ -13,7 +15,7 @@ class BookAndDm extends StatefulWidget {
 
 class _BookAndDmState extends State<BookAndDm> {
   RangeValues _values = const RangeValues(0, 10000);
-  final String selectedArtist = 'Leonardo';
+  String get _selectedArtist => widget.artistName;
 
   void _openBookingOverlay() {
     showBookingOverlay(
@@ -24,7 +26,7 @@ class _BookAndDmState extends State<BookAndDm> {
           _values = newValues;
         });
       },
-      selectedArtist: selectedArtist,
+      selectedArtist: _selectedArtist,
     );
   }
 
@@ -91,12 +93,12 @@ class _BookAndDmState extends State<BookAndDm> {
   }
 }
 
-void showBookingOverlay(
+Future<void> showBookingOverlay(
   BuildContext context, {
   required RangeValues values,
   required Function(RangeValues) onChanged,
   required String selectedArtist,
-}) {
+}) async {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,

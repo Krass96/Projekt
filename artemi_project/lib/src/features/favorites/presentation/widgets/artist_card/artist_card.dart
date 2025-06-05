@@ -43,7 +43,10 @@ class ArtistCard extends StatelessWidget {
                 artist.genre.name.toString().substring(1),
             price: artist.price,
           ),
-          if (showBookAndDm) BookAndDm(),
+          if (showBookAndDm)
+            BookAndDm(
+              artistName: artist.artistName,
+            ),
         ],
       ),
     );

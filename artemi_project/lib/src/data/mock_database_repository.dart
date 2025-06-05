@@ -4,6 +4,12 @@ import 'package:artemi_project/src/features/profile/domain/user_profile.dart';
 import 'package:artemi_project/src/features/favorites/domain/artist_card_db.dart';
 
 class MockDatabaseRepository implements DatabaseRepository {
+  static final MockDatabaseRepository _instance =
+      MockDatabaseRepository._internal();
+
+  factory MockDatabaseRepository() => _instance;
+
+  MockDatabaseRepository._internal();
   final List<UserProfile> _userList = [
     UserProfile(
         userId: '1',
@@ -99,6 +105,8 @@ class MockDatabaseRepository implements DatabaseRepository {
     _userList.removeWhere((user) => user.userId == userId);
   }
 
+  // ****************************************************************** //
+
   @override
   Future<void> createArtist(ArtistCardDb artist) async {
     await Future.delayed(Duration(seconds: 3));
@@ -137,6 +145,7 @@ class MockDatabaseRepository implements DatabaseRepository {
     if (index == -1) throw Exception('Artist not found');
     artists[index] = updatedArtist;
   }
+  // ****************************************************************** //
 
   @override
   Future<void> addEvent(Event event) async {
