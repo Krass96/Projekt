@@ -13,11 +13,13 @@ import 'package:artemi_project/src/features/favorites/presentation/widgets/booki
 class BookingOverlay extends StatefulWidget {
   final RangeValues values;
   final Function(RangeValues) onChanged;
+  final String selectedArtist;
 
   const BookingOverlay({
     super.key,
     required this.values,
     required this.onChanged,
+    required this.selectedArtist,
   });
 
   @override
@@ -86,15 +88,17 @@ class _BookingOverlayState extends State<BookingOverlay> {
     final repo = MockDatabaseRepository(); // später mit Provider ersetzen
     await repo.addEvent(
       Event(
-        artistName: '',
-        location: '',
-        price: 500,
-        eventId: '999',
-        title: 'Booking with Artist',
+        eventId:
+            DateTime.now().millisecondsSinceEpoch.toString(), // eindeutige ID
+        title:
+            'Booking with ${widget.selectedArtist}', // z. B. aus Textfeld später
         description:
-            'Location: XYZ\nPrice: ${widget.values.start.toInt()}€ - ${widget.values.end.toInt()}€',
+            'Start: ${_startController.text}\nEnd: ${_endController.text}\nPrice: ${widget.values.start.toInt()}€ - ${widget.values.end.toInt()}€',
+        artistName: widget.selectedArtist,
         start: DateTime.tryParse(_startController.text) ?? DateTime.now(),
         end: DateTime.tryParse(_endController.text) ?? DateTime.now(),
+        location: 'Berlin', // z. B. aus einem Eingabefeld
+        price: widget.values.end.toDouble(), // Max-Wert aus Range
       ),
     );
   }
@@ -105,7 +109,7 @@ class _BookingOverlayState extends State<BookingOverlay> {
       builder: (_) => const BookingConfirmationDialog(),
     );
 
-    if (result == true) {
+    if (result == null) {
       _saveEvent();
     }
   }

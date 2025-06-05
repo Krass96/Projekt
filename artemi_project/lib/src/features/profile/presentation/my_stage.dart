@@ -158,7 +158,7 @@ class _MyStageState extends State<MyStage> {
       return MyScaffold(
         appBar: MyAppBar(title: 'My Stage'),
         bottomNavigationBar: const NavBar(),
-        body: const Center(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -169,9 +169,12 @@ class _MyStageState extends State<MyStage> {
                 style: TextStyle(fontSize: 18, color: Palette.textColor),
               ),
               SizedBox(height: 8),
-              Text(
-                'Please log in first',
-                style: TextStyle(fontSize: 14, color: Palette.textColor),
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/login'),
+                child: Text(
+                  'Please log in first',
+                  style: TextStyle(fontSize: 15, color: Palette.linkColor),
+                ),
               ),
             ],
           ),

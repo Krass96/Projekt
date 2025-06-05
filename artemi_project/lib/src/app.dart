@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/features/auth/presentation/login.dart';
 import 'package:flutter/material.dart';
 import 'package:artemi_project/src/theme/app_theme.dart';
 import 'package:artemi_project/src/theme/my_bg_color.dart';
@@ -34,6 +35,7 @@ class App extends StatelessWidget {
         '/favorites': (context) => Favorites(),
         '/events': (context) => MyEvents(),
         '/mystage': (context) => MyStage(),
+        '/login': (context) => Login(),
       },
     );
   }

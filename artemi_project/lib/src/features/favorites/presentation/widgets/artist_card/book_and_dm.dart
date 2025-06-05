@@ -13,6 +13,7 @@ class BookAndDm extends StatefulWidget {
 
 class _BookAndDmState extends State<BookAndDm> {
   RangeValues _values = const RangeValues(0, 10000);
+  final String selectedArtist = 'Leonardo';
 
   void _openBookingOverlay() {
     showBookingOverlay(
@@ -23,6 +24,7 @@ class _BookAndDmState extends State<BookAndDm> {
           _values = newValues;
         });
       },
+      selectedArtist: selectedArtist,
     );
   }
 
@@ -93,6 +95,7 @@ void showBookingOverlay(
   BuildContext context, {
   required RangeValues values,
   required Function(RangeValues) onChanged,
+  required String selectedArtist,
 }) {
   showModalBottomSheet(
     context: context,
@@ -102,6 +105,7 @@ void showBookingOverlay(
       return BookingOverlay(
         values: values,
         onChanged: onChanged,
+        selectedArtist: selectedArtist,
       );
     },
   );

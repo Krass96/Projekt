@@ -1,3 +1,4 @@
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -14,7 +15,7 @@ class ForgotPassword extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .titleSmall
-            ?.copyWith(color: Colors.lightBlueAccent),
+            ?.copyWith(color: Palette.linkColor),
       ),
     );
   }

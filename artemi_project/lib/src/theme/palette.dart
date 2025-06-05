@@ -5,4 +5,5 @@ abstract class Palette {
   static const Color bitcoinOrange = Color(0xFFFFD100);
   static const Color textColor = Color(0xFFD6D6D6);
   static const Color errorColor = Color(0xFFE86962);
+  static const Color linkColor = Colors.lightBlueAccent;
 }
