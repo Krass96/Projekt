@@ -1,28 +1,22 @@
-import 'package:artemi_project/src/features/onboarding/presentation/welcome_screen.dart';
+import 'package:artemi_project/src/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:artemi_project/src/theme/palette.dart';
-import 'dart:async';
 
-class SplashScreenShimmer extends StatefulWidget {
-  const SplashScreenShimmer({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<SplashScreenShimmer> createState() => _SplashScreenShimmerState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenShimmerState extends State<SplashScreenShimmer> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
+
+    Future.delayed(const Duration(milliseconds: 2000), () {
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const WelcomeScreen(),
-          ),
-        );
+        Navigator.pushReplacementNamed(context, '/dashboards');
       }
     });
   }
@@ -30,17 +24,21 @@ class _SplashScreenShimmerState extends State<SplashScreenShimmer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: Center(
-        child: Shimmer.fromColors(
-          baseColor: Palette.artGold.withOpacity(0.4),
-          highlightColor: Palette.artGold,
-          period: const Duration(seconds: 2),
-          child: Image.asset(
-            'assets/splash_screen/splash.png',
-            width: 200,
-            height: 200,
-            fit: BoxFit.contain,
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Shimmer.fromColors(
+                  baseColor: Colors.transparent,
+                  highlightColor: Palette.artGold,
+                  child: Image.asset(
+                    'assets/splash_screen/splash.png',
+                    cacheHeight: 90,
+                  )),
+            ],
           ),
         ),
       ),

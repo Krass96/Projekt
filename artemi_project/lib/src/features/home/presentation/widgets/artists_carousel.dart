@@ -62,7 +62,7 @@ class _ArtistCardCarouselState extends State<ArtistCardCarousel> {
               carouselController: _carouselController,
               options: CarouselOptions(
                 height: 320,
-                enlargeFactor: 0,
+                enlargeFactor: 0.24,
                 viewportFraction: 0.85,
                 enlargeCenterPage: true,
                 enableInfiniteScroll: false,

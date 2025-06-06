@@ -25,8 +25,8 @@ class App extends StatelessWidget {
             MyBgColor(),
             Material(
               type: MaterialType.transparency,
-              child: SplashScreenShimmer(),
-            ),
+              child: SplashScreen(),
+            )
           ],
         ),
       ),

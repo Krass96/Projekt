@@ -30,7 +30,7 @@ class EventData extends StatelessWidget {
         final event = events[index];
         final day = DateFormat('d').format(event.start);
         final month = DateFormat('MMM').format(event.start).toUpperCase();
-        final time = DateFormat('hh:mm a').format(event.start);
+        final time = DateFormat('hh:mm').format(event.start);
 
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),

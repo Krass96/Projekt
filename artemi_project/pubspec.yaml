@@ -48,7 +48,7 @@ flutter_icons:
 flutter_native_splash:
   image: 'assets/splash_screen/splash.png'
   shimmer: null
-  duration: 3
+  duration: 5
   android: true
   ios: true
   fullscreen: true
